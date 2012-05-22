@@ -15,7 +15,7 @@ development:
   database: biopartsdb_development
   pool: 5
   username: root
-  password: hexi255
+  password: 
   hostname: localhost
 
 # Warning: The database defined as "test" will be erased and

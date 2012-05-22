@@ -10,7 +10,7 @@ class Tpcr < ActiveRecord::Base
   accepts_nested_attributes_for :tpcr_products
 
   attr_accessible :parts, :device, :status, :protocol
-  attr_accessible :part_ids, :device_id, :status_id, :protocol_id, :apcr_products_attributes
+  attr_accessible :part_ids, :device_id, :status_id, :protocol_id, :tpcr_products_attributes
   
   validates :device, :parts, :status, :presence => true
 

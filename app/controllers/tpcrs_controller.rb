@@ -26,12 +26,13 @@ class TpcrsController < ApplicationController
   
   def edit
     @tpcr = Tpcr.find(params[:id])
+    @quality_controls = QualityControl.find_all_by_process(Tpcr.to_s)
   end
   
   def update
     @tpcr = Tpcr.find(params[:id])
     if @tpcr.update_attributes(params[:tpcr])
-      redirect_to apcr_path(@tpcr), :notice => "tPCR updated correctly."
+      redirect_to tpcr_path(@tpcr), :notice => "tPCR updated correctly."
     else
       render :edit, :id => @tpcr, :error => "tPCR update error."
     end

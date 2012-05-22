@@ -6,7 +6,7 @@
 		
 		<%= f.association :tpcr_products do |p| %>
 			<%= p.label "#{p.object.part}" %>
-			<%= p.association :quality_control, :label => false %>
+			<%= p.association :quality_control, :collection => @quality_controls, :label => false %>
 		<% end %>
 		
 		<%= f.association :device %>
