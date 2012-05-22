@@ -63,6 +63,33 @@ ActiveRecord::Schema.define(:version => 20120522183859) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "fpcr_products", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "fpcr_id"
+    t.integer  "tpcr_product_id"
+    t.integer  "quality_control_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "fpcr_products", ["fpcr_id"], :name => "index_fpcr_products_on_fpcr_id"
+  add_index "fpcr_products", ["quality_control_id"], :name => "index_fpcr_products_on_quality_control_id"
+  add_index "fpcr_products", ["tpcr_product_id"], :name => "index_fpcr_products_on_tpcr_product_id"
+  add_index "fpcr_products", ["user_id"], :name => "index_fpcr_products_on_user_id"
+
+  create_table "fpcrs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "status_id"
+    t.integer  "protocol_id"
+    t.integer  "device_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "fpcrs", ["device_id"], :name => "index_fpcrs_on_device_id"
+  add_index "fpcrs", ["status_id"], :name => "index_fpcrs_on_status_id"
+  add_index "fpcrs", ["user_id"], :name => "index_fpcrs_on_user_id"
+
   create_table "locations", :force => true do |t|
     t.integer  "organism_id"
     t.string   "chromosome"

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  tpcr: 
+  quality_control: 
+  part: 
+
+two:
+  user: 
+  tpcr: 
+  quality_control: 
+  part: 
