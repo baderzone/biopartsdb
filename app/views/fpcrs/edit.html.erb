@@ -5,7 +5,7 @@
 	<%= simple_form_for(@fpcr, :html => {:class => 'form-horizontal' }) do |f| %>
 		
 		<%= f.association :fpcr_products do |p| %>
-			<%= p.label "#{p.object.part}" %>
+			<%= p.label "#{p.object.tpcr_product.part.name}" %>
 			<%= p.association :quality_control, :label => false %>
 		<% end %>
 		
