@@ -16,3 +16,4 @@ vendor = Vendor.create(name: 'IDT')
 oligoPlate = OligoPlate.create(name: 'JHU_PARTS_2012_OLIGO_1', vendor: vendor, user: user)
 oligo = Oligo.create(part: part, name: 'yeast_promoter_YBL087C.o01', start: 1, stop: 150, sequence: 'AATATTTGTATTGTTTTATGTAATTATAATCTTAAGCTTGCAATACCAATCACTATTAC')
 well = OligoPlateWell.create(oligo: oligo, oligo_plate: oligoPlate, well: 'A01')
+

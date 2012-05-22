@@ -38,7 +38,7 @@ Biopartsdb::Application.routes.draw do
   resources :parts
   resources :apcrs
   resources :tpcrs
-  
+  resources :fpcrs 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
