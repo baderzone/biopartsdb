@@ -29,7 +29,7 @@
 			<li class="divider"></li>
       <li class="nav-header">tPCRs</li>
       <li><%= link_to 'Status', tpcrs_path %></li>
-      <li><%= link_to 'Run', new_tpcr_path %></li>
+      <li><a href="#">Run</a></li>
 			<li class="divider"></li>
       <li class="nav-header">fPCR</li>
       <li><a href="#">Status</a></li>

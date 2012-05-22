@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><i class="icon-random"> </i>aPCR <%= @apcr.id %></h1>
+	<h1><i class="icon-random"> </i>tPCR <%= @tpcr.id %></h1>
 </div>
 	<div class="tabbable">
 	  <ul class="nav nav-tabs">
@@ -17,7 +17,7 @@
 						</tr>
 					</thead>
 					<tbody>		
-						<% @apcr.apcr_products.each do |product| %>
+						<% @tpcr.tpcr_products.each do |product| %>
 							<tr>
 								<td><%= product.part.name  %></td>	
 							</tr>
@@ -27,19 +27,19 @@
 
 				<dl class="dl-horizontal">
 					<dt>Status</dd>
-					<dd><%= @apcr.status.name %></dt>
+					<dd><%= @tpcr.status.name %></dt>
 					<dt>Device</dd>
-					<dd><%= @apcr.device.name %></dt>
+					<dd><%= @tpcr.device.name %></dt>
 					<dt>Date</dd>
-					<dd><%= @apcr.created_at %></dt>		
+					<dd><%= @tpcr.created_at %></dt>		
 				</dl>
 				
-				<%= link_to 'Update', edit_apcr_path(@apcr), :class => 'btn'%>
+				<%= link_to 'Update', edit_tpcr_path(@tpcr), :class => 'btn'%>
 			</div>
 			<div class="tab-pane" id="plate">
 			</div>
 			<div class="tab-pane" id="protocol">
-				<p><%= @apcr.protocol.content %></p>
+				<p><%= @tpcr.protocol.content %></p>
 			</div>
 	  </div>
 	</div>

@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_many :parts, :through => :tasks
   
   has_many :apcrs
-  has_many :tpcrs
   
   attr_accessible :email, :fullname, :provider
   

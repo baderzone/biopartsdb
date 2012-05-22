@@ -1,12 +1,4 @@
 Biopartsdb::Application.routes.draw do
-  get "tpcrs/index"
-
-  get "tpcrs/show"
-
-  get "tpcrs/create"
-
-  get "tpcrs/new"
-
   get "parts/index"
 
   get "parts/show"
@@ -37,7 +29,6 @@ Biopartsdb::Application.routes.draw do
   resources :protocols
   resources :parts
   resources :apcrs
-  resources :tpcrs
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

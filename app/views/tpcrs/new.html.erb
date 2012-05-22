@@ -1,14 +1,14 @@
 <div class="page-header">
-	<h1><i class="icon-random"> </i>Run aPCR</h1>
+	<h1><i class="icon-random"> </i>Run tPCR</h1>
 </div>
 <p>
-	<%= simple_form_for(@apcr, :html => {:class => 'form-horizontal' }) do |f| %>
+	<%= simple_form_for(@tpcr, :html => {:class => 'form-horizontal' }) do |f| %>
 		<%= f.association :parts, :as => :check_boxes %>
 		<%= f.association :device %>
 
 		<div class="form-actions">
 			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', apcrs_path, :class => 'btn'%>
+			<%= link_to 'Cancel', tpcrs_path, :class => 'btn'%>
 		</div>
 	<% end %>
 </p>

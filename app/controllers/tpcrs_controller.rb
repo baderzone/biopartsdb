@@ -1,4 +1,4 @@
-class TpcrController < ApplicationController
+class TpcrsController < ApplicationController
   def index
     @tpcrs = current_user.tpcrs.order("id DESC")
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521231022) do
+ActiveRecord::Schema.define(:version => 20120522183859) do
 
   create_table "apcr_products", :force => true do |t|
     t.integer  "user_id"
@@ -205,6 +205,34 @@ ActiveRecord::Schema.define(:version => 20120521231022) do
 
   add_index "tasks", ["part_id"], :name => "index_tasks_on_part_id"
   add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
+
+  create_table "tpcr_products", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "tpcr_id"
+    t.integer  "quality_control_id"
+    t.integer  "part_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "tpcr_products", ["part_id"], :name => "index_tpcr_products_on_part_id"
+  add_index "tpcr_products", ["quality_control_id"], :name => "index_tpcr_products_on_quality_control_id"
+  add_index "tpcr_products", ["tpcr_id"], :name => "index_tpcr_products_on_tpcr_id"
+  add_index "tpcr_products", ["user_id"], :name => "index_tpcr_products_on_user_id"
+
+  create_table "tpcrs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "status_id"
+    t.integer  "protocol_id"
+    t.integer  "device_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "tpcrs", ["device_id"], :name => "index_tpcrs_on_device_id"
+  add_index "tpcrs", ["protocol_id"], :name => "index_tpcrs_on_protocol_id"
+  add_index "tpcrs", ["status_id"], :name => "index_tpcrs_on_status_id"
+  add_index "tpcrs", ["user_id"], :name => "index_tpcrs_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "uid"
