@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(:version => 20120521231022) do
   add_index "protocol_reagents", ["protocol_id"], :name => "index_protocol_reagents_on_protocol_id"
 
   create_table "protocols", :force => true do |t|
-    t.string   "code"
+    t.string   "process"
     t.string   "name"
     t.text     "content"
     t.integer  "user_id"

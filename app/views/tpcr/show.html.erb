@@ -1,0 +1,47 @@
+<div class="page-header">
+	<h1><i class="icon-random"> </i>aPCR <%= @apcr.id %></h1>
+</div>
+	<div class="tabbable">
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#plate" data-toggle="tab">Plate</a></li>
+	    <li><a href="#protocol" data-toggle="tab">Protocol</a></li>
+	  </ul>
+	
+	  <div class="tab-content">
+			<div class="tab-pane active" id="info">
+		    <table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Parts</th>
+						</tr>
+					</thead>
+					<tbody>		
+						<% @apcr.apcr_products.each do |product| %>
+							<tr>
+								<td><%= product.part.name  %></td>	
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+
+				<dl class="dl-horizontal">
+					<dt>Status</dd>
+					<dd><%= @apcr.status.name %></dt>
+					<dt>Device</dd>
+					<dd><%= @apcr.device.name %></dt>
+					<dt>Date</dd>
+					<dd><%= @apcr.created_at %></dt>		
+				</dl>
+				
+				<%= link_to 'Update', edit_apcr_path(@apcr), :class => 'btn'%>
+			</div>
+			<div class="tab-pane" id="plate">
+			</div>
+			<div class="tab-pane" id="protocol">
+				<p><%= @apcr.protocol.content %></p>
+			</div>
+	  </div>
+	</div>
+	
+</p>
