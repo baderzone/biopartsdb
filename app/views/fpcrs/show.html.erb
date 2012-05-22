@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><i class="icon-random"> </i>aPCR <%= @apcr.id %></h1>
+	<h1><i class="icon-random"> </i>fPCR <%= @fpcr.id %></h1>
 </div>
 	<div class="tabbable">
 	  <ul class="nav nav-tabs">
@@ -12,14 +12,14 @@
 			<div class="tab-pane active" id="info">
 		    <table class="table table-bordered table-striped">
 					<thead>
-					validates :device, :parts, :status, :presence => true	<tr>
+						<tr>
 							<th>Parts</th>
 						</tr>
 					</thead>
 					<tbody>		
-						<% @apcr.apcr_products.each do |product| %>
+						<% @fpcr.fpcr_products.each do |product| %>
 							<tr>
-								<td><%= product.part.name  %></td>	
+								<td><%= product.tpcr_product.part.name  %></td>	
 							</tr>
 						<% end %>
 					</tbody>
@@ -27,19 +27,19 @@
 
 				<dl class="dl-horizontal">
 					<dt>Status</dd>
-					<dd><%= @apcr.status.name %></dt>
+					<dd><%= @fpcr.status.name %></dt>
 					<dt>Device</dd>
-					<dd><%= @apcr.device.name %></dt>
+					<dd><%= @fpcr.device.name %></dt>
 					<dt>Date</dd>
-					<dd><%= @apcr.created_at %></dt>		
+					<dd><%= @fpcr.created_at %></dt>		
 				</dl>
 				
-				<%= link_to 'Update', edit_apcr_path(@apcr), :class => 'btn'%>
+				<%= link_to 'Update', edit_fpcr_path(@fpcr), :class => 'btn'%>
 			</div>
 			<div class="tab-pane" id="plate">
 			</div>
 			<div class="tab-pane" id="protocol">
-				<p><%= @apcr.protocol.content %></p>
+				<p><%= @fpcr.protocol.content %></p>
 			</div>
 	  </div>
 	</div>

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   
   has_many :apcrs
   has_many :tpcrs
+  has_many :fpcrs
   
   attr_accessible :email, :fullname, :provider
   

@@ -7,4 +7,8 @@ class TpcrProduct < ActiveRecord::Base
   attr_accessible :part, :quality_control, :tpcr, :user
   attr_accessible :quality_control_id, :tpcr_id, :user_id
 
+  def to_label
+    "#{part.name}-#{id}"
+  end
+
 end
