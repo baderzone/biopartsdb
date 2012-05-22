@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  part: 
+  name: MyString
+  start: 1
+  stop: 1
+  sequence: MyString
+
+two:
+  part: 
+  name: MyString
+  start: 1
+  stop: 1
+  sequence: MyString

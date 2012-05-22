@@ -1,0 +1,23 @@
+<div class="page-header">
+	<h1><i class="icon-cog"> </i>Parts</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Organism</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @parts.each do |p| %>
+				<tr>
+					<td><%= link_to p.name, part_path(p) %></td>
+					<td><%= p.feature.name %></td>
+					<td><%= p.location.organism.name %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>

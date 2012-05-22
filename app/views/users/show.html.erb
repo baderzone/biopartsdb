@@ -1,0 +1,10 @@
+<div class="page-header">
+	<h1><i class="icon-user"> </i>Personal Info</h1>
+</div>
+<dl class="dl-horizontal">
+	<dt>Full Name</dd>
+	<dd><%= current_user.fullname %></dt>
+	<dt>Email</dd>
+	<dd><%= current_user.email %></dt>
+</dl>
+<%= link_to 'Update', edit_user_path(current_user), :class => 'btn'%>

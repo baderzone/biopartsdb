@@ -1,0 +1,21 @@
+<div class="page-header">
+	<h1><i class="icon-book"> </i>Protocols</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Protocol</th>
+				<th>Author</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @protocols.each do |p| %>
+				<tr>
+					<td><%= link_to p.name, protocol_path(p) %></td>
+					<td><%= p.user.fullname %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>

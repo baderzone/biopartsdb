@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  apcr: 
+  quality_control: 
+  part: 
+
+two:
+  apcr: 
+  quality_control: 
+  part: 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  protocol: 
+  name: MyString
+  stock_concentration: MyString
+  final_concentration: MyString
+  volume_reaction: MyString
+
+two:
+  protocol: 
+  name: MyString
+  stock_concentration: MyString
+  final_concentration: MyString
+  volume_reaction: MyString

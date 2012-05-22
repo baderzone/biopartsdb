@@ -1,0 +1,108 @@
+<ul class="nav nav-pills">
+	<!-- Workspace menu -->
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Workspace
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Parts', parts_path %></li>
+      <li><a href="#">Plates</a></li>
+      <li><%= link_to 'Protocols', protocols_path %></li>	
+      <li class="divider"></li>
+      <li><%= link_to 'Personal Info', users_path %></li>						
+      <li><%= link_to 'Logout', signout_path %></li>						
+    </ul>
+  </li>
+	<li class="divider-vertical"/>
+
+	<!-- PCR menu -->
+	<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      PCR
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+	    <li class="nav-header">aPCRs</li>
+      <li><%= link_to 'Status', apcrs_path %></li>
+      <li><%= link_to 'Run', new_apcr_path %></li>
+			<li class="divider"></li>
+      <li class="nav-header">tPCRs</li>
+      <li><a href="#">Status</a></li>
+      <li><a href="#">Run</a></li>
+			<li class="divider"></li>
+      <li class="nav-header">fPCR</li>
+      <li><a href="#">Status</a></li>
+      <li><a href="#">Run</a></li>
+    </ul>
+  </li>
+
+	<!-- Gel menu -->
+	<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Gels
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li class="nav-header">PCR Gels</li>
+      <li><a href="#">Status</a></li>
+      <li><a href="#">Run</a></li>
+			<li class="divider"></li>
+      <li class="nav-header">csPCR Gels</li>
+      <li><a href="#">Status</a></li>
+      <li><a href="#">Run</a></li>
+    </ul>
+  </li>
+	<li class="divider-vertical"/>
+
+	<!-- Ligation menu -->
+	<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Ligations
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Status</a></li>
+      <li><a href="#">Run</a></li>
+    </ul>
+  </li>
+
+	<!-- Transformations menu -->
+	<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Transformations
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Status</a></li>
+      <li><a href="#">Run</a></li>
+    </ul>
+  </li>
+
+	<!-- Cloning menu -->
+	<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Cloning
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Status</a></li>
+      <li><a href="#">Run</a></li>
+    </ul>
+  </li>
+
+	<li class="divider-vertical"/>
+	
+	<!-- Sequencing menu -->
+	<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Sequencing
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Status</a></li>
+      <li><a href="#">Send</a></li>
+    </ul>
+  </li>
+
+</ul>

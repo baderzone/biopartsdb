@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  oligoplate: 
+  oligo: 
+  well: MyString
+
+two:
+  oligoplate: 
+  oligo: 
+  well: MyString

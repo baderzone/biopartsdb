@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  so: MyString
+  name: MyString
+  namespace: MyString
+  definition: MyText
+
+two:
+  so: MyString
+  name: MyString
+  namespace: MyString
+  definition: MyText
