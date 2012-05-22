@@ -1,0 +1,47 @@
+<div class="page-header">
+	<h1><i class="icon-random"> </i>fPCR <%= fapcr.id %></h1>
+</div>
+	<div class="tabbable">
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#plate" data-toggle="tab">Plate</a></li>
+	    <li><a href="#protocol" data-toggle="tab">Protocol</a></li>
+	  </ul>
+	
+	  <div class="tab-content">
+			<div class="tab-pane active" id="info">
+		    <table class="table table-bordered table-striped">
+					<thead>
+					validates :device, :tpcr_products, :status, :presence => true	<tr>
+							<th>Parts</th>
+						</tr>
+					</thead>
+					<tbody>		
+						<% @fpcr.fpcr_products.each do |product| %>
+							<tr>
+								<td><%= product.part.name  %></td>	
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+
+				<dl class="dl-horizontal">
+					<dt>Status</dd>
+					<dd><%= @fpcr.status.name %></dt>
+					<dt>Device</dd>
+					<dd><%= @fpcr.device.name %></dt>
+					<dt>Date</dd>
+					<dd><%= @fpcr.created_at %></dt>		
+				</dl>
+				
+				<%= link_to 'Update', edit_fpcr_path(@fpcr), :class => 'btn'%>
+			</div>
+			<div class="tab-pane" id="plate">
+			</div>
+			<div class="tab-pane" id="protocol">
+				<p><%= @fpcr.protocol.content %></p>
+			</div>
+	  </div>
+	</div>
+	
+</p>
