@@ -5,14 +5,6 @@ Biopartsdb::Application.routes.draw do
 
   get "pcr_gels/edit"
 
-  get "cspcrs/index"
-
-  get "cspcrs/show"
-
-  get "cspcrs/create"
-
-  get "cspcrs/new"
-
   get "tpcrs/index"
 
   get "tpcrs/show"
