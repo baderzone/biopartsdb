@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120522183859) do
+ActiveRecord::Schema.define(:version => 20120523132857) do
 
   create_table "apcr_products", :force => true do |t|
     t.integer  "user_id"
@@ -156,6 +156,39 @@ ActiveRecord::Schema.define(:version => 20120522183859) do
   add_index "parts", ["feature_id"], :name => "index_parts_on_feature_id"
   add_index "parts", ["location_id"], :name => "index_parts_on_location_id"
   add_index "parts", ["sequence_id"], :name => "index_parts_on_sequence_id"
+
+  create_table "pcr_gel_images", :force => true do |t|
+    t.integer  "pcr_gel_id"
+    t.string   "pcr_gel_image_file"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "pcr_gel_images", ["pcr_gel_id"], :name => "index_pcr_gel_images_on_pcr_gel_id"
+
+  create_table "pcr_gel_lanes", :force => true do |t|
+    t.integer  "pcr_gel_id"
+    t.integer  "quality_control_id"
+    t.integer  "pcr_product_id"
+    t.string   "pcr_product_type"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "pcr_gel_lanes", ["pcr_gel_id"], :name => "index_pcr_gel_lanes_on_pcr_gel_id"
+  add_index "pcr_gel_lanes", ["quality_control_id"], :name => "index_pcr_gel_lanes_on_quality_control_id"
+
+  create_table "pcr_gels", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "protocol_id"
+    t.integer  "status_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "pcr_gels", ["protocol_id"], :name => "index_pcr_gels_on_protocol_id"
+  add_index "pcr_gels", ["status_id"], :name => "index_pcr_gels_on_status_id"
+  add_index "pcr_gels", ["user_id"], :name => "index_pcr_gels_on_user_id"
 
   create_table "plasmids", :force => true do |t|
     t.integer  "vendor_id"
