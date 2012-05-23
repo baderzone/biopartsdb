@@ -10,7 +10,7 @@
 		<% end %>
 		
 		<%= f.association :device %>
-		<%= f.association :status %>
+		<%= f.association :status, :collection => @statuses %>
 		
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>

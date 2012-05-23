@@ -26,6 +26,8 @@ class FpcrsController < ApplicationController
 
   def edit
     @fpcr = Fpcr.find(params[:id])
+    @quality_controls = QualityControl.find_all_by_process(Fpcr.to_s)
+    @statuses = Status.find_all_by_process(Fpcr.to_s)
   end
 
   def update

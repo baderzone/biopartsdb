@@ -26,6 +26,8 @@ class ApcrsController < ApplicationController
   
   def edit
     @apcr = Apcr.find(params[:id])
+    @quality_controls = QualityControl.find_all_by_process(Apcr.to_s)
+    @statuses = Status.find_all_by_process(Apcr.to_s)
   end
   
   def update

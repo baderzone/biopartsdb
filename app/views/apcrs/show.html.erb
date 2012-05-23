@@ -11,11 +11,13 @@
 	  <div class="tab-content">
 			<div class="tab-pane active" id="info">
 		    <table class="table table-bordered table-striped">
+					
 					<thead>
-					validates :device, :parts, :status, :presence => true	<tr>
+						<tr>
 							<th>Parts</th>
 						</tr>
 					</thead>
+					
 					<tbody>		
 						<% @apcr.apcr_products.each do |product| %>
 							<tr>
@@ -23,6 +25,7 @@
 							</tr>
 						<% end %>
 					</tbody>
+					
 				</table>
 
 				<dl class="dl-horizontal">

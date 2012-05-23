@@ -27,6 +27,7 @@ class TpcrsController < ApplicationController
   def edit
     @tpcr = Tpcr.find(params[:id])
     @quality_controls = QualityControl.find_all_by_process(Tpcr.to_s)
+    @statuses = Status.find_all_by_process(Tpcr.to_s)
   end
   
   def update

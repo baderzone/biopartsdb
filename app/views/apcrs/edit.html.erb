@@ -6,11 +6,11 @@
 		
 		<%= f.association :apcr_products do |p| %>
 			<%= p.label "#{p.object.part}" %>
-			<%= p.association :quality_control, :label => false %>
+			<%= p.association :quality_control, :collection => @quality_controls, :label => false %>
 		<% end %>
 		
 		<%= f.association :device %>
-		<%= f.association :status %>
+		<%= f.association :status, :collection => @statuses %>
 		
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
