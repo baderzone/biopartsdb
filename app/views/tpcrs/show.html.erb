@@ -39,7 +39,29 @@
 			<div class="tab-pane" id="plate">
 			</div>
 			<div class="tab-pane" id="protocol">
-				<p><%= @tpcr.protocol.content %></p>
+				<p><%= raw @tpcr.protocol.content %></p>
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Reagent</th>
+							<th>Stock Concentration</th>
+							<th>Final Concentration</th>
+							<th>Volume for One Reaction</th>
+							<th>Volume for <%= @tpcr.tpcr_products.size + @tpcr.protocol.scaling_factor %> Reactions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @tpcr.protocol.protocol_reagents.each do |r| %>
+							<tr>
+								<td><%= r.name %></td>
+								<td><%= r.stock_concentration %></td>
+								<td><%= r.final_concentration %></td>
+								<td><%= r.volume_reaction %></td>
+								<td><%= Unit(r.volume_reaction) * (@tpcr.tpcr_products.size + @tpcr.protocol.scaling_factor)%></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
 			</div>
 	  </div>
 	</div>
