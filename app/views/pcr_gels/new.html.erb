@@ -3,7 +3,29 @@
 </div>
 <p>
 	<%= simple_form_for(@pcr_gel, :html => {:class => 'form-horizontal' }) do |f| %>
+	
+	<ul class="nav nav-tabs">
+    <li class="active"><a href="#apcrs" data-toggle="tab">aPCRs</a></li>
+    <li><a href="#tpcrs" data-toggle="tab">tPCRs</a></li>
+    <li><a href="#fpcrs" data-toggle="tab">fPCRs</a></li>
+  </ul>
 
+  <div class="tab-content">
+		<div class="tab-pane active" id="apcrs">
+			<%= f.association :apcr_products, :as => :check_boxes %>
+		</div>
+		<div class="tab-pane" id="tpcrs">
+			<%= f.association :tpcr_products, :as => :check_boxes %>
+		</div>
+		<div class="tab-pane" id="fpcrs">
+			<%= f.association :fpcr_products, :as => :check_boxes %>
+		</div>
+  </div>
+	
+	<div class="form-actions">
+		<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
+		<%= link_to 'Cancel', tpcrs_path, :class => 'btn'%>
+	</div>
 	<% end %>
 </p>
 

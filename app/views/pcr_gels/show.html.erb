@@ -1,2 +1,74 @@
-<h1>PcrGels#show</h1>
-<p>Find me in app/views/pcr_gels/show.html.erb</p>
+<div class="page-header">
+	<h1><i class="icon-picture"> </i>PCR Gel <%= @pcr_gel.id %></h1>
+</div>
+	<div class="tabbable">
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#images" data-toggle="tab">Images</a></li>
+	    <li><a href="#protocol" data-toggle="tab">Protocol</a></li>
+	  </ul>
+	
+	  <div class="tab-content">
+			<div class="tab-pane active" id="info">
+		    <table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>PCR Products</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @pcr_gel.apcr_products.each do |product| %>
+							<tr>
+								<td><%= product %></td>	
+							</tr>
+						<% end %>
+						<% @pcr_gel.tpcr_products.each do |product| %>
+							<tr>
+								<td><%= product  %></td>	
+							</tr>
+						<% end %>		
+						<% @pcr_gel.fpcr_products.each do |product| %>
+							<tr>
+								<td><%= product  %></td>	
+							</tr>
+						<% end %>
+						
+					</tbody>
+				</table>
+
+				<dl class="dl-horizontal">
+					<dt>Status</dd>
+					<dd><%= @pcr_gel.status.name %></dt>
+					<dt>Date</dd>
+					<dd><%= @pcr_gel.created_at %></dt>		
+				</dl>
+				
+				<%= link_to 'Update', edit_pcr_gel_path(@pcr_gel), :class => 'btn'%>
+			</div>
+			<div class="tab-pane" id="images">
+				<ul class="thumbnails">
+					<% @pcr_gel.pcr_gel_images.each do |img| %>
+					  <li class="span3">
+					    <a href="#" class="thumbnail"><%= image_tag(img.pcr_gel_image_file.url) %></a>
+					  </li>
+					<% end %>
+				</ul>
+				
+				<h3>Upload an Image</h3>
+				<%= simple_form_for([@pcr_gel,@pcr_gel.pcr_gel_images.build], :html => {:class => 'form-horizontal' }) do |f| %>
+					
+					<%= f.file_field :pcr_gel_image_file %>
+										
+					<div class="form-actions">
+						<%= f.button :submit, 'Upload', :class => 'btn btn-primary'%>
+					</div>
+				<% end %>
+			</div>
+			<div class="tab-pane" id="protocol">
+				<p><%= raw @pcr_gel.protocol.content %></p>
+				
+			</div>
+	  </div>
+	</div>
+	
+</p>
