@@ -1,0 +1,73 @@
+<div class="page-header">
+	<h1><i class="icon-random"> </i>sPCR <%= @spcr.id %></h1>
+</div>
+	<div class="tabbable">
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#plate" data-toggle="tab">Plate</a></li>
+	    <li><a href="#protocol" data-toggle="tab">Protocol</a></li>
+	  </ul>
+	
+	  <div class="tab-content">
+			<div class="tab-pane active" id="info">
+		    <table class="table table-bordered table-striped">
+					
+					<thead>
+						<tr>
+							<th>Parts</th>
+						</tr>
+					</thead>
+					
+					<tbody>		
+						<% @spcr.spcr_products.each do |product| %>
+							<tr>
+								<td><%= product.part.name  %></td>	
+							</tr>
+						<% end %>
+					</tbody>
+					
+				</table>
+
+				<dl class="dl-horizontal">
+					<dt>Status</dd>
+					<dd><%= @spcr.status.name %></dt>
+					<dt>Device</dd>
+					<dd><%= @spcr.device.name %></dt>
+					<dt>Date</dd>
+					<dd><%= @spcr.created_at %></dt>		
+				</dl>
+				
+				<%= link_to 'Update', edit_spcr_path(@spcr), :class => 'btn'%>
+			</div>
+			<div class="tab-pane" id="plate">
+			</div>
+			<div class="tab-pane" id="protocol">
+				<p><%= raw @spcr.protocol.content %></p>
+
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Reagent</th>
+							<th>Stock Concentration</th>
+							<th>Final Concentration</th>
+							<th>Volume for One Reaction</th>
+							<th>Volume for <%= @spcr.spcr_products.size + @spcr.protocol.scaling_factor %> Reactions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @spcr.protocol.protocol_reagents.each do |r| %>
+							<tr>
+								<td><%= r.name %></td>
+								<td><%= r.stock_concentration %></td>
+								<td><%= r.final_concentration %></td>
+								<td><%= r.volume_reaction %></td>
+								<td><%= Unit(r.volume_reaction) * (@spcr.spcr_products.size + @spcr.protocol.scaling_factor)%></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+	  </div>
+	</div>
+	
+</p>

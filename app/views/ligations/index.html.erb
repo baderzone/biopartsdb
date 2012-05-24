@@ -1,0 +1,23 @@
+<div class="page-header">
+	<h1><i class="icon-picture"> </i>Ligations</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Status</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @ligations.each do |ligation| %>
+				<tr>
+					<td><%= link_to ligation.id, ligation_path(ligation) %></td>
+					<td><%= ligation.status.name %></td>
+					<td><%= ligation.created_at %></td>	
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>

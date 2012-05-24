@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  plasmid: 
+  status: 
+  quality_control: 
+  protocol: 
+
+two:
+  user: 
+  plasmid: 
+  status: 
+  quality_control: 
+  protocol: 

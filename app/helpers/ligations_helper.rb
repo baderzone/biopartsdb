@@ -1,0 +1,2 @@
+module LigationsHelper
+end

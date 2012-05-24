@@ -1,0 +1,14 @@
+<div class="page-header">
+	<h1><i class="icon-random"> </i>Run sPCR</h1>
+</div>
+<p>
+	<%= simple_form_for(@spcr, :html => {:class => 'form-horizontal' }) do |f| %>
+		<%= f.association :parts, :as => :check_boxes %>
+		<%= f.association :device, :collection => @devices %>
+
+		<div class="form-actions">
+			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', apcrs_path, :class => 'btn'%>
+		</div>
+	<% end %>
+</p>
