@@ -4,7 +4,7 @@
 <p>
 	<%= simple_form_for(@fpcr, :html => {:class => 'form-horizontal' }) do |f| %>
 		<%= f.association :tpcr_products, :as => :check_boxes %>
-		<%= f.association :device %>
+		<%= f.association :device, :collection => @devices %>
 
 		<div class="form-actions">
 			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>

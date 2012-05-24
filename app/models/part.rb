@@ -7,7 +7,7 @@ class Part < ActiveRecord::Base
   has_many :users, :through => :tasks
 
   has_many :oligos
-  has_many :apcr_products
+  has_many :spcr_products
   
   attr_accessible :name, :location, :sequence, :feature
   

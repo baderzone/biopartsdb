@@ -11,33 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120523154537) do
-
-  create_table "apcr_products", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "apcr_id"
-    t.integer  "quality_control_id"
-    t.integer  "part_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
-  add_index "apcr_products", ["apcr_id"], :name => "index_apcr_products_on_apcr_id"
-  add_index "apcr_products", ["part_id"], :name => "index_apcr_products_on_part_id"
-  add_index "apcr_products", ["quality_control_id"], :name => "index_apcr_products_on_quality_control_id"
-
-  create_table "apcrs", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "status_id"
-    t.integer  "protocol_id"
-    t.integer  "device_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "apcrs", ["device_id"], :name => "index_apcrs_on_device_id"
-  add_index "apcrs", ["protocol_id"], :name => "index_apcrs_on_protocol_id"
-  add_index "apcrs", ["status_id"], :name => "index_apcrs_on_status_id"
+ActiveRecord::Schema.define(:version => 20120524141806) do
 
   create_table "cspcr_products", :force => true do |t|
     t.integer  "user_id"
@@ -264,6 +238,32 @@ ActiveRecord::Schema.define(:version => 20120523154537) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "spcr_products", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "spcr_id"
+    t.integer  "quality_control_id"
+    t.integer  "part_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "spcr_products", ["part_id"], :name => "index_apcr_products_on_part_id"
+  add_index "spcr_products", ["quality_control_id"], :name => "index_apcr_products_on_quality_control_id"
+  add_index "spcr_products", ["spcr_id"], :name => "index_apcr_products_on_apcr_id"
+
+  create_table "spcrs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "status_id"
+    t.integer  "protocol_id"
+    t.integer  "device_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "spcrs", ["device_id"], :name => "index_apcrs_on_device_id"
+  add_index "spcrs", ["protocol_id"], :name => "index_apcrs_on_protocol_id"
+  add_index "spcrs", ["status_id"], :name => "index_apcrs_on_status_id"
 
   create_table "statuses", :force => true do |t|
     t.string   "process"

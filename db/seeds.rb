@@ -17,3 +17,18 @@ oligoPlate = OligoPlate.create(name: 'JHU_PARTS_2012_OLIGO_1', vendor: vendor, u
 oligo = Oligo.create(part: part, name: 'yeast_promoter_YBL087C.o01', start: 1, stop: 150, sequence: 'AATATTTGTATTGTTTTATGTAATTATAATCTTAAGCTTGCAATACCAATCACTATTAC')
 well = OligoPlateWell.create(oligo: oligo, oligo_plate: oligoPlate, well: 'A01')
 
+
+device_type = DeviceType.create(value: "pcr")
+device = Device.create(device_type_id: 1, name: "Test PCR Machine")
+status1 = Status.create(process: "Spcr", name: "Pending", default: 1 )
+status2 = Status.create(process: "Spcr", name: "Finished")
+status3 = Status.create(process: "Tpcr", name: "Pending", default: 1 )
+status4 = Status.create(process: "Tpcr", name: "Finished")
+status5 = Status.create(process: "Fpcr", name: "Pending", default: 1 )
+status6 = Status.create(process: "Fpcr", name: "Finished")
+qc1 = QualityControl.create(process: "Spcr", name: "PASS")
+qc2 = QualityControl.create(process: "Spcr", name: "FAIL")
+qc3 = QualityControl.create(process: "Tpcr", name: "PASS")
+qc4 = QualityControl.create(process: "Tpcr", name: "FAIL")
+qc5 = QualityControl.create(process: "Fpcr", name: "PASS")
+qc6 = QualityControl.create(process: "Fpcr", name: "FAIL")

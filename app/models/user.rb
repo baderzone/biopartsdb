@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_many :parts, :through => :tasks
   
-  has_many :apcrs
+  has_many :spcrs
   has_many :tpcrs
   has_many :fpcrs
   has_many :pcr_gels

@@ -9,6 +9,7 @@ class TpcrsController < ApplicationController
 
   def new
     @tpcr = Tpcr.new
+    @devices = DeviceType.find_by_value(:pcr).devices
   end
 
   def create

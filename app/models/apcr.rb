@@ -4,13 +4,13 @@ class Apcr < ActiveRecord::Base
   belongs_to :protocol
   belongs_to :device
   
-  has_many :apcr_products, :dependent => :destroy
-  has_many :parts, :through => :apcr_products
+  has_many :spcr_products, :dependent => :destroy
+  has_many :parts, :through => :spcr_products
   
-  accepts_nested_attributes_for :apcr_products
+  accepts_nested_attributes_for :spcr_products
   
   attr_accessible :parts, :device, :status, :protocol
-  attr_accessible :part_ids, :device_id, :status_id, :protocol_id, :apcr_products_attributes
+  attr_accessible :part_ids, :device_id, :status_id, :protocol_id, :spcr_products_attributes
   
   validates :device, :parts, :status, :presence => true
 

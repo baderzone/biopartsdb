@@ -42,7 +42,7 @@ Biopartsdb::Application.routes.draw do
   resources :users
   resources :protocols
   resources :parts
-  resources :apcrs
+  resources :spcrs
   resources :tpcrs
   resources :fpcrs 
   resources :pcr_gels do
