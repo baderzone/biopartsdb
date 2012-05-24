@@ -6,7 +6,10 @@ class User < ActiveRecord::Base
   has_many :spcrs
   has_many :tpcrs
   has_many :fpcrs
+  has_many :fpcr_products, :through => :fpcrs
   has_many :pcr_gels
+  has_many :ligations
+  has_many :ligation_products
   
   attr_accessible :email, :fullname, :provider
   

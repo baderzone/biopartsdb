@@ -7,6 +7,8 @@ class FpcrProduct < ActiveRecord::Base
   has_many :pcr_gel_lanes, :as => :pcr_product
   has_many :pcr_gels, :through => :pcr_gel_lanes
 
+  has_many :ligations, :as => :pcr_product
+
   attr_accessible :user, :fpcr, :tpcr_product, :quality_control, :pcr_gel_lanes, :pcr_product
   attr_accessible :user_id, :fpcr_id, :tpcr_product_id, :quality_control_id
   

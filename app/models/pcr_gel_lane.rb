@@ -7,3 +7,4 @@ class PcrGelLane < ActiveRecord::Base
   
   attr_accessible :pcr_product, :quality_control, :pcr_gel
 end
+

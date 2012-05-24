@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120524141806) do
+ActiveRecord::Schema.define(:version => 20120524192041) do
 
   create_table "cspcr_products", :force => true do |t|
     t.integer  "user_id"
@@ -91,6 +91,24 @@ ActiveRecord::Schema.define(:version => 20120524141806) do
   add_index "fpcrs", ["device_id"], :name => "index_fpcrs_on_device_id"
   add_index "fpcrs", ["status_id"], :name => "index_fpcrs_on_status_id"
   add_index "fpcrs", ["user_id"], :name => "index_fpcrs_on_user_id"
+
+  create_table "ligations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "plasmid_id"
+    t.integer  "status_id"
+    t.integer  "quality_control_id"
+    t.integer  "protocol_id"
+    t.integer  "pcr_product_id"
+    t.string   "pcr_product_type"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "ligations", ["plasmid_id"], :name => "index_ligations_on_plasmid_id"
+  add_index "ligations", ["protocol_id"], :name => "index_ligations_on_protocol_id"
+  add_index "ligations", ["quality_control_id"], :name => "index_ligations_on_quality_control_id"
+  add_index "ligations", ["status_id"], :name => "index_ligations_on_status_id"
+  add_index "ligations", ["user_id"], :name => "index_ligations_on_user_id"
 
   create_table "locations", :force => true do |t|
     t.integer  "organism_id"

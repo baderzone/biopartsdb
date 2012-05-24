@@ -1,4 +1,10 @@
 Biopartsdb::Application.routes.draw do
+  get "ligations/index"
+
+  get "ligations/show"
+
+  get "ligations/edit"  
+
   get "pcr_gels/index"
 
   get "pcr_gels/show"
@@ -48,6 +54,7 @@ Biopartsdb::Application.routes.draw do
   resources :pcr_gels do
     resources :pcr_gel_images
   end
+  resources :ligations
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
