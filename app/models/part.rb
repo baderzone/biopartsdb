@@ -8,6 +8,8 @@ class Part < ActiveRecord::Base
 
   has_many :oligos
   has_many :spcr_products
+  has_many :tpcr_products
+  has_many :fpcr_products, :through => :tpcr_products
   
   attr_accessible :name, :location, :sequence, :feature
   

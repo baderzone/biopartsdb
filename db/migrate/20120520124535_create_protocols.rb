@@ -4,6 +4,7 @@ class CreateProtocols < ActiveRecord::Migration
       t.string :process
       t.string :name
       t.text :content
+      t.integer :scaling_factor
       t.references :user
 
       t.timestamps

@@ -17,7 +17,7 @@ class FpcrsController < ApplicationController
     @fpcr.user = current_user
     @fpcr.status = Status.find_by_process_and_default(Fpcr.to_s, true)
     @fpcr.protocol = Protocol.find_by_process(Fpcr.to_s)
-
+    
     if @fpcr.save
       redirect_to fpcr_path(@fpcr), :notice => "fPCR created correctly."
     else

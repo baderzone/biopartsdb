@@ -4,8 +4,8 @@ class TpcrProduct < ActiveRecord::Base
   belongs_to :quality_control
   belongs_to :part 
 
+  has_many :fpcr_products
   has_many :pcr_gel_lanes, :as => :pcr_product
-
   has_many :ligations, :as => :pcr_product
 
   attr_accessible :part, :quality_control, :tpcr, :user, :pcr_gel_lanes, :pcr_product
@@ -16,7 +16,7 @@ class TpcrProduct < ActiveRecord::Base
   end
   
   def to_label
-    "#{part.name} (fPCR, #{id})"
+    "#{part.name} (#{id})"
   end
 
 end

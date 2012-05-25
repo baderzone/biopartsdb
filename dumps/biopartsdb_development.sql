@@ -11,61 +11,11 @@
  Target Server Version : 50150
  File Encoding         : utf-8
 
- Date: 05/23/2012 10:19:35 AM
+ Date: 05/24/2012 20:10:48 PM
 */
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
---  Table structure for `apcr_products`
--- ----------------------------
-DROP TABLE IF EXISTS `apcr_products`;
-CREATE TABLE `apcr_products` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `apcr_id` int(11) DEFAULT NULL,
-  `quality_control_id` int(11) DEFAULT NULL,
-  `part_id` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_apcr_products_on_apcr_id` (`apcr_id`),
-  KEY `index_apcr_products_on_quality_control_id` (`quality_control_id`),
-  KEY `index_apcr_products_on_part_id` (`part_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
---  Records of `apcr_products`
--- ----------------------------
-BEGIN;
-INSERT INTO `apcr_products` VALUES ('49', '5', '27', '1', '1', '2012-05-22 12:17:02', '2012-05-22 12:20:25'), ('50', '5', '27', '1', '2', '2012-05-22 12:17:02', '2012-05-22 12:20:25'), ('51', null, '28', '1', '1', '2012-05-22 14:12:23', '2012-05-22 14:13:53'), ('52', null, '28', '1', '2', '2012-05-22 14:12:23', '2012-05-22 14:13:53'), ('53', null, '29', '1', '1', '2012-05-23 13:22:08', '2012-05-23 13:22:15'), ('54', null, '29', '1', '2', '2012-05-23 13:22:08', '2012-05-23 13:22:15');
-COMMIT;
-
--- ----------------------------
---  Table structure for `apcrs`
--- ----------------------------
-DROP TABLE IF EXISTS `apcrs`;
-CREATE TABLE `apcrs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `status_id` int(11) DEFAULT NULL,
-  `protocol_id` int(11) DEFAULT NULL,
-  `device_id` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_apcrs_on_status_id` (`status_id`),
-  KEY `index_apcrs_on_protocol_id` (`protocol_id`),
-  KEY `index_apcrs_on_device_id` (`device_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
---  Records of `apcrs`
--- ----------------------------
-BEGIN;
-INSERT INTO `apcrs` VALUES ('27', '5', '2', '1', '1', '2012-05-22 12:17:02', '2012-05-22 12:30:11'), ('28', '5', '2', '1', '1', '2012-05-22 14:12:23', '2012-05-22 14:13:53'), ('29', '5', '1', '1', '1', '2012-05-23 13:22:08', '2012-05-23 13:22:08');
-COMMIT;
 
 -- ----------------------------
 --  Table structure for `device_types`
@@ -77,13 +27,13 @@ CREATE TABLE `device_types` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `device_types`
 -- ----------------------------
 BEGIN;
-INSERT INTO `device_types` VALUES ('1', 'PCR machine', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `device_types` VALUES ('1', 'PCR machine', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('2', 'pcr', '2012-05-24 20:33:32', '2012-05-24 20:33:32'), ('3', 'pcr', '2012-05-24 20:34:21', '2012-05-24 20:34:21');
 COMMIT;
 
 -- ----------------------------
@@ -98,13 +48,13 @@ CREATE TABLE `devices` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_devices_on_device_type_id` (`device_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `devices`
 -- ----------------------------
 BEGIN;
-INSERT INTO `devices` VALUES ('1', '1', 'Veriti I', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `devices` VALUES ('1', '2', 'Veriti I', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('2', '2', 'Test PCR Machine', '2012-05-24 20:33:33', '2012-05-24 20:33:33'), ('3', '2', 'Test PCR Machine', '2012-05-24 20:34:21', '2012-05-24 20:34:21');
 COMMIT;
 
 -- ----------------------------
@@ -146,13 +96,13 @@ CREATE TABLE `fpcr_products` (
   KEY `index_fpcr_products_on_fpcr_id` (`fpcr_id`),
   KEY `index_fpcr_products_on_tpcr_product_id` (`tpcr_product_id`),
   KEY `index_fpcr_products_on_quality_control_id` (`quality_control_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `fpcr_products`
 -- ----------------------------
 BEGIN;
-INSERT INTO `fpcr_products` VALUES ('1', null, '1', '1', '5', '2012-05-23 12:57:32', '2012-05-23 12:59:43'), ('2', null, '2', '1', null, '2012-05-23 13:02:52', '2012-05-23 13:02:52'), ('3', null, '3', '1', '5', '2012-05-23 13:22:46', '2012-05-23 13:22:53'), ('4', null, '3', '2', '5', '2012-05-23 13:22:46', '2012-05-23 13:22:53');
+INSERT INTO `fpcr_products` VALUES ('7', null, '5', '6', '7', '2012-05-24 21:42:42', '2012-05-24 21:43:36');
 COMMIT;
 
 -- ----------------------------
@@ -171,13 +121,65 @@ CREATE TABLE `fpcrs` (
   KEY `index_fpcrs_on_user_id` (`user_id`),
   KEY `index_fpcrs_on_status_id` (`status_id`),
   KEY `index_fpcrs_on_device_id` (`device_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `fpcrs`
 -- ----------------------------
 BEGIN;
-INSERT INTO `fpcrs` VALUES ('1', '5', '7', '3', '1', '2012-05-23 12:57:32', '2012-05-23 13:02:34'), ('2', '5', '6', '3', '1', '2012-05-23 13:02:52', '2012-05-23 13:02:52'), ('3', '5', '7', '3', '1', '2012-05-23 13:22:46', '2012-05-23 13:23:05');
+INSERT INTO `fpcrs` VALUES ('5', '5', '6', '3', '1', '2012-05-24 21:42:42', '2012-05-24 21:42:52');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `ligation_products`
+-- ----------------------------
+DROP TABLE IF EXISTS `ligation_products`;
+CREATE TABLE `ligation_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `ligation_id` int(11) DEFAULT NULL,
+  `pcr_product_id` int(11) DEFAULT NULL,
+  `pcr_product_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `plasmid_id` int(11) DEFAULT NULL,
+  `quality_control_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_ligation_products_on_user_id` (`user_id`),
+  KEY `index_ligation_products_on_plasmid_id` (`plasmid_id`),
+  KEY `index_ligation_products_on_quality_control_id` (`quality_control_id`),
+  KEY `index_ligation_products_on_ligation_id` (`ligation_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+--  Records of `ligation_products`
+-- ----------------------------
+BEGIN;
+INSERT INTO `ligation_products` VALUES ('1', null, '1', '60', 'SpcrProduct', '1', '9', '2012-05-24 22:38:07', '2012-05-24 23:25:29'), ('2', null, '1', '7', 'FpcrProduct', '1', '9', '2012-05-24 22:38:07', '2012-05-24 23:25:29');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `ligations`
+-- ----------------------------
+DROP TABLE IF EXISTS `ligations`;
+CREATE TABLE `ligations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `status_id` int(11) DEFAULT NULL,
+  `protocol_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_ligations_on_user_id` (`user_id`),
+  KEY `index_ligations_on_status_id` (`status_id`),
+  KEY `index_ligations_on_protocol_id` (`protocol_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+--  Records of `ligations`
+-- ----------------------------
+BEGIN;
+INSERT INTO `ligations` VALUES ('1', '5', '10', '5', '2012-05-24 22:38:07', '2012-05-24 23:32:42');
 COMMIT;
 
 -- ----------------------------
@@ -332,7 +334,14 @@ CREATE TABLE `pcr_gel_images` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_pcr_gel_images_on_pcr_gel_id` (`pcr_gel_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+--  Records of `pcr_gel_images`
+-- ----------------------------
+BEGIN;
+INSERT INTO `pcr_gel_images` VALUES ('19', '4', 'gel_16112010.jpg', '2012-05-24 00:22:40', '2012-05-24 00:22:40');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `pcr_gel_lanes`
@@ -349,7 +358,14 @@ CREATE TABLE `pcr_gel_lanes` (
   PRIMARY KEY (`id`),
   KEY `index_pcr_gel_lanes_on_pcr_gel_id` (`pcr_gel_id`),
   KEY `index_pcr_gel_lanes_on_quality_control_id` (`quality_control_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+--  Records of `pcr_gel_lanes`
+-- ----------------------------
+BEGIN;
+INSERT INTO `pcr_gel_lanes` VALUES ('22', '10', '7', '60', 'SpcrProduct', '2012-05-24 21:43:20', '2012-05-24 23:30:03'), ('23', '10', '7', '6', 'TpcrProduct', '2012-05-24 21:43:20', '2012-05-24 23:30:03'), ('24', '10', '7', '7', 'FpcrProduct', '2012-05-24 21:43:20', '2012-05-24 23:30:03');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `pcr_gels`
@@ -366,7 +382,14 @@ CREATE TABLE `pcr_gels` (
   KEY `index_pcr_gels_on_user_id` (`user_id`),
   KEY `index_pcr_gels_on_protocol_id` (`protocol_id`),
   KEY `index_pcr_gels_on_status_id` (`status_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+--  Records of `pcr_gels`
+-- ----------------------------
+BEGIN;
+INSERT INTO `pcr_gels` VALUES ('10', '5', '4', '8', '2012-05-24 21:43:20', '2012-05-24 21:43:50');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `plasmids`
@@ -380,7 +403,14 @@ CREATE TABLE `plasmids` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_plasmids_on_vendor_id` (`vendor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+--  Records of `plasmids`
+-- ----------------------------
+BEGIN;
+INSERT INTO `plasmids` VALUES ('1', '1', 'pGEM-T', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `protocol_reagents`
@@ -418,15 +448,16 @@ CREATE TABLE `protocols` (
   `user_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `scaling_factor` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_protocols_on_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `protocols`
 -- ----------------------------
 BEGIN;
-INSERT INTO `protocols` VALUES ('1', 'Apcr', 'PCR', 'a perfect pcr program', '5', '2012-05-20 17:38:30', '2012-05-20 17:38:36'), ('2', 'Tpcr', 'tPCR', 'perfect tpcr', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('3', 'Fpcr', 'fPCR', 'perfect fPCR', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `protocols` VALUES ('1', 'Spcr', 'PCR', 'a perfect pcr program', '5', '2012-05-20 17:38:30', '2012-05-20 17:38:36', '3'), ('2', 'Tpcr', 'tPCR', 'perfect tpcr', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '3'), ('3', 'Fpcr', 'fPCR', 'perfect fPCR', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '3'), ('4', 'PcrGel', 'PCR Gel Protocol', 'test', '5', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '3'), ('5', 'Ligation', 'Ligation Protocol', null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
 COMMIT;
 
 -- ----------------------------
@@ -441,13 +472,13 @@ CREATE TABLE `quality_controls` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `quality_controls`
 -- ----------------------------
 BEGIN;
-INSERT INTO `quality_controls` VALUES ('1', 'Apcr', 'PASS', 'Successful PCR', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('2', 'Apcr', 'FAIL', 'Failing PCR', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('3', 'Tpcr', 'PASS', 'Successful tPCR', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('4', 'Tpcr', 'FAIL', 'Failing tPCR', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('5', 'Fpcr', 'PASS', 'Successful fPCR', '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('6', 'Fpcr', 'FAIL', 'Failing fPCR', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `quality_controls` VALUES ('1', 'Spcr', 'PASS', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21'), ('2', 'Spcr', 'FAIL', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21'), ('3', 'Tpcr', 'PASS', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21'), ('4', 'Tpcr', 'FAIL', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21'), ('5', 'Fpcr', 'PASS', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21'), ('6', 'Fpcr', 'FAIL', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21'), ('7', 'PcrGelLane', 'PASS', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('8', 'PcrGelLane', 'FAIL', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('9', 'Ligation', 'PASS', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00'), ('10', 'Ligation', 'FAIL', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 COMMIT;
 
 -- ----------------------------
@@ -463,7 +494,7 @@ CREATE TABLE `schema_migrations` (
 --  Records of `schema_migrations`
 -- ----------------------------
 BEGIN;
-INSERT INTO `schema_migrations` VALUES ('20120519235331'), ('20120519235438'), ('20120519235545'), ('20120519235611'), ('20120519235937'), ('20120520000405'), ('20120520004455'), ('20120520004522'), ('20120520004837'), ('20120520005554'), ('20120520124535'), ('20120520124730'), ('20120520125444'), ('20120520125515'), ('20120520125543'), ('20120520125611'), ('20120520145623'), ('20120521203336'), ('20120521203409'), ('20120521203509'), ('20120521203550'), ('20120521231022'), ('20120522175036'), ('20120522183620'), ('20120522183822'), ('20120522183859'), ('20120523131504'), ('20120523131603'), ('20120523132857');
+INSERT INTO `schema_migrations` VALUES ('20120519235331'), ('20120519235438'), ('20120519235545'), ('20120519235611'), ('20120519235937'), ('20120520000405'), ('20120520004455'), ('20120520004522'), ('20120520004837'), ('20120520005554'), ('20120520124535'), ('20120520124730'), ('20120520125444'), ('20120520125515'), ('20120520125543'), ('20120520125611'), ('20120520145623'), ('20120521203336'), ('20120521203409'), ('20120521203509'), ('20120521203550'), ('20120521231022'), ('20120522175036'), ('20120522183620'), ('20120522183822'), ('20120522183859'), ('20120523131504'), ('20120523131603'), ('20120523132857'), ('20120524141200'), ('20120524141210'), ('20120524141806'), ('20120524192041'), ('20120524222423');
 COMMIT;
 
 -- ----------------------------
@@ -486,6 +517,56 @@ INSERT INTO `sequences` VALUES ('1', 'AATATTTGTATTGTTTTATGTAATTATAATCTTAAGCTTGCA
 COMMIT;
 
 -- ----------------------------
+--  Table structure for `spcr_products`
+-- ----------------------------
+DROP TABLE IF EXISTS `spcr_products`;
+CREATE TABLE `spcr_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `spcr_id` int(11) DEFAULT NULL,
+  `quality_control_id` int(11) DEFAULT NULL,
+  `part_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_apcr_products_on_apcr_id` (`spcr_id`),
+  KEY `index_apcr_products_on_quality_control_id` (`quality_control_id`),
+  KEY `index_apcr_products_on_part_id` (`part_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+--  Records of `spcr_products`
+-- ----------------------------
+BEGIN;
+INSERT INTO `spcr_products` VALUES ('60', null, '33', '7', '1', '2012-05-24 21:41:19', '2012-05-24 21:43:36');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `spcrs`
+-- ----------------------------
+DROP TABLE IF EXISTS `spcrs`;
+CREATE TABLE `spcrs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `status_id` int(11) DEFAULT NULL,
+  `protocol_id` int(11) DEFAULT NULL,
+  `device_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_apcrs_on_status_id` (`status_id`),
+  KEY `index_apcrs_on_protocol_id` (`protocol_id`),
+  KEY `index_apcrs_on_device_id` (`device_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+--  Records of `spcrs`
+-- ----------------------------
+BEGIN;
+INSERT INTO `spcrs` VALUES ('33', '5', '2', '1', '1', '2012-05-24 21:41:19', '2012-05-24 21:41:34');
+COMMIT;
+
+-- ----------------------------
 --  Table structure for `statuses`
 -- ----------------------------
 DROP TABLE IF EXISTS `statuses`;
@@ -498,13 +579,13 @@ CREATE TABLE `statuses` (
   `updated_at` datetime NOT NULL,
   `default` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `statuses`
 -- ----------------------------
 BEGIN;
-INSERT INTO `statuses` VALUES ('1', 'Apcr', 'Pending', 'Reaction registered', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'), ('2', 'Apcr', 'Finished', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null), ('4', 'Tpcr', 'Pending', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'), ('5', 'Tpcr', 'Finished', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null), ('6', 'Fpcr', 'Pending', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'), ('7', 'Fpcr', 'Finished', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null);
+INSERT INTO `statuses` VALUES ('1', 'Spcr', 'Pending', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21', '1'), ('2', 'Spcr', 'Finished', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21', null), ('3', 'Tpcr', 'Pending', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21', '1'), ('4', 'Tpcr', 'Finished', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21', null), ('5', 'Fpcr', 'Pending', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21', '1'), ('6', 'Fpcr', 'Finished', null, '2012-05-24 20:34:21', '2012-05-24 20:34:21', null), ('7', 'PcrGel', 'Pending', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'), ('8', 'PcrGel', 'Finished', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null), ('9', 'Ligation', 'Pending', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1'), ('10', 'Ligation', 'Finished', null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null), ('11', null, null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null);
 COMMIT;
 
 -- ----------------------------
@@ -562,13 +643,13 @@ CREATE TABLE `tpcr_products` (
   KEY `index_tpcr_products_on_tpcr_id` (`tpcr_id`),
   KEY `index_tpcr_products_on_quality_control_id` (`quality_control_id`),
   KEY `index_tpcr_products_on_part_id` (`part_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `tpcr_products`
 -- ----------------------------
 BEGIN;
-INSERT INTO `tpcr_products` VALUES ('1', null, '1', '3', '1', '2012-05-23 12:54:40', '2012-05-23 12:57:21'), ('2', null, '2', '3', '1', '2012-05-23 13:22:29', '2012-05-23 13:22:34'), ('3', null, '2', '3', '2', '2012-05-23 13:22:29', '2012-05-23 13:22:34');
+INSERT INTO `tpcr_products` VALUES ('6', null, '5', '7', '1', '2012-05-24 21:42:03', '2012-05-24 21:43:36');
 COMMIT;
 
 -- ----------------------------
@@ -588,13 +669,13 @@ CREATE TABLE `tpcrs` (
   KEY `index_tpcrs_on_status_id` (`status_id`),
   KEY `index_tpcrs_on_protocol_id` (`protocol_id`),
   KEY `index_tpcrs_on_device_id` (`device_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `tpcrs`
 -- ----------------------------
 BEGIN;
-INSERT INTO `tpcrs` VALUES ('1', '5', '4', '2', '1', '2012-05-23 12:54:40', '2012-05-23 12:54:40'), ('2', '5', '4', '2', '1', '2012-05-23 13:22:29', '2012-05-23 13:22:29');
+INSERT INTO `tpcrs` VALUES ('5', '5', '4', '2', '1', '2012-05-24 21:42:03', '2012-05-24 21:42:22');
 COMMIT;
 
 -- ----------------------------
@@ -610,13 +691,13 @@ CREATE TABLE `users` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `users`
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES ('1', null, 'Giovanni Stracquadanio', 'stracquadanio@jhu.edu', 'facebook', '2012-05-20 13:34:49', '2012-05-20 13:34:49'), ('5', 'https://www.google.com/accounts/o8/id?id=AItOawlskY2r6YJYF1OlA0bsQbVchl2T2M9prnA', 'Giovanni Stracquadanio', 'stracquadanio@gmail.com', 'google', '2012-05-20 21:26:18', '2012-05-21 00:33:31');
+INSERT INTO `users` VALUES ('1', null, 'Giovanni Stracquadanio', 'stracquadanio@jhu.edu', 'facebook', '2012-05-20 13:34:49', '2012-05-20 13:34:49'), ('5', 'https://www.google.com/accounts/o8/id?id=AItOawlskY2r6YJYF1OlA0bsQbVchl2T2M9prnA', 'Giovanni Stracquadanio', 'stracquadanio@gmail.com', 'google', '2012-05-20 21:26:18', '2012-05-21 00:33:31'), ('8', 'https://www.google.com/accounts/o8/id?id=AItOawkaKkPIPnj5lXAU5ToyltXtcKO5CMOXnHQ', 'Sarah Richardson', 'smrichardson@lbl.gov', 'google', '2012-05-23 18:17:36', '2012-05-23 18:17:36');
 COMMIT;
 
 -- ----------------------------

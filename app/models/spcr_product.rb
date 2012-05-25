@@ -5,7 +5,7 @@ class SpcrProduct < ActiveRecord::Base
   belongs_to :part
   
   has_many :pcr_gel_lanes, :as => :pcr_product
-
+  has_many :pcr_gels, :through => :pcr_gel_lanes
   has_many :ligations, :as => :pcr_product
   
   attr_accessible :part, :quality_control, :spcr, :user, :pcr_gel_lanes, :pcr_product

@@ -11,35 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120524192041) do
-
-  create_table "cspcr_products", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "tpcr_id"
-    t.integer  "quality_control_id"
-    t.integer  "part_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
-  add_index "cspcr_products", ["part_id"], :name => "index_cspcr_products_on_part_id"
-  add_index "cspcr_products", ["quality_control_id"], :name => "index_cspcr_products_on_quality_control_id"
-  add_index "cspcr_products", ["tpcr_id"], :name => "index_cspcr_products_on_tpcr_id"
-  add_index "cspcr_products", ["user_id"], :name => "index_cspcr_products_on_user_id"
-
-  create_table "cspcrs", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "status_id"
-    t.integer  "protocol_id"
-    t.integer  "device_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "cspcrs", ["device_id"], :name => "index_cspcrs_on_device_id"
-  add_index "cspcrs", ["protocol_id"], :name => "index_cspcrs_on_protocol_id"
-  add_index "cspcrs", ["status_id"], :name => "index_cspcrs_on_status_id"
-  add_index "cspcrs", ["user_id"], :name => "index_cspcrs_on_user_id"
+ActiveRecord::Schema.define(:version => 20120524222423) do
 
   create_table "device_types", :force => true do |t|
     t.string   "value"
@@ -92,21 +64,31 @@ ActiveRecord::Schema.define(:version => 20120524192041) do
   add_index "fpcrs", ["status_id"], :name => "index_fpcrs_on_status_id"
   add_index "fpcrs", ["user_id"], :name => "index_fpcrs_on_user_id"
 
-  create_table "ligations", :force => true do |t|
+  create_table "ligation_products", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "plasmid_id"
-    t.integer  "status_id"
-    t.integer  "quality_control_id"
-    t.integer  "protocol_id"
+    t.integer  "ligation_id"
     t.integer  "pcr_product_id"
     t.string   "pcr_product_type"
+    t.integer  "plasmid_id"
+    t.integer  "quality_control_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
 
-  add_index "ligations", ["plasmid_id"], :name => "index_ligations_on_plasmid_id"
+  add_index "ligation_products", ["ligation_id"], :name => "index_ligation_products_on_ligation_id"
+  add_index "ligation_products", ["plasmid_id"], :name => "index_ligation_products_on_plasmid_id"
+  add_index "ligation_products", ["quality_control_id"], :name => "index_ligation_products_on_quality_control_id"
+  add_index "ligation_products", ["user_id"], :name => "index_ligation_products_on_user_id"
+
+  create_table "ligations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "status_id"
+    t.integer  "protocol_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   add_index "ligations", ["protocol_id"], :name => "index_ligations_on_protocol_id"
-  add_index "ligations", ["quality_control_id"], :name => "index_ligations_on_quality_control_id"
   add_index "ligations", ["status_id"], :name => "index_ligations_on_status_id"
   add_index "ligations", ["user_id"], :name => "index_ligations_on_user_id"
 
@@ -235,10 +217,10 @@ ActiveRecord::Schema.define(:version => 20120524192041) do
     t.string   "process"
     t.string   "name"
     t.text     "content"
+    t.integer  "scaling_factor"
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "scaling_factor"
   end
 
   add_index "protocols", ["user_id"], :name => "index_protocols_on_user_id"

@@ -22,22 +22,22 @@ class SpcrsController < ApplicationController
     if @spcr.save
       redirect_to spcr_path(@spcr), :notice => "spcr created correctly."
     else
-      render :new, :error => "spcr error."
+      render :new, :error => "sPCR error."
     end
   end
   
   def edit
     @spcr = Spcr.find(params[:id])
-    @quality_controls = QualityControl.find_all_by_process(spcr.to_s)
-    @statuses = Status.find_all_by_process(spcr.to_s)
+    @quality_controls = QualityControl.find_all_by_process(Spcr.to_s)
+    @statuses = Status.find_all_by_process(Spcr.to_s)
   end
   
   def update
     @spcr = Spcr.find(params[:id])
     if @spcr.update_attributes(params[:spcr])
-      redirect_to spcr_path(@spcr), :notice => "spcr updated correctly."
+      redirect_to spcr_path(@spcr), :notice => "sPCR updated correctly."
     else
-      render :edit, :id => @spcr, :error => "spcr update error."
+      render :edit, :id => @spcr, :error => "sPCR update error."
     end
   end
 end

@@ -3,7 +3,7 @@
 </div>
 <p>
 	<%= simple_form_for(@tpcr, :html => {:class => 'form-horizontal' }) do |f| %>
-		<%= f.association :parts, :as => :check_boxes %>
+		<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
 		<%= f.association :device, :collection => @devices %>
 
 		<div class="form-actions">

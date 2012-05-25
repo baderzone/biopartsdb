@@ -3,12 +3,12 @@
 </div>
 <p>
 	<%= simple_form_for(@spcr, :html => {:class => 'form-horizontal' }) do |f| %>
-		<%= f.association :parts, :as => :check_boxes %>
+		<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
 		<%= f.association :device, :collection => @devices %>
 
 		<div class="form-actions">
 			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', apcrs_path, :class => 'btn'%>
+			<%= link_to 'Cancel', spcrs_path, :class => 'btn'%>
 		</div>
 	<% end %>
 </p>

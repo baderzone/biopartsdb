@@ -1,6 +1,6 @@
 class LigationsController < ApplicationController
   def index
-    @ligations = current_user.ligation_products
+    @ligations = current_user.ligations
   end
 
   def show
@@ -18,7 +18,7 @@ class LigationsController < ApplicationController
     @ligation.protocol = Protocol.find_by_process(Ligation.to_s)
 
     if @ligation.save
-      redirect_to pcr_gel_path(@ligation), :notice => "Ligations created correctly."
+      redirect_to ligation_path(@ligation), :notice => "Ligations created correctly."
     else
       render :new, :error => "Ligation error."
     end
@@ -26,8 +26,17 @@ class LigationsController < ApplicationController
 
   def edit
     @ligation = Ligation.find(params[:id])
-    @quality_controls = QualityControl.find_all_by_process(LigationProduct.to_s)
+    @quality_controls = QualityControl.find_all_by_process(Ligation.to_s)
     @statuses = Status.find_all_by_process(Ligation.to_s)
+  end
+  
+  def update
+    @ligation = Ligation.find(params[:id])
+    if @ligation.update_attributes(params[:ligation])
+      redirect_to ligation_path(@ligation), :notice => "Ligation updated correctly."
+    else
+      render :edit, :id => @ligation, :error => "Ligation update error."
+    end
   end
   
 end
