@@ -1,4 +1,5 @@
 class SpcrsController < ApplicationController
+
   def index
     @spcrs = current_user.spcrs.order("id DESC")
   end

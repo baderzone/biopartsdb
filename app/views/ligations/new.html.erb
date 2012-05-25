@@ -11,10 +11,10 @@
 
 	<div class="tab-content">
 		<div class="tab-pane active" id="spcrs">
-			<%= f.association :spcr_products, :collection => current_user.spcr_products, :as => :check_boxes %> 
+			<%= f.association :spcr_products, :collection => current_user.spcr_products.qc_pass, :as => :check_boxes %> 
 		</div>
 		<div class="tab-pane" id="fpcrs">
-			<%= f.association :fpcr_products, :collection => current_user.fpcr_products, :as => :check_boxes %>
+			<%= f.association :fpcr_products, :collection => current_user.fpcr_products.qc_pass, :as => :check_boxes %>
 		</div>
   </div>
 		

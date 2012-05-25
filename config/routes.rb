@@ -1,4 +1,8 @@
 Biopartsdb::Application.routes.draw do
+  get "plates/index"
+
+  get "plates/show"
+
   get "ligations/index"
 
   get "ligations/show"

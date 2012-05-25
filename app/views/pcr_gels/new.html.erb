@@ -12,13 +12,13 @@
 
   <div class="tab-content">
 		<div class="tab-pane active" id="spcrs">
-			<%= f.association :spcr_products, :collection => current_user.spcr_products, :as => :check_boxes %>
+			<%= f.association :spcr_products, :collection => current_user.spcr_products.reaction_pass, :as => :check_boxes %>
 		</div>
 		<div class="tab-pane" id="tpcrs">
-			<%= f.association :tpcr_products, :collection => current_user.tpcr_products, :as => :check_boxes %>
+			<%= f.association :tpcr_products, :collection => current_user.tpcr_products.reaction_pass, :as => :check_boxes %>
 		</div>
 		<div class="tab-pane" id="fpcrs">
-			<%= f.association :fpcr_products, :collection => current_user.fpcr_products, :as => :check_boxes %>
+			<%= f.association :fpcr_products, :collection => current_user.fpcr_products.reaction_pass, :as => :check_boxes %>
 		</div>
   </div>
 	

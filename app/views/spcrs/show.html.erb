@@ -39,11 +39,24 @@
 				
 				<%= link_to 'Update', edit_spcr_path(@spcr), :class => 'btn'%>
 			</div>
+			
 			<div class="tab-pane" id="plate">
+				<div class="tabbable">
+					<% @spcr.spcr_products.each do |product| %>
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#<%= product.part.name %>" data-toggle="tab"><%= product.part.name %></a></li>
+						</ul>
+					<% end %>
+					<% @spcr.spcr_products.each do |product| %>		
+						<div class="tab-pane" id="<%= product.part.name %>">	
+							<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => product.part.wells_index }%>
+						</div>
+				<% end %>
+				</div>
 			</div>
+			
 			<div class="tab-pane" id="protocol">
 				<p><%= raw @spcr.protocol.content %></p>
-
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>

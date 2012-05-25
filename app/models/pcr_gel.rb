@@ -9,7 +9,6 @@ class PcrGel < ActiveRecord::Base
   has_many :spcr_products, :through => :pcr_gel_lanes, :source => :pcr_product, :source_type => "SpcrProduct"
   has_many :tpcr_products, :through => :pcr_gel_lanes, :source => :pcr_product, :source_type => "TpcrProduct"
   has_many :fpcr_products, :through => :pcr_gel_lanes, :source => :pcr_product, :source_type => "FpcrProduct"
-  
   accepts_nested_attributes_for :spcr_products, :tpcr_products, :fpcr_products, :pcr_gel_lanes, :pcr_gel_images
   
   attr_accessible :user, :protocol, :status, :pcr_gel_images

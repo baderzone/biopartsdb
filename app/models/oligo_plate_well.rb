@@ -4,4 +4,8 @@ class OligoPlateWell < ActiveRecord::Base
   
   attr_accessible :oligo, :oligo_plate, :well
   
+  def to_s
+    oligo.name[-2..-1]
+  end
+  
 end

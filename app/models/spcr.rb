@@ -6,7 +6,7 @@ class Spcr < ActiveRecord::Base
   
   has_many :spcr_products, :dependent => :destroy
   has_many :parts, :through => :spcr_products
-
+    
   accepts_nested_attributes_for :spcr_products
   
   attr_accessible :parts, :device, :status, :protocol

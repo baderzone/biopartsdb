@@ -1,22 +1,37 @@
 <div class="page-header">
 	<h1><i class="icon-cog"> </i><%= @part.name %></h1>
 </div>
-<p>
-	<dl class="dl-horizontal">
-		<dt>Name</dd>
-		<dd><%= @part.name %></dt>
-		<dt>Feature</dd>
-		<dd><%= @part.feature.name %></dt>
-		<dt>Organism</dd>
-		<dd><%= @part.location.organism.name %> (<%= @part.location.organism.latin %>)</dt>
-		<dt>Start</dt>
-		<dd><%= @part.location.start %></dd>	
-		<dt>Start</dt>
-		<dd><%= @part.location.stop %></dd>	
-		<dt>Strand</dt>
-		<dd><%= @part.location.strand %></dd>	
-	</dl>
-</p>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+    <li><a href="#plate" data-toggle="tab">Plate</a></li>
+  </ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="info">
+			<p>
+				<dl class="dl-horizontal">
+					<dt>Name</dd>
+					<dd><%= @part.name %></dt>
+					<dt>Feature</dd>
+					<dd><%= @part.feature.name %></dt>
+					<dt>Organism</dd>
+					<dd><%= @part.location.organism.name %> (<%= @part.location.organism.latin %>)</dt>
+					<dt>Start</dt>
+					<dd><%= @part.location.start %></dd>	
+					<dt>Start</dt>
+					<dd><%= @part.location.stop %></dd>	
+					<dt>Strand</dt>
+					<dd><%= @part.location.strand %></dd>	
+				</dl>
+			</p>
 
-<h3>Sequence</h3>
-<pre class="prettyprint linenums"><%= @part.sequence.data %></pre>
+			<h3>Sequence</h3>
+			<pre class="prettyprint linenums"><%= @part.sequence.data %></pre>
+		</div>
+		
+		<div class="tab-pane" id="plate">
+			<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @part.wells_index }%>
+		</div>
+	</div>
+</div>
+		

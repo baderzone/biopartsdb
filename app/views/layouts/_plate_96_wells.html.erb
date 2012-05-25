@@ -1,0 +1,26 @@
+<h3><%= plate[plate.keys.first].oligo_plate.name %></h3>
+<br/>
+<table class="plate">
+	
+	<tr>
+	<% ('00'..'12').each do |col| %>
+		<td class="well_label"><%= col %></td>
+	<% end %>
+	</tr>
+	
+	<% ('A'..'H').each do |row| %>
+		<tr>
+			<td class="well_label"><%= row %></td>
+
+			<% ('01'..'12').each do |col| %>
+				
+				<% if plate.key?(row+col) %>
+					<td class="well_in_use_1"><%= plate[row+col] %></td>
+				<% else %>
+					<td class="well_is_empty"/>
+				<% end %>
+				
+			<% end %>
+		</tr>
+	<% end %>
+</table>

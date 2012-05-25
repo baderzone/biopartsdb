@@ -6,4 +6,5 @@ class OligoPlate < ActiveRecord::Base
   has_many :oligo, :through => :oligo_plate_wells
   
   attr_accessible :name, :user, :vendor
+  
 end
