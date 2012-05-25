@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   has_many :pcr_gel_lanes, :through => :pcr_gels
 
   has_many :ligations
+  has_many :ligation_products, :through => :ligations
+  
+  has_many :transformations
+  has_many :clonings
     
   attr_accessible :email, :fullname, :provider
   

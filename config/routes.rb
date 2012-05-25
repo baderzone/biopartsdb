@@ -1,4 +1,28 @@
 Biopartsdb::Application.routes.draw do
+  get "clonings/index"
+
+  get "clonings/show"
+
+  get "clonings/new"
+
+  get "clonings/edit"
+
+  get "clones/index"
+
+  get "clones/show"
+
+  get "clones/new"
+
+  get "clones/edit"
+
+  get "transformations/index"
+
+  get "transformations/show"
+
+  get "transformations/new"
+
+  get "transformations/edit"
+
   get "plates/index"
 
   get "plates/show"
@@ -58,7 +82,11 @@ Biopartsdb::Application.routes.draw do
   resources :pcr_gels do
     resources :pcr_gel_images
   end
+  
   resources :ligations
+  resources :transformations
+  resources :clones
+  resources :clonings
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

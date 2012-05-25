@@ -11,7 +11,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120524222423) do
+ActiveRecord::Schema.define(:version => 20120525213804) do
+
+  create_table "clones", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "transformation_id"
+    t.integer  "status_id"
+    t.integer  "quality_control_id"
+    t.integer  "protocol_id"
+    t.string   "name"
+    t.string   "color"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "cloning_id"
+  end
+
+  add_index "clones", ["protocol_id"], :name => "index_clones_on_protocol_id"
+  add_index "clones", ["quality_control_id"], :name => "index_clones_on_quality_control_id"
+  add_index "clones", ["status_id"], :name => "index_clones_on_status_id"
+  add_index "clones", ["transformation_id"], :name => "index_clones_on_transformation_id"
+  add_index "clones", ["user_id"], :name => "index_clones_on_user_id"
+
+  create_table "clonings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "growth_plate_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "clonings", ["growth_plate_id"], :name => "index_clonings_on_growth_plate_id"
+  add_index "clonings", ["user_id"], :name => "index_clonings_on_user_id"
 
   create_table "device_types", :force => true do |t|
     t.string   "value"
@@ -63,6 +92,26 @@ ActiveRecord::Schema.define(:version => 20120524222423) do
   add_index "fpcrs", ["device_id"], :name => "index_fpcrs_on_device_id"
   add_index "fpcrs", ["status_id"], :name => "index_fpcrs_on_status_id"
   add_index "fpcrs", ["user_id"], :name => "index_fpcrs_on_user_id"
+
+  create_table "growth_plate_wells", :force => true do |t|
+    t.integer  "clone_id"
+    t.integer  "growth_plate_id"
+    t.string   "well"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "growth_plate_wells", ["clone_id"], :name => "index_growth_plate_wells_on_clone_id"
+  add_index "growth_plate_wells", ["growth_plate_id"], :name => "index_growth_plate_wells_on_growth_plate_id"
+
+  create_table "growth_plates", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "growth_plates", ["user_id"], :name => "index_growth_plates_on_user_id"
 
   create_table "ligation_products", :force => true do |t|
     t.integer  "user_id"
@@ -322,6 +371,27 @@ ActiveRecord::Schema.define(:version => 20120524222423) do
   add_index "tpcrs", ["protocol_id"], :name => "index_tpcrs_on_protocol_id"
   add_index "tpcrs", ["status_id"], :name => "index_tpcrs_on_status_id"
   add_index "tpcrs", ["user_id"], :name => "index_tpcrs_on_user_id"
+
+  create_table "transformations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "ligation_product_id"
+    t.integer  "strain_id"
+    t.integer  "status_id"
+    t.integer  "quality_control_id"
+    t.integer  "protocol_id"
+    t.integer  "white_count"
+    t.integer  "blue_count"
+    t.integer  "light_blue_count"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "transformations", ["ligation_product_id"], :name => "index_transformations_on_ligation_product_id"
+  add_index "transformations", ["protocol_id"], :name => "index_transformations_on_protocol_id"
+  add_index "transformations", ["quality_control_id"], :name => "index_transformations_on_quality_control_id"
+  add_index "transformations", ["status_id"], :name => "index_transformations_on_status_id"
+  add_index "transformations", ["strain_id"], :name => "index_transformations_on_strain_id"
+  add_index "transformations", ["user_id"], :name => "index_transformations_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "uid"

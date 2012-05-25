@@ -1,0 +1,33 @@
+<div class="page-header">
+	<h1><i class="icon-repeat"> </i>Run Cloning</h1>
+</div>
+<p>
+	<%= form_tag :controller => :clonings, :action => :create do %>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Transformation</th>
+					<th>White</th>
+					<th>Blue</th>
+					<th>Light Blue</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @transformations.each do |t| %>
+					<tr>
+						<td><%= check_box_tag "transformation_ids[]",t.id, false %> <%= t.ligation_product %></td>
+						<td><%= select_tag "transformations[#{t.id}[white]]", options_for_select((0..t.white_count).each {|n| [n,n]}) %></td>
+						<td><%= select_tag "transformations[#{t.id}[blue]]", options_for_select((0..t.blue_count).each {|n| [n,n]}) %></td>
+						<td><%= select_tag "transformations[#{t.id}[light_blue]]", options_for_select((0..t.light_blue_count).each {|n| [n,n]}) %></td>
+					</tr>	
+				<% end %>
+			</tbody>
+		</table>
+		
+		
+		<div class="form-actions">
+			<%= submit_tag "Run", :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', transformations_path, :class => 'btn'%>
+		</div>
+	<% end %>
+</p>

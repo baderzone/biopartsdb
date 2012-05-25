@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  transformation: 
+  status: 
+  quality_control: 
+  protocol: 
+  name: MyString
+  color: MyString
+
+two:
+  user: 
+  transformation: 
+  status: 
+  quality_control: 
+  protocol: 
+  name: MyString
+  color: MyString

@@ -1,0 +1,27 @@
+<div class="page-header">
+	<h1><i class="icon-reload"> </i>Update Cloning <%= @cloning.id %></h1>
+</div>
+<p>
+	<%= simple_form_for(@cloning, :html => {:class => 'form-horizontal' }) do |f| %>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Clone</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%= f.association :clones do |p| %>
+					<tr>
+					<td><%= p.object.name %></td>
+					<td><%= p.association :status, :collection => @statuses, :label => false %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="form-actions">
+			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', cloning_path(@cloning), :class => 'btn'%>
+		</div>
+	<% end %>
+</p>

@@ -1,0 +1,42 @@
+<div class="page-header">
+	<h1><i class="icon-repeat"> </i>Trasnformation <%= @transformation.id %></h1>
+</div>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#info" data-toggle="tab"><%= @transformation.ligation_product %></a></li>
+  </ul>
+
+  <div class="tab-content">
+		<div class="tab-pane active" id="info">
+			<p>
+				<dl class="dl-horizontal">
+		
+				<dt>White</dd>
+				<dd><%= @transformation.white_count %></dd>
+
+				<dt>Blue</dd>
+				<dd><%= @transformation.blue_count %></dd>
+
+				<dt>Light Blue</dd>
+				<dd><%= @transformation.light_blue_count %></dd>
+		
+				<dl class="dl-horizontal">
+				<dt>Strain</dd>
+				<dd><%= @transformation.strain %></dt>
+
+				<dt>Status</dd>
+				<dd><%= @transformation.status %></dt>
+
+				<dt>Quality Control</dd>
+				<dd><%= @transformation.status %></dt>
+
+				<dt>Date</dd>
+				<dd><%= @transformation.created_at %></dt>		
+				</dl>
+	
+				<%= link_to 'Update', edit_transformation_path(@transformation), :class => 'btn'%>
+			</p>
+			
+		</div>
+	</div>
+</div>

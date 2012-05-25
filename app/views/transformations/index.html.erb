@@ -1,0 +1,31 @@
+<div class="page-header">
+	<h1><i class="icon-repeat"> </i>Transformations</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>White</th>
+				<th>Blue</th>					
+				<th>Status</th>
+				<th>Quality Control</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @transformations.each do |t| %>
+				<tr>
+					<td><%= link_to t.id, transformation_path(t) %></td>
+					<td><%= t.ligation_product.pcr_product %></td>
+					<td><%= t.white_count %></td>	
+					<td><%= t.blue_count %></td>
+					<td><%= t.status %></td>	
+					<td><%= t.quality_control %></td>
+					<td><%= t.created_at %></td>	
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>

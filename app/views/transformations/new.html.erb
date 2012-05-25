@@ -1,0 +1,14 @@
+<div class="page-header">
+	<h1><i class="icon-repeat"> </i>New Transformation</h1>
+</div>
+<p>
+	<%= simple_form_for(@transformation, :html => {:class => 'form-horizontal' }) do |f| %>
+		<%= f.association :ligation_product, :collection => current_user.ligation_products.reaction_pass %>
+		<%= f.association :strain %>
+		
+		<div class="form-actions">
+			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', transformations_path, :class => 'btn'%>
+		</div>
+	<% end %>
+</p>

@@ -1,0 +1,21 @@
+<div class="page-header">
+	<h1><i class="icon-repeat"> </i>Update Transformation</h1>
+</div>
+<p>
+	<h3><%= @transformation.ligation_product %></h3>
+	<br/>
+	<%= simple_form_for(@transformation, :html => {:class => 'form-horizontal' }) do |f| %>
+		
+		<%= f.input :white_count %>
+		<%= f.input :blue_count %>
+		<%= f.input :light_blue_count %>
+		<%= f.association :strain %>
+		<%= f.association :status, :collection => @statuses %>
+		<%= f.association :quality_control, :collection => @quality_controls %>
+		
+		<div class="form-actions">
+			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', transformation_path(@transformation), :class => 'btn'%>
+		</div>
+	<% end %>
+</p>

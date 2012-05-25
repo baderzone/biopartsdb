@@ -18,7 +18,7 @@ class SpcrProduct < ActiveRecord::Base
   attr_accessible :quality_control_id, :spcr_id, :user_id
   
   def to_s
-    "#{part.name} (#{id})"
+    "#{part.name}"
   end
   
   def to_label

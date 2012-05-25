@@ -14,9 +14,7 @@ class LigationsController < ApplicationController
   
   def create
     @plasmid = Plasmid.find(params[:plasmid][:id])
-    
     @ligation = Ligation.new(params[:ligation])
-   
     @ligation.user = current_user
     @ligation.status = Status.find_by_process_and_default(Ligation.to_s, true)
     @ligation.protocol = Protocol.find_by_process(Ligation.to_s)
@@ -39,7 +37,7 @@ class LigationsController < ApplicationController
   end
   
   def update
-    @ligation = Ligation.find_by_name(params[@plasmid.name])
+    @ligation = Ligation.find(params[:id])
     if @ligation.update_attributes(params[:ligation])
       redirect_to ligation_path(@ligation), :notice => "Ligation updated correctly."
     else

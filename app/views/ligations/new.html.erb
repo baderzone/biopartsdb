@@ -1,27 +1,28 @@
 <div class="page-header">
-	<h1><i class="icon-play-circle"> </i>Run PCR Gel</h1>
+	<h1><i class="icon-play-circle"> </i>Run Ligations</h1>
 </div>
 <p>
 	<%= simple_form_for(@ligation, :html => {:class => 'form-horizontal' }) do |f| %>
-	
-	<ul class="nav nav-tabs">
-    <li class="active"><a href="#spcrs" data-toggle="tab">sPCRs</a></li>
-    <li><a href="#fpcrs" data-toggle="tab">fPCRs</a></li>
-  </ul>
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#spcrs" data-toggle="tab">sPCRs</a></li>
+	    <li><a href="#fpcrs" data-toggle="tab">fPCRs</a></li>
+	  </ul>
 
-	<div class="tab-content">
-		<div class="tab-pane active" id="spcrs">
-			<%= f.association :spcr_products, :collection => current_user.spcr_products.qc_pass, :as => :check_boxes %> 
-		</div>
-		<div class="tab-pane" id="fpcrs">
-			<%= f.association :fpcr_products, :collection => current_user.fpcr_products.qc_pass, :as => :check_boxes %>
-		</div>
-  </div>
+		<div class="tab-content">
+			<div class="tab-pane active" id="spcrs">
+				<%= f.association :spcr_products, :collection => current_user.spcr_products.qc_pass, :as => :check_boxes %> 
+			</div>
+			<div class="tab-pane" id="fpcrs">
+				<%= f.association :fpcr_products, :collection => current_user.fpcr_products.qc_pass, :as => :check_boxes %>
+			</div>
+	  </div>
+		<%= label_tag :Plasmid %>
+		<%= collection_select(:plasmid, :id, Plasmid.all, :id, :name) %>
 		
-	<div class="form-actions">
-		<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
-		<%= link_to 'Cancel', ligations_path, :class => 'btn'%>
-	</div>
+		<div class="form-actions">
+			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', ligations_path, :class => 'btn'%>
+		</div>
 	<% end %>
 </p>
 

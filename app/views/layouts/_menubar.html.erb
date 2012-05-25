@@ -7,7 +7,6 @@
     </a>
     <ul class="dropdown-menu">
       <li><%= link_to 'Parts', parts_path %></li>
-      <li><a href="#">Plates</a></li>
       <li><%= link_to 'Protocols', protocols_path %></li>	
       <li class="divider"></li>
       <li><%= link_to 'Personal Info', users_path %></li>						
@@ -78,8 +77,8 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <li><a href="#">Status</a></li>
-      <li><a href="#">Run</a></li>
+      <li><%= link_to 'Status', transformations_path %></li>
+      <li><%= link_to 'Run', new_transformation_path %></li>
     </ul>
   </li>
 
@@ -90,8 +89,8 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <li><a href="#">Status</a></li>
-      <li><a href="#">Run</a></li>
+			<li><%= link_to 'Status', clonings_path %></li>
+      <li><%= link_to 'Run', new_cloning_path %></li>
     </ul>
   </li>
 

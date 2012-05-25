@@ -1,0 +1,26 @@
+<div class="page-header">
+	<h1><i class="icon-repeat"> </i>Cloning <%= @cloning.id %></h1>
+</div>
+<div class="tabbable">
+	
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#info" data-toggle="tab"><%= @cloning.growth_plate.name %></a></li>
+  </ul>
+
+  <div class="tab-content">
+		<div class="tab-pane active" id="info">
+			<p>
+									
+				<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @cloning.growth_plate.wells_index }%>
+				
+				<dl class="dl-horizontal">
+					<dt>Date</dd>
+					<dd><%= @cloning.created_at %></dt>		
+				</dl>
+				
+				<%= link_to 'Update', edit_cloning_path(@transformation), :class => 'btn'%>
+			</p>
+			
+		</div>
+	</div>
+</div>

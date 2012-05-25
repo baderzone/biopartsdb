@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  ligation_product: 
+  strain: 
+  status: 
+  quality_control: 
+  protocol: 
+  white_count: 1
+  blue_count: 1
+  light_blue_count: 1
+
+two:
+  user: 
+  ligation_product: 
+  strain: 
+  status: 
+  quality_control: 
+  protocol: 
+  white_count: 1
+  blue_count: 1
+  light_blue_count: 1

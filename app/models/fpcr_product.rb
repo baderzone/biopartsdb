@@ -16,13 +16,17 @@ class FpcrProduct < ActiveRecord::Base
   
   attr_accessible :user, :fpcr, :tpcr_product, :quality_control, :pcr_gel_lanes, :pcr_product
   attr_accessible :user_id, :fpcr_id, :tpcr_product_id, :quality_control_id
+  
+  def part
+    tpcr_product.part
+  end
 
   def name
     "#{tpcr_product.part.name} (#{id})"
   end
   
   def to_s
-    "#{tpcr_product.part.name} (#{id})"
+    "#{tpcr_product.part.name}"
   end
   
   def to_label

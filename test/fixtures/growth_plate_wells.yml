@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  clone: 
+  growth_plate: 
+  well: MyString
+
+two:
+  clone: 
+  growth_plate: 
+  well: MyString
