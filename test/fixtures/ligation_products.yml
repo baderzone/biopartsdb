@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  quality_control: 
+  ligation: 
+
+two:
+  user: 
+  quality_control: 
+  ligation: 

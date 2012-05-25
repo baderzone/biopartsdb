@@ -1,0 +1,69 @@
+<div class="page-header">
+	<h1><i class="icon-play-circle"> </i>Ligation <%= @ligation.id %></h1>
+</div>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+    <li><a href="#protocol" data-toggle="tab">Protocol</a></li>
+  </ul>
+
+  <div class="tab-content">
+		<div class="tab-pane active" id="info">
+	    <table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>PCR Products</th>
+					</tr>
+				</thead>
+				<tbody>		
+					<% @ligation.spcr_products.each do |product| %>
+						<tr>
+							<td><%= product  %></td>	
+						</tr>
+					<% end %>
+					<% @ligation.fpcr_products.each do |product| %>
+						<tr>
+							<td><%= product  %></td>	
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+			<dl class="dl-horizontal">
+				<dt>Status</dd>
+				<dd><%= @ligation.status.name %></dt>
+				<dt>Ligation</dd>
+				<dd><%= @ligation.created_at %></dt>		
+			</dl>
+			
+			<%= link_to 'Update', edit_ligation_path(@ligation), :class => 'btn'%>
+		</div>
+		
+		<div class="tab-pane" id="protocol">
+			<p><%= raw @ligation.protocol.content %></p>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Reagent</th>
+						<th>Stock Concentration</th>
+						<th>Final Concentration</th>
+						<th>Volume for One Reaction</th>
+						<th>Volume for <%= @ligation.ligation_products.size + @ligation.protocol.scaling_factor %> Reactions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @ligation.protocol.protocol_reagents.each do |r| %>
+						<tr>
+							<td><%= r.name %></td>
+							<td><%= r.stock_concentration %></td>
+							<td><%= r.final_concentration %></td>
+							<td><%= r.volume_reaction %></td>
+							<td><%= Unit(r.volume_reaction) * (@ligation.ligation_products.size + @ligation.protocol.scaling_factor)%></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+  </div>
+</div>	
+</p>
