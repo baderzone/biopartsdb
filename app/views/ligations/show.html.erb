@@ -13,12 +13,14 @@
 				<thead>
 					<tr>
 						<th>PCR Products</th>
+						<th>Plasmid</th>
 					</tr>
 				</thead>
 				<tbody>		
 					<% @ligation.ligation_products.each do |product| %>
 						<tr>
-							<td><%= product.pcr_product  %></td>	
+							<td><%= product.pcr_product  %></td>
+							<td><%= product.plasmid %></td>	
 						</tr>
 					<% end %>
 				</tbody>
