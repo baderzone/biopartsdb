@@ -240,17 +240,16 @@ ActiveRecord::Schema.define(:version => 20120524222423) do
   end
 
   create_table "spcr_products", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "spcr_id"
-    t.integer  "quality_control_id"
     t.integer  "part_id"
+    t.integer  "quality_control_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
 
-  add_index "spcr_products", ["part_id"], :name => "index_apcr_products_on_part_id"
-  add_index "spcr_products", ["quality_control_id"], :name => "index_apcr_products_on_quality_control_id"
-  add_index "spcr_products", ["spcr_id"], :name => "index_apcr_products_on_apcr_id"
+  add_index "spcr_products", ["part_id"], :name => "index_spcr_products_on_part_id"
+  add_index "spcr_products", ["quality_control_id"], :name => "index_spcr_products_on_quality_control_id"
+  add_index "spcr_products", ["spcr_id"], :name => "index_spcr_products_on_spcr_id"
 
   create_table "spcrs", :force => true do |t|
     t.integer  "user_id"
@@ -261,9 +260,10 @@ ActiveRecord::Schema.define(:version => 20120524222423) do
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "spcrs", ["device_id"], :name => "index_apcrs_on_device_id"
-  add_index "spcrs", ["protocol_id"], :name => "index_apcrs_on_protocol_id"
-  add_index "spcrs", ["status_id"], :name => "index_apcrs_on_status_id"
+  add_index "spcrs", ["device_id"], :name => "index_spcrs_on_device_id"
+  add_index "spcrs", ["protocol_id"], :name => "index_spcrs_on_protocol_id"
+  add_index "spcrs", ["status_id"], :name => "index_spcrs_on_status_id"
+  add_index "spcrs", ["user_id"], :name => "index_spcrs_on_user_id"
 
   create_table "statuses", :force => true do |t|
     t.string   "process"

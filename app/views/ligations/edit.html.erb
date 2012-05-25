@@ -1,16 +1,15 @@
 <div class="page-header">
-	<h1><i class="icon-picture"> </i>Update Ligations <%= @ligation.id %></h1>
+	<h1><i class="icon-play-circle"> </i>Update Ligations <%= @ligation.id %></h1>
 </div>
 <p>
 	<%= simple_form_for(@ligation, :html => {:class => 'form-horizontal' }) do |f| %>
 		
 		<ul class="nav nav-tabs">
-	    	<li class="active"><a href="#spcrs" data-toggle="tab">sPCRs</a></li>
-	    	<li><a href="#fpcrs" data-toggle="tab">fPCRs</a></li>
+	    	<li class="active"><a href="#ligation" data-toggle="tab">Ligations</a></li>
 	  	</ul>
 
 	  <div class="tab-content">
-			<div class="tab-pane active" id="spcrs">
+			<div class="tab-pane active" id="ligation">
 				<%= f.association :ligation_products do |p| %>
 					<%= p.association :quality_control, :collection => @quality_controls, :label => "#{p.object.pcr_product}" %>
 					<%= p.association :plasmid %>

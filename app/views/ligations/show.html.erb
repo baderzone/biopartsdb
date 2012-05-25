@@ -16,14 +16,9 @@
 					</tr>
 				</thead>
 				<tbody>		
-					<% @ligation.spcr_products.each do |product| %>
+					<% @ligation.ligation_products.each do |product| %>
 						<tr>
-							<td><%= product  %></td>	
-						</tr>
-					<% end %>
-					<% @ligation.fpcr_products.each do |product| %>
-						<tr>
-							<td><%= product  %></td>	
+							<td><%= product.pcr_product  %></td>	
 						</tr>
 					<% end %>
 				</tbody>

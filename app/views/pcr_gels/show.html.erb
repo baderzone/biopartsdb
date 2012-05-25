@@ -17,22 +17,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @pcr_gel.spcr_products.each do |product| %>
+						<% @pcr_gel.pcr_gel_lanes.each do |lane| %>
 							<tr>
-								<td><%= product %></td>	
+								<td><%= lane.pcr_product %></td>	
 							</tr>
-						<% end %>
-						<% @pcr_gel.tpcr_products.each do |product| %>
-							<tr>
-								<td><%= product  %></td>	
-							</tr>
-						<% end %>		
-						<% @pcr_gel.fpcr_products.each do |product| %>
-							<tr>
-								<td><%= product  %></td>	
-							</tr>
-						<% end %>
-						
+						<% end %>						
 					</tbody>
 				</table>
 

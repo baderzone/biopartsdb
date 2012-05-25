@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   
   has_many :pcr_gels
   has_many :pcr_gel_lanes, :through => :pcr_gels
-  
+
   has_many :ligations
   
   attr_accessible :email, :fullname, :provider

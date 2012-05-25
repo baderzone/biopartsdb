@@ -19,7 +19,12 @@
 					<tbody>		
 						<% @fpcr.fpcr_products.each do |product| %>
 							<tr>
-								<td><%= product.tpcr_product.part.name  %></td>	
+								<td>
+									<%= product.tpcr_product.part.name  %>
+									<% if !product.quality_control.nil? and product.quality_control.name == "PASS" %>
+										<span class="label label-success"> PASS </span>
+									<% end %>
+								</td>	
 							</tr>
 						<% end %>
 					</tbody>

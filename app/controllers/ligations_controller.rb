@@ -1,6 +1,6 @@
 class LigationsController < ApplicationController
   def index
-    @ligations = current_user.ligations
+    @ligations = current_user.ligations.order("id DESC")
   end
 
   def show
