@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  cspcr_gel: 
+  quality_control: 
+  cspcr_product: 
+
+two:
+  user: 
+  cspcr_gel: 
+  quality_control: 
+  cspcr_product: 

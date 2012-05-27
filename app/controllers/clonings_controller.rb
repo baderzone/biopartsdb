@@ -18,40 +18,46 @@ class CloningsController < ApplicationController
     num_colonies = count_colonies(transformation_ids, transformations)
     
     #checking if just one clone has been picked
-    redirect_to new_cloning_path, :notice => "You cannot pick more than 95 colonies" if num_colonies > 95
+    if num_colonies > 95
+      redirect_to new_cloning_path, :notice => "You cannot pick more than 95 clones" 
+    end
     
-    wells = create_wells()
-    
+
     begin
+      #creating list of wells
+      wells = create_wells()
+      
       ActiveRecord::Base.transaction do
-        plate = GrowthPlate.new(user: current_user)
-        plate.save
+        #creating the growth plate
+        plate = GrowthPlate.create(user: current_user)
         plate.name = "growth_plate_"+plate.id.to_s
         plate.save
         
-        @cloning = Cloning.new(user: current_user, growth_plate: plate)
-        @cloning.save
+        #creating cloning object
+        @cloning = Cloning.create(user: current_user, growth_plate: plate)
         
-        transformation_ids.each do |t_id|
-          transformation = Transformation.find(t_id)
+        #creating clones depending on the number of colonies picked
+        transformation_ids.each do |tid|
+          transformation = Transformation.find(tid)
           
-          colonies = [] 
-          transformations[t_id][:white].to_i.times      {|i| colonies << "white"} 
-          transformations[t_id][:blue].to_i.times       {|i| colonies << "blue"}
-          transformations[t_id][:light_blue].to_i.times {|i| colonies << "light_blue"}
+          #creating a vector with right number of clones of each color to grow
+          colonies = []
+          transformations[tid].keys.each do |key|
+            transformations[tid][key].to_i.times.each  { colonies << key}
+          end
         
+          #creating clones
           colonies.each do |colony|
-            name = transformation.ligation_product.pcr_product.part.name + ".c"+ (Clone.count(:conditions => {:transformation_id => t_id})+1).to_s
-            clone = Clone.new(name: name, user: current_user, cloning: @cloning, transformation_id: t_id, color: colony)
-            clone.save
-               
-            well = GrowthPlateWell.new(clone: clone, growth_plate: plate, well: wells.pop())
-            well.save          
+            name = transformation.ligation_product.pcr_product.part.name + ".c"+ (Clone.count(:conditions => {:transformation_id => tid})+1).to_s
+            clone = Clone.create(name: name, user: current_user, cloning: @cloning, transformation_id: tid, color: colony)
+            #associating clones to growth plate wells
+            GrowthPlateWell.create(clone: clone, growth_plate: plate, well: wells.pop())
           end      
         end
       end
       
       redirect_to cloning_path(@cloning)
+      
     rescue => ex
       flash[:error] = "Error while performing cloning (#{ex.message})"
       redirect_to :controller => :clonings, :action => :new

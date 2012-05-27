@@ -1,0 +1,34 @@
+<div class="page-header">
+	<h1><i class="icon-picture"> </i>Run csPCR</h1>
+</div>
+<p>
+	<%= simple_form_for(@gel, :html => {:class => 'form-horizontal' }) do |f| %>
+	<ul id="myTab" class="nav nav-tabs">
+		<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">csPCR Plates<b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<% current_user.cspcrs.each do |cspcr| %>
+				<li><a href="#<%= cspcr.cspcr_plate.name %>" data-toggle="tab"><%= cspcr.cspcr_plate.name %></a></li>
+				<% end %>
+			</ul>
+		</li>
+	</ul>
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane fade in active" id="home">
+		</div>
+		<% current_user.cspcrs.each do |cspcr| %>
+			<div class="tab-pane fade" id="<%= cspcr.cspcr_plate.name %>">
+				<p>
+					<%= f.association :cspcr_products, :collection => cspcr.cspcr_products, :as => :check_boxes %>
+				</p>
+			</div>
+		<% end %>
+	</div>
+		
+		<div class="form-actions">
+			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', cspcrs_path, :class => 'btn'%>
+		</div>
+	<% end %>
+</p>

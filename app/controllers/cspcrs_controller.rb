@@ -1,6 +1,6 @@
 class CspcrsController < ApplicationController
   def index
-    @cspcrs = current_user.cspcrs
+    @cspcrs = current_user.cspcrs.order("id DESC")
   end
 
   def show
@@ -17,17 +17,16 @@ class CspcrsController < ApplicationController
       ActiveRecord::Base.transaction do
         @cspcr = Cspcr.new(params[:cspcr])
         @cspcr.user = current_user
+        @cspcr.status = Status.find_by_process_and_default(:cspcr,true)
         @cspcr.save
         
-        cspcr_plate = CspcrPlate.new(user: current_user, cspcr: @cspcr)
-        cspcr_plate.save
+        cspcr_plate = CspcrPlate.create(user: current_user, cspcr: @cspcr)
         cspcr_plate.name = "cscpr_plate_#{cspcr_plate.id}"
         cspcr_plate.save
         
         wells = create_wells()
         @cspcr.cspcr_products.each do |pcr|
-          well = CspcrPlateWell.new(cspcr_plate: cspcr_plate, clone: pcr.clone, well: wells.pop())
-          well.save
+          CspcrPlateWell.create(cspcr_plate: cspcr_plate, clone: pcr.clone, well: wells.pop())
         end
         
       end
@@ -36,7 +35,7 @@ class CspcrsController < ApplicationController
       
     rescue => ex
       flash[:error] = "An error occured while creating a csPCR. #{ex.message}"
-      redirect_to new_cspcr_path 
+      render :new
     end
   end
 

@@ -3,7 +3,7 @@
 </div>
 <p>
 	<%= simple_form_for(@cloning, :html => {:class => 'form-horizontal' }) do |f| %>
-		<table class="table table-bordered table-striped">
+		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
 					<th>Clone</th>
@@ -19,6 +19,7 @@
 				<% end %>
 			</tbody>
 		</table>
+		
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
 			<%= link_to 'Cancel', cloning_path(@cloning), :class => 'btn'%>

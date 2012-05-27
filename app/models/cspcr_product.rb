@@ -5,4 +5,9 @@ class CspcrProduct < ActiveRecord::Base
   belongs_to :clone
   
   attr_accessible :user, :cspcr, :quality_control, :clone, :quality_control_id
+  
+  def to_s
+    clone.name
+  end
+  
 end

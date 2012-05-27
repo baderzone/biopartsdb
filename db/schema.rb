@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120526223402) do
+ActiveRecord::Schema.define(:version => 20120527201302) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +41,41 @@ ActiveRecord::Schema.define(:version => 20120526223402) do
 
   add_index "clonings", ["growth_plate_id"], :name => "index_clonings_on_growth_plate_id"
   add_index "clonings", ["user_id"], :name => "index_clonings_on_user_id"
+
+  create_table "cspcr_gel_images", :force => true do |t|
+    t.integer  "cspcr_gel_id"
+    t.string   "cspcr_gel_image_file"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "cspcr_gel_images", ["cspcr_gel_id"], :name => "index_cspcr_gel_images_on_cspcr_gel_id"
+
+  create_table "cspcr_gel_lanes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "cspcr_gel_id"
+    t.integer  "quality_control_id"
+    t.integer  "cspcr_product_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "cspcr_gel_lanes", ["cspcr_gel_id"], :name => "index_cspcr_gel_lanes_on_cspcr_gel_id"
+  add_index "cspcr_gel_lanes", ["cspcr_product_id"], :name => "index_cspcr_gel_lanes_on_cspcr_product_id"
+  add_index "cspcr_gel_lanes", ["quality_control_id"], :name => "index_cspcr_gel_lanes_on_quality_control_id"
+  add_index "cspcr_gel_lanes", ["user_id"], :name => "index_cspcr_gel_lanes_on_user_id"
+
+  create_table "cspcr_gels", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "protocol_id"
+    t.integer  "status_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "cspcr_gels", ["protocol_id"], :name => "index_cspcr_gels_on_protocol_id"
+  add_index "cspcr_gels", ["status_id"], :name => "index_cspcr_gels_on_status_id"
+  add_index "cspcr_gels", ["user_id"], :name => "index_cspcr_gels_on_user_id"
 
   create_table "cspcr_plate_wells", :force => true do |t|
     t.integer  "cspcr_plate_id"

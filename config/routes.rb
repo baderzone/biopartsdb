@@ -1,4 +1,12 @@
 Biopartsdb::Application.routes.draw do
+  get "cspcr_gels/index"
+
+  get "cspcr_gels/show"
+
+  get "cspcr_gels/new"
+
+  get "cspcr_gels/edit"
+
   get "cspcrs/index"
 
   get "cspcrs/show"
@@ -95,6 +103,9 @@ Biopartsdb::Application.routes.draw do
   resources :transformations
   resources :clonings
   resources :cspcrs
+  resources :cspcr_gels do 
+    resources :cspcr_gel_images
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

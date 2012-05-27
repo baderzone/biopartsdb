@@ -1,0 +1,23 @@
+<div class="page-header">
+	<h1><i class="icon-picture"> </i>csPCR Gels</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Status</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @cspcr_gels.each do |gel| %>
+				<tr>
+					<td><%= link_to gel.id, cspcr_gel_path(gel) %></td>
+					<td><%= gel.status.name %></td>
+					<td><%= gel.created_at %></td>	
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>

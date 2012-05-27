@@ -24,7 +24,11 @@ class User < ActiveRecord::Base
   has_many :clones, :through => :clonings
   
   has_many :cspcrs
-    
+  has_many :cspcr_products, :through => :cspcrs
+  has_many :cspcr_plates, :through => :cspcrs
+  
+  has_many :cspcr_gels
+  
   attr_accessible :email, :fullname, :provider
   
   validates :fullname, :email, :presence => true

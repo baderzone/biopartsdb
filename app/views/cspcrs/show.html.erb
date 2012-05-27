@@ -24,6 +24,7 @@
 			</div>
 			
 			<div class="tab-pane" id="plate">
+				<h3><%= @cspcr.cspcr_plate.name %></h3>
 				<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @cspcr.cspcr_plate.wells_index }%>
 			</div>
 			

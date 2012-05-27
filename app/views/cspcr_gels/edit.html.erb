@@ -1,8 +1,8 @@
 <div class="page-header">
-	<h1><i class="icon-picture"> </i>Update PCR Gel <%= @pcr_gel.id %></h1>
+	<h1><i class="icon-picture"> </i>Update csPCR Gel <%= @gel.id %></h1>
 </div>
 <p>
-	<%= simple_form_for(@pcr_gel, :html => {:class => 'form-horizontal' }) do |f| %>
+	<%= simple_form_for(@gel, :html => {:class => 'form-horizontal' }) do |f| %>
 		<div class="tabbable">
 		  <ul class="nav nav-tabs">
 		    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
@@ -16,16 +16,17 @@
 				</div>
 				
 				<div class="tab-pane" id="qc">
-					<%= f.association :pcr_gel_lanes do |p| %>
-						<%= p.association :quality_control, :collection => @quality_control, :label => p.object.pcr_product %>
-					<% end %>
+						<%= f.association :cspcr_gel_lanes do |p| %>
+								<%= p.association :quality_control, :collection => @quality_controls, :label => p.object.cspcr_product.clone.name %>
+						<% end %>						
 				</div>
-				
 			</div>
 		</div>
+		
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', pcr_gel_path(@pcr_gel), :class => 'btn'%>
+			<%= link_to 'Cancel', cspcr_gel_path(@gel), :class => 'btn'%>
 		</div>
+		
 	<% end %>
 </p>
