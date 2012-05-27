@@ -19,7 +19,11 @@ class User < ActiveRecord::Base
   has_many :ligation_products, :through => :ligations
   
   has_many :transformations
+  
   has_many :clonings
+  has_many :clones, :through => :clonings
+  
+  has_many :cspcrs
     
   attr_accessible :email, :fullname, :provider
   

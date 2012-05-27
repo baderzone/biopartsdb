@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525213804) do
+ActiveRecord::Schema.define(:version => 20120526223402) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +41,56 @@ ActiveRecord::Schema.define(:version => 20120525213804) do
 
   add_index "clonings", ["growth_plate_id"], :name => "index_clonings_on_growth_plate_id"
   add_index "clonings", ["user_id"], :name => "index_clonings_on_user_id"
+
+  create_table "cspcr_plate_wells", :force => true do |t|
+    t.integer  "cspcr_plate_id"
+    t.integer  "clone_id"
+    t.string   "well"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "cspcr_plate_wells", ["clone_id"], :name => "index_cspcr_plate_wells_on_clone_id"
+  add_index "cspcr_plate_wells", ["cspcr_plate_id"], :name => "index_cspcr_plate_wells_on_cspcr_plate_id"
+
+  create_table "cspcr_plates", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "cspcr_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "cspcr_plates", ["cspcr_id"], :name => "index_cspcr_plates_on_cspcr_id"
+  add_index "cspcr_plates", ["user_id"], :name => "index_cspcr_plates_on_user_id"
+
+  create_table "cspcr_products", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "cspcr_id"
+    t.integer  "quality_control_id"
+    t.integer  "clone_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "cspcr_products", ["clone_id"], :name => "index_cspcr_products_on_clone_id"
+  add_index "cspcr_products", ["cspcr_id"], :name => "index_cspcr_products_on_cspcr_id"
+  add_index "cspcr_products", ["quality_control_id"], :name => "index_cspcr_products_on_quality_control_id"
+  add_index "cspcr_products", ["user_id"], :name => "index_cspcr_products_on_user_id"
+
+  create_table "cspcrs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "protocol_id"
+    t.integer  "status_id"
+    t.integer  "device_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "cspcrs", ["device_id"], :name => "index_cspcrs_on_device_id"
+  add_index "cspcrs", ["protocol_id"], :name => "index_cspcrs_on_protocol_id"
+  add_index "cspcrs", ["status_id"], :name => "index_cspcrs_on_status_id"
+  add_index "cspcrs", ["user_id"], :name => "index_cspcrs_on_user_id"
 
   create_table "device_types", :force => true do |t|
     t.string   "value"

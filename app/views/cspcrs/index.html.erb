@@ -1,0 +1,27 @@
+<div class="page-header">
+	<h1><i class="icon-random"> </i>csPCRs</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Plate</th>
+				<th>Status</th>
+				<th>Device</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @cspcrs.each do |pcr| %>
+				<tr>
+					<td><%= link_to pcr.id, cspcr_path(pcr) %></td>
+					<td><%= pcr.cspcr_plate %>
+					<td><%= pcr.status %></td>
+					<td><%= pcr.device %></td>
+					<td><%= pcr.created_at %></td>	
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>

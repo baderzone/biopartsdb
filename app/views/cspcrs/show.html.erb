@@ -1,0 +1,49 @@
+<div class="page-header">
+	<h1><i class="icon-random"> </i>csPCR <%= @cspcr.id %></h1>
+</div>
+	<div class="tabbable">
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#plate" data-toggle="tab">Plate</a></li>
+	    <li><a href="#protocol" data-toggle="tab">Protocol</a></li>
+	  </ul>
+	
+	  <div class="tab-content">
+			<div class="tab-pane active" id="info">
+				
+				<dl class="dl-horizontal">
+					<dt>Status</dd>
+					<dd><%= @cspcr.status %></dt>
+					<dt>Device</dd>
+					<dd><%= @cspcr.device %></dt>
+					<dt>Date</dd>
+					<dd><%= @cspcr.created_at %></dt>		
+				</dl>
+				
+				<%= link_to 'Update', edit_cspcr_path(@cspcr), :class => 'btn'%>
+			</div>
+			
+			<div class="tab-pane" id="plate">
+				<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @cspcr.cspcr_plate.wells_index }%>
+			</div>
+			
+			<div class="tab-pane" id="protocol">
+				<p></p>
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Reagent</th>
+							<th>Stock Concentration</th>
+							<th>Final Concentration</th>
+							<th>Volume for One Reaction</th>
+							<th>Volume for <%= @cspcr.cspcr_products.size %> Reactions</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+	  </div>
+	</div>
+	
+</p>

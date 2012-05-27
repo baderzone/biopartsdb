@@ -1,0 +1,44 @@
+<div class="page-header">
+	<h1><i class="icon-reload"> </i>Update csPCR <%= @cspcr.id %></h1>
+</div>
+<p>
+	<%= simple_form_for(@cspcr, :html => {:class => 'form-horizontal' }) do |f| %>
+		<div class="tabbable">
+		  <ul class="nav nav-tabs">
+		    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+		    <li><a href="#qc" data-toggle="tab">Quality Control</a></li>
+		  </ul>
+
+		  <div class="tab-content">
+				<div class="tab-pane active" id="info">
+					<%= f.association :status, :collection => @statuses %>
+					<%= f.association :device, :collection => @devices %>
+				</div>
+				<div class="tab-pane" id="qc">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Clone</th>
+								<th>Quality Control</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%= f.association :cspcr_products do |p| %>
+								<tr>
+								<td><%= p.object.clone.name %></td>
+								<td><%= p.association :quality_control, :collection => @quality_controls, :label => false %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			
+			</div>
+		</div>
+		<div class="form-actions">
+			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', cspcr_path(@cspcr), :class => 'btn'%>
+		</div>
+
+	<% end %>
+</p>

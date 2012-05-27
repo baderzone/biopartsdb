@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  cspcr: 
+  name: MyString
+
+two:
+  user: 
+  cspcr: 
+  name: MyString

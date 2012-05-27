@@ -1,4 +1,12 @@
 Biopartsdb::Application.routes.draw do
+  get "cspcrs/index"
+
+  get "cspcrs/show"
+
+  get "cspcrs/new"
+
+  get "cspcrs/edit"
+
   get "clonings/index"
 
   get "clonings/show"
@@ -85,8 +93,8 @@ Biopartsdb::Application.routes.draw do
   
   resources :ligations
   resources :transformations
-  resources :clones
   resources :clonings
+  resources :cspcrs
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

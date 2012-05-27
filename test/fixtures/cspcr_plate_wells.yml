@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cspcr_plate: 
+  clone: 
+  well: MyString
+
+two:
+  cspcr_plate: 
+  clone: 
+  well: MyString
