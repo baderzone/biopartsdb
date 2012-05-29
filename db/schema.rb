@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529151703) do
+ActiveRecord::Schema.define(:version => 20120529205405) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -373,6 +373,54 @@ ActiveRecord::Schema.define(:version => 20120529151703) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "sequencing_growth_plate_wells", :force => true do |t|
+    t.integer  "sequencing_growth_plate_id"
+    t.integer  "sequencing_product_id"
+    t.string   "well"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "sequencing_growth_plate_wells", ["sequencing_growth_plate_id"], :name => "sgpw_sgp_index"
+  add_index "sequencing_growth_plate_wells", ["sequencing_product_id"], :name => "sgpw_sp_index"
+
+  create_table "sequencing_growth_plates", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sequencing_growth_plates", ["user_id"], :name => "index_sequencing_growth_plates_on_user_id"
+
+  create_table "sequencing_products", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sequencing_id"
+    t.integer  "part_id"
+    t.integer  "clone_id"
+    t.integer  "quality_control_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "sequencing_products", ["clone_id"], :name => "index_sequencing_products_on_clone_id"
+  add_index "sequencing_products", ["part_id"], :name => "index_sequencing_products_on_part_id"
+  add_index "sequencing_products", ["quality_control_id"], :name => "index_sequencing_products_on_quality_control_id"
+  add_index "sequencing_products", ["sequencing_id"], :name => "index_sequencing_products_on_sequencing_id"
+  add_index "sequencing_products", ["user_id"], :name => "index_sequencing_products_on_user_id"
+
+  create_table "sequencings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "status_id"
+    t.integer  "sequencing_growth_plate_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "sequencings", ["sequencing_growth_plate_id"], :name => "index_sequencings_on_sequencing_growth_plate_id"
+  add_index "sequencings", ["status_id"], :name => "index_sequencings_on_status_id"
+  add_index "sequencings", ["user_id"], :name => "index_sequencings_on_user_id"
 
   create_table "spcr_products", :force => true do |t|
     t.integer  "spcr_id"

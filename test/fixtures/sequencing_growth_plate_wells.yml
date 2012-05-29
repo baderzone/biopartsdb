@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sequencing_growth_plate: 
+  sequencing_product: 
+  well: MyString
+
+two:
+  sequencing_growth_plate: 
+  sequencing_product: 
+  well: MyString

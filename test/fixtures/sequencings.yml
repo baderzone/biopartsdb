@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  status: 
+  sequencing_growth_plate: 
+
+two:
+  user: 
+  status: 
+  sequencing_growth_plate: 
