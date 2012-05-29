@@ -1,11 +1,10 @@
 <div class="page-header">
-	<h1><i class="icon-random"> </i>Run csPCR</h1>
+	<h1><i class="icon-resize-small"> </i>Submit for Sequencing</h1>
 </div>
 <p>
-	<%= simple_form_for(@cspcr, :html => {:class => 'form-horizontal' }) do |f| %>
+	<%= simple_form_for(@sequencing, :html => {:class => 'form-horizontal' }) do |f| %>
 	<ul id="myTab" class="nav nav-tabs">
-		<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-		<li class="dropdown">
+		<li class="dropdown active">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Growth Plates<b class="caret"></b></a>
 			<ul class="dropdown-menu">
 				<% current_user.clonings.each do |cl| %>
@@ -15,15 +14,11 @@
 		</li>
 	</ul>
 	<div id="myTabContent" class="tab-content">
-		<div class="tab-pane fade in active" id="home">
-			<p>
-				<%= f.association :device, :collection => @devices %>
-			</p>
-		</div>
+
 		<% current_user.clonings.each do |cl| %>
 			<div class="tab-pane fade" id="<%= cl.growth_plate.name %>">
 				<p>
-					<%= f.association :clones, :collection => cl.clones.picked, :as => :check_boxes %>
+					<%= f.association :clones, :collection => cl.clones.qc_pass, :as => :check_boxes %>
 				</p>
 			</div>
 		<% end %>
@@ -31,7 +26,7 @@
 		
 		<div class="form-actions">
 			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', cspcrs_path, :class => 'btn'%>
+			<%= link_to 'Cancel', sequencings_path, :class => 'btn'%>
 		</div>
 	<% end %>
 </p>

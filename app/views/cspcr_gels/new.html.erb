@@ -20,7 +20,7 @@
 		<% current_user.cspcrs.each do |cspcr| %>
 			<div class="tab-pane fade" id="<%= cspcr.cspcr_plate.name %>">
 				<p>
-					<%= f.association :cspcr_products, :collection => cspcr.cspcr_products, :as => :check_boxes %>
+					<%= f.association :cspcr_products, :collection => cspcr.cspcr_products.reaction_pass, :as => :check_boxes %>
 				</p>
 			</div>
 		<% end %>

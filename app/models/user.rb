@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
   
   has_many :cspcr_gels
   
+  has_many :sequencings
+  has_many :sequencing_products, :through => :sequencings
+  
   attr_accessible :email, :fullname, :provider
   
   validates :fullname, :email, :presence => true

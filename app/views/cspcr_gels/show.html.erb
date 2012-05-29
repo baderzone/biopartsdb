@@ -55,8 +55,9 @@
 				<% end %>
 			</div>
 			<div class="tab-pane" id="protocol">
-				<p></p>
-				
+				<p>
+					<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @gel.protocol, :number_reactions => @gel.cspcr_products.size }%>
+				</p>
 			</div>
 	  </div>
 	</div>

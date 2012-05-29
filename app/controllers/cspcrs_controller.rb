@@ -19,18 +19,16 @@ class CspcrsController < ApplicationController
         @cspcr.user = current_user
         @cspcr.status = Status.find_by_process_and_default(:cspcr,true)
         @cspcr.protocol = Protocol.find_by_process(Cspcr.to_s)
-        @cspcr.save
+        @cspcr.save!
         
         cspcr_plate = CspcrPlate.create(user: current_user, cspcr: @cspcr)
         cspcr_plate.name = "cscpr_plate_#{cspcr_plate.id}"
-        if cspcr_plate.save
+        
+        if cspcr_plate.save!
           wells = create_wells()
           @cspcr.cspcr_products.each do |pcr|
             CspcrPlateWell.create(cspcr_plate: cspcr_plate, clone: pcr.clone, well: wells.pop())
           end
-        else
-          flash[:error] = "Error you forget something: " + get_model_error_message(@cspcr)
-          render :new
         end
       end
       
@@ -39,7 +37,9 @@ class CspcrsController < ApplicationController
     rescue => ex
       flash[:error] = "An error occured while creating a csPCR. #{ex.message}"
       render :new
+      return
     end
+    
   end
 
   def edit
