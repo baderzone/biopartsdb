@@ -23,13 +23,15 @@ class CspcrsController < ApplicationController
         
         cspcr_plate = CspcrPlate.create(user: current_user, cspcr: @cspcr)
         cspcr_plate.name = "cscpr_plate_#{cspcr_plate.id}"
-        cspcr_plate.save
-        
-        wells = create_wells()
-        @cspcr.cspcr_products.each do |pcr|
-          CspcrPlateWell.create(cspcr_plate: cspcr_plate, clone: pcr.clone, well: wells.pop())
+        if cspcr_plate.save
+          wells = create_wells()
+          @cspcr.cspcr_products.each do |pcr|
+            CspcrPlateWell.create(cspcr_plate: cspcr_plate, clone: pcr.clone, well: wells.pop())
+          end
+        else
+          flash[:error] = "Error you forget something: " + get_model_error_message(@cspcr)
+          render :new
         end
-        
       end
       
       redirect_to cspcr_path(@cspcr), :notice => "csPCR created correctly."

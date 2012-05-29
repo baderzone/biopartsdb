@@ -20,6 +20,7 @@ class PcrGelsController < ApplicationController
     if @pcr_gel.save
       redirect_to pcr_gel_path(@pcr_gel), :notice => "PCR Gel created correctly."
     else
+      flash[:error] = "Error you forget something: " + get_model_error_message(@pcr_gel)
       render :new, :error => "PCR Gel error."
     end
   end

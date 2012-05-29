@@ -23,6 +23,7 @@ class SpcrsController < ApplicationController
     if @spcr.save
       redirect_to spcr_path(@spcr), :notice => "spcr created correctly."
     else
+      flash[:error] = "Error you forget something: " + get_model_error_message(@spcr)
       render :new, :error => "sPCR error."
     end
   end

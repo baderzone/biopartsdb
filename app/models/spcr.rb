@@ -12,6 +12,6 @@ class Spcr < ActiveRecord::Base
   attr_accessible :parts, :device, :status, :protocol
   attr_accessible :part_ids, :device_id, :status_id, :protocol_id, :spcr_products_attributes
   
-  validates :device, :parts, :status, :presence => true
+  validates :device, :parts, :status, :protocol, :presence => true
 
 end
