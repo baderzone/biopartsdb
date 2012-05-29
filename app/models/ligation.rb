@@ -3,7 +3,7 @@ class Ligation < ActiveRecord::Base
   belongs_to :status
   belongs_to :protocol
   
-  has_many :ligation_products, :source => "LigationProduct"
+  has_many :ligation_products
   has_many :spcr_products, :through => :ligation_products, :source => :pcr_product, :source_type => "SpcrProduct"
   has_many :fpcr_products, :through => :ligation_products, :source => :pcr_product, :source_type => "FpcrProduct"
     

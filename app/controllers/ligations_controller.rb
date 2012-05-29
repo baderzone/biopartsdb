@@ -24,7 +24,7 @@ class LigationsController < ApplicationController
         lig.plasmid = @plasmid
       end
       @ligation.save
-        redirect_to ligation_path(@ligation), :notice => "Ligations created correctly."
+      redirect_to ligation_path(@ligation), :notice => "Ligations created correctly."
     else
       render :new, :error => "Ligation error."
     end
