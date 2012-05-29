@@ -6,6 +6,8 @@ class Spcr < ActiveRecord::Base
   
   has_many :spcr_products, :dependent => :destroy
   has_many :parts, :through => :spcr_products
+  
+  scope :pendings, where(:status_id => Status.find_by_process_and_name(Spcr.to_s,:pending))
     
   accepts_nested_attributes_for :spcr_products
   

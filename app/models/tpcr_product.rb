@@ -7,6 +7,8 @@ class TpcrProduct < ActiveRecord::Base
   has_many :fpcr_products
   has_many :pcr_gel_lanes, :as => :pcr_product
   has_many :ligations, :as => :pcr_product
+  
+  scope :pendings, where(:status_id => Status.find_by_process_and_name(Tpcr.to_s,:pending))
 
   scope :reaction_pass, where(:quality_control_id => QualityControl.find_by_process_and_name(Tpcr.to_s,:pass))
   scope :reaction_fail, where(:quality_control_id => QualityControl.find_by_process_and_name(Tpcr.to_s,:fail))

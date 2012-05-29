@@ -23,19 +23,19 @@
     </a>
     <ul class="dropdown-menu">
 	    <li class="nav-header">sPCRs</li>
-      <li><%= link_to 'Status', spcrs_path %></li>
+	  <li><a href = <%= spcrs_path %> >Status <span style ="float:right" class="label"><%= current_user.spcrs.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_spcr_path %></li>
 			<li class="divider"></li>
       <li class="nav-header">tPCRs</li>
-      <li><%= link_to 'Status', tpcrs_path %></li>
+      <li><a href = <%= tpcrs_path %> >Status <span style ="float:right" class="label"><%= current_user.tpcrs.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_tpcr_path %></li>
 			<li class="divider"></li>
       <li class="nav-header">fPCR</li>
-      <li><%= link_to 'Status', fpcrs_path %></li>
+      <li><a href = <%= fpcrs_path %> >Status <span style ="float:right" class="label"><%= current_user.fpcrs.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_fpcr_path %></li>
 			<li class="divider"></li>
       <li class="nav-header">csPCRs</li>
-      <li><%= link_to 'Status', cspcrs_path %></li>
+      <li><a href = <%= cspcrs_path %> >Status <span style ="float:right" class="label"><%= current_user.cspcrs.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_cspcr_path %></li>
     </ul>
   </li>
@@ -48,11 +48,11 @@
     </a>
     <ul class="dropdown-menu">
       <li class="nav-header">PCR Gels</li>
-      <li><%= link_to 'Status', pcr_gels_path %></li>
+      <li><a href = <%= pcr_gels_path %> >Status <span style ="float:right" class="label"><%= current_user.pcr_gels.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_pcr_gel_path %></li>
 			<li class="divider"></li>
       <li class="nav-header">csPCR Gels</li>
-      <li><%= link_to 'Status', cspcr_gels_path %></li>
+      <li><a href = <%= cspcr_gels_path %> >Status <span style ="float:right" class="label"><%= current_user.cspcr_gels.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_cspcr_gel_path %></li>
     </ul>
   </li>
@@ -65,7 +65,7 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <li><%= link_to 'Status', ligations_path %></li>
+      <li><a href = <%= ligations_path %> >Status <span style ="float:right" class="label"><%= current_user.ligations.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_ligation_path %></li>
     </ul>
   </li>
@@ -77,7 +77,7 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <li><%= link_to 'Status', transformations_path %></li>
+      <li><a href = <%= transformations_path %> >Status <span style ="float:right" class="label"><%= current_user.transformations.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_transformation_path %></li>
     </ul>
   </li>
@@ -89,8 +89,8 @@
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-			<li><%= link_to 'Status', clonings_path %></li>
-      <li><%= link_to 'Run', new_cloning_path %></li>
+		<li><a href = <%= clonings_path %> >Status <span style ="float:right" class="label"><%= current_user.clones.growing.size %></span></a></li>
+      	<li><%= link_to 'Run', new_cloning_path %></li>
     </ul>
   </li>
 

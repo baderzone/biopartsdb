@@ -11,6 +11,8 @@ class PcrGel < ActiveRecord::Base
   has_many :fpcr_products, :through => :pcr_gel_lanes, :source => :pcr_product, :source_type => "FpcrProduct"
   accepts_nested_attributes_for :spcr_products, :tpcr_products, :fpcr_products, :pcr_gel_lanes, :pcr_gel_images
   
+  scope :pendings, where(:status_id => Status.find_by_process_and_name(PcrGel.to_s,:pending))
+  
   attr_accessible :user, :protocol, :status, :pcr_gel_images
   attr_accessible :user_id, :protocol_id, :status_id
   
