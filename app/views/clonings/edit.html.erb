@@ -1,10 +1,12 @@
 <div class="page-header">
-	<h1><i class="icon-reload"> </i>Update Cloning <%= @cloning.id %></h1>
+	<h1><i class="icon-repeat"> </i>Update Cloning <%= @cloning.id %></h1>
 </div>
 <p>
+	<h3><%= @cloning.growth_plate %></h3>
+	<br/>
 	<%= simple_form_for(@cloning, :html => {:class => 'form-horizontal' }) do |f| %>
 		<%= f.association :clones do |p| %>
-			<%= p.association :status, :collection => @statuses, :label => false %>
+			<%= p.association :status, :collection => @statuses, :label => p.object.name %>
 				
 		<% end %>
 	

@@ -12,4 +12,7 @@ class GrowthPlate < ActiveRecord::Base
     return plate
   end
   
+  def to_s
+    "#{name}"
+  end
 end

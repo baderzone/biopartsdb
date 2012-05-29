@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527201302) do
+ActiveRecord::Schema.define(:version => 20120529151703) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120527201302) do
     t.integer  "growth_plate_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "protocol_id"
   end
 
   add_index "clonings", ["growth_plate_id"], :name => "index_clonings_on_growth_plate_id"

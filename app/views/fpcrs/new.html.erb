@@ -3,8 +3,25 @@
 </div>
 <p>
 	<%= simple_form_for(@fpcr, :html => {:class => 'form-horizontal' }) do |f| %>
-		<%= f.association :tpcr_products, :collection => current_user.tpcr_products.reaction_pass, :as => :check_boxes %>
-		<%= f.association :device, :collection => @devices %>
+		
+		
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#tpcrs" data-toggle="tab">tPCRs</a></li>
+	    <li><a href="#device" data-toggle="tab">Device</a></li>
+	  </ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="tpcrs">
+				<%= f.association :tpcr_products, :collection => current_user.tpcr_products.reaction_pass, :as => :check_boxes %>
+			</div>
+			<div class="tab-pane" id="device">
+				<%= f.association :device, :collection => @devices %>
+			</div>
+	  </div>
+
+
+
+
 
 		<div class="form-actions">
 			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>

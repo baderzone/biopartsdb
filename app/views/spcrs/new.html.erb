@@ -3,9 +3,30 @@
 </div>
 <p>
 	<%= simple_form_for(@spcr, :html => {:class => 'form-horizontal' }) do |f| %>
+<<<<<<< HEAD
 		<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
 		<%= f.association :protocol, :collection => @protocols %>
 		<%= f.association :device, :collection => @devices %>
+=======
+		
+		
+		
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#parts" data-toggle="tab">Parts</a></li>
+	    <li><a href="#device" data-toggle="tab">Device</a></li>
+	  </ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="parts">
+				<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
+			</div>
+			<div class="tab-pane" id="device">
+				<%= f.association :device, :collection => @devices %>
+			</div>
+	  </div>
+		
+		
+>>>>>>> f864cee1ab08ca4db18db49659ae4a75be7a850a
 
 		<div class="form-actions"> 
 			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
