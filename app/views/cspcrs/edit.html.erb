@@ -15,22 +15,9 @@
 					<%= f.association :device, :collection => @devices %>
 				</div>
 				<div class="tab-pane" id="qc">
-					<table class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>Clone</th>
-								<th>Quality Control</th>
-							</tr>
-						</thead>
-						<tbody>
-							<%= f.association :cspcr_products do |p| %>
-								<tr>
-								<td><%= p.object.clone.name %></td>
-								<td><%= p.association :quality_control, :collection => @quality_controls, :label => false %></td>
-								</tr>
-							<% end %>
-						</tbody>
-					</table>
+						<%= f.association :cspcr_products do |p| %>
+							<%= p.association :quality_control, :collection => @quality_controls, :label => p.object.clone.name %>
+						<% end %>
 				</div>
 			
 			</div>
