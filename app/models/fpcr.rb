@@ -13,5 +13,5 @@ class Fpcr < ActiveRecord::Base
   attr_accessible :user_id, :status_id, :device_id, :protocol_id, :tpcr_product_ids
   attr_accessible :fpcr_products_attributes
   
-  validates :device, :status, :presence => true
+  validates :tpcr_products, :device, :status, :presence => true
 end

@@ -18,6 +18,7 @@ class CspcrsController < ApplicationController
         @cspcr = Cspcr.new(params[:cspcr])
         @cspcr.user = current_user
         @cspcr.status = Status.find_by_process_and_default(:cspcr,true)
+        @cspcr.protocol = Protocol.find_by_process(Cspcr.to_s)
         @cspcr.save
         
         cspcr_plate = CspcrPlate.create(user: current_user, cspcr: @cspcr)

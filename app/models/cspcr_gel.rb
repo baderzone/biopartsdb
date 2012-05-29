@@ -12,4 +12,6 @@ class CspcrGel < ActiveRecord::Base
   
   attr_accessible :cspcr_gel_lanes, :cspcr_product_ids, :cspcr_gel_lanes_attributes, :status_id
   
+  validates :cspcr_products, :presence => :true
+  
 end

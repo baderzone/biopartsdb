@@ -9,5 +9,7 @@ class Cloning < ActiveRecord::Base
 
   attr_accessible :user, :growth_plate, :protocol
   attr_accessible :clones_ids, :clones_attributes
+  
+  validates :transformation, :presence => :true
 
 end

@@ -16,4 +16,5 @@ class Ligation < ActiveRecord::Base
   attr_accessible :spcr_product_ids, :fpcr_product_ids
   attr_accessible :spcr_products_attributes, :fpcr_products_attributes, :ligation_products_attributes
 
+
 end

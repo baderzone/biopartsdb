@@ -17,4 +17,6 @@ class LigationProduct < ActiveRecord::Base
     pcr_product.to_s
   end
   
+  validates :plasmid, :presence => :true
+  
 end

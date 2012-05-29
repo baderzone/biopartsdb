@@ -11,7 +11,7 @@ class Cspcr < ActiveRecord::Base
   accepts_nested_attributes_for :cspcr_products
   
   #validates :cspcr_products, :length => {:minimum => 1, :maximum => 3 }
-  validates :device, :presence => true
+  validates :clones, :device, :presence => true
   
   attr_accessible :user, :protocol, :status, :device, :cspcr_plate
   attr_accessible :clone_ids, :device_id, :status_id
