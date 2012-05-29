@@ -1,6 +1,7 @@
 class Cloning < ActiveRecord::Base
   belongs_to :user
   belongs_to :growth_plate
+  belongs_to :protocol
   
   has_many :clones, :dependent => :destroy
   

@@ -4,8 +4,15 @@
 	<div class="tabbable">
 	  <ul class="nav nav-tabs">
 	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
-	    <li><a href="#plate" data-toggle="tab">Plate</a></li>
-	    <li><a href="#protocol" data-toggle="tab">Protocol</a></li>
+		<li><a href="#protocol" data-toggle="tab">Protocol</a></li>
+	    <li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Growth Plates<b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<% @fpcr.fpcr_products.each do |product| %>
+				<li><a href="#<%= product.part.name %>" data-toggle="tab"><%= product.part.name %></a></li>
+				<% end %>
+			</ul>
+		</li>
 	  </ul>
 	
 	  <div class="tab-content">
@@ -41,20 +48,15 @@
 				
 				<%= link_to 'Update', edit_fpcr_path(@fpcr), :class => 'btn'%>
 			</div>
-			<div class="tab-pane" id="plate">
-				<div class="tabbable">
-					<% @fpcr.fpcr_products.each do |product| %>
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#<%= product.tpcr_product.part.name %>" data-toggle="tab"><%= product.tpcr_product.part.name %></a></li>
-						</ul>
-					<% end %>
-					<% @fpcr.fpcr_products.each do |product| %>		
-						<div class="tab-pane" id="<%= product.tpcr_product.part.name %>">	
-							<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => product.tpcr_product.part.wells_index }%>
-						</div>
-					<% end %>
+			
+			<% @fpcr.fpcr_products.each do |product| %>
+				<div class="tab-pane" id="<%= product.part.name %>">
+					<p>
+						<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => product.part.wells_index }%>
+					</p>
 				</div>
-			</div>
+			<% end %>
+			
 			<div class="tab-pane" id="protocol">
 				<p><%= raw @fpcr.protocol.content %></p>
 				<table class="table table-bordered table-striped">
