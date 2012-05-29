@@ -31,6 +31,7 @@ class SpcrsController < ApplicationController
   def edit
     @spcr = Spcr.find(params[:id])
     @quality_controls = QualityControl.find_all_by_process(Spcr.to_s)
+    @protocols = Protocol.find_all_by_process(Spcr.to_s)
     @statuses = Status.find_all_by_process(Spcr.to_s)
   end
   
