@@ -34,7 +34,7 @@ class CloningsController < ApplicationController
         plate.save
         
         #creating cloning object
-        @cloning = Cloning.create(user: current_user, growth_plate: plate)
+        @cloning = Cloning.create(user: current_user, growth_plate: plate, :protocol => Protocol.find_by_process(Cloning.to_s))
         
         #creating clones depending on the number of colonies picked
         transformation_ids.each do |tid|
