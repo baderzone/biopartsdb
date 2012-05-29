@@ -10,7 +10,7 @@
 		
 		<%= f.association :device %>
 		<%= f.association :status, :collection => @statuses %>
-		
+		<%= f.association :protocol, :collection => @protocols %>
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
 			<%= link_to 'Cancel', spcr_path(@spcr), :class => 'btn'%>

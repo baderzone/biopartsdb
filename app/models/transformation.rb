@@ -8,6 +8,7 @@ class Transformation < ActiveRecord::Base
   
   scope :reaction_pass, where(:quality_control_id => QualityControl.find_by_process_and_name(Transformation.to_s,:pass).id)
   scope :reaction_fail, where(:quality_control_id => QualityControl.find_by_process_and_name(Transformation.to_s,:fail).id)
+  scope :pendings, where(:status_id => Status.find_by_process_and_name(Transformation.to_s,:pending))
   
   attr_accessible :blue_count, :light_blue_count, :white_count, :strain, :ligation_product
   attr_accessible :ligation_product_id, :strain_id, :status_id, :quality_control_id

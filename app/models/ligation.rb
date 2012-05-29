@@ -7,6 +7,8 @@ class Ligation < ActiveRecord::Base
   has_many :spcr_products, :through => :ligation_products, :source => :pcr_product, :source_type => "SpcrProduct"
   has_many :fpcr_products, :through => :ligation_products, :source => :pcr_product, :source_type => "FpcrProduct"
     
+  scope :pendings, where(:status_id => Status.find_by_process_and_name(Ligation.to_s,:pending))
+    
   accepts_nested_attributes_for :spcr_products, :fpcr_products, :ligation_products
 
   attr_accessible :user, :plasmid, :protocol, :status

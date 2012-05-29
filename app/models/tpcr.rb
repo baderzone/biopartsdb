@@ -7,6 +7,8 @@ class Tpcr < ActiveRecord::Base
   has_many :tpcr_products, :dependent => :destroy
   has_many :parts, :through => :tpcr_products
   
+  scope :pendings, where(:status_id => Status.find_by_process_and_name(Tpcr.to_s,:pending))
+  
   accepts_nested_attributes_for :tpcr_products
 
   attr_accessible :parts, :device, :status, :protocol

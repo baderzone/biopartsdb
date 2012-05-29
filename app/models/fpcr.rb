@@ -7,6 +7,8 @@ class Fpcr < ActiveRecord::Base
   has_many :fpcr_products, :dependent => :destroy
   has_many :tpcr_products, :through => :fpcr_products
   
+  scope :pendings, where(:status_id => Status.find_by_process_and_name(Fpcr.to_s,:pending))
+  
   accepts_nested_attributes_for :fpcr_products
   
   attr_accessible :user, :status, :device, :protocol, :tpcr_products
