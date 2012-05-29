@@ -29,7 +29,7 @@ test:
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  hostname: localhost
 
 production:
   adapter: mysql2
@@ -39,4 +39,4 @@ production:
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  hostname: localhost
