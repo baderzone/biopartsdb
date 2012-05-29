@@ -4,9 +4,10 @@
 <p>
 	<%= simple_form_for(@spcr, :html => {:class => 'form-horizontal' }) do |f| %>
 		<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
+		<%= f.association :protocol, :collection => @protocols %>
 		<%= f.association :device, :collection => @devices %>
 
-		<div class="form-actions">
+		<div class="form-actions"> 
 			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
 			<%= link_to 'Cancel', spcrs_path, :class => 'btn'%>
 		</div>

@@ -11,6 +11,7 @@ class SpcrsController < ApplicationController
 
   def new
     @spcr = Spcr.new
+    @protocols = Protocol.find_all_by_process(Spcr.to_s)
     @devices = DeviceType.find_by_value(:pcr).devices
   end
 
@@ -18,7 +19,6 @@ class SpcrsController < ApplicationController
     @spcr = Spcr.new(params[:spcr])
     @spcr.user = current_user
     @spcr.status = Status.find_by_process_and_default(Spcr.to_s, true)
-    @spcr.protocol = Protocol.find_by_process(Spcr.to_s)
     
     if @spcr.save
       redirect_to spcr_path(@spcr), :notice => "spcr created correctly."
