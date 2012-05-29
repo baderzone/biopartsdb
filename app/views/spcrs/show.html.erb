@@ -59,29 +59,7 @@
 		
 			
 			<div class="tab-pane" id="protocol">
-				<p><%= raw @spcr.protocol.content %></p>
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>Reagent</th>
-							<th>Stock Concentration</th>
-							<th>Final Concentration</th>
-							<th>Volume for One Reaction</th>
-							<th>Volume for <%= @spcr.spcr_products.size + @spcr.protocol.scaling_factor %> Reactions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @spcr.protocol.protocol_reagents.each do |r| %>
-							<tr>
-								<td><%= r.name %></td>
-								<td><%= r.stock_concentration %></td>
-								<td><%= r.final_concentration %></td>
-								<td><%= r.volume_reaction %></td>
-								<td><%= Unit(r.volume_reaction) * (@spcr.spcr_products.size + @spcr.protocol.scaling_factor)%></td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
+				<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @spcr.protocol, :number_reactions => @spcr.spcr_products.size }%>
 			</div>
 	  </div>
 	</div>

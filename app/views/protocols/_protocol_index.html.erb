@@ -1,0 +1,34 @@
+<h3><i class="icon-book"> </i><%= protocol.name %></h3>
+
+<p><%= raw protocol.content %></p>
+
+<% if protocol.protocol_reagents.size > 0 %>
+	
+	<h2>Mastermix Preparation</h2>
+	
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Reagent</th>
+				<th>Stock Concentration</th>
+				<th>Final Concentration</th>
+				<th>Volume for One Reaction</th>
+				<th>Volume for <%= number_reactions + protocol.scaling_factor %> Reactions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% protocol.protocol_reagents.each do |r| %>
+				<tr>
+					<td><%= r.name %></td>
+					<td><%= r.stock_concentration %></td>
+					<td><%= r.final_concentration %></td>
+					<td><%= r.volume_reaction %></td>
+					<td><%= Unit(r.volume_reaction) * (number_reactions + protocol.scaling_factor)%></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+	
+	
+<% end %>

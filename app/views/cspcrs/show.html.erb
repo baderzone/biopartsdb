@@ -4,9 +4,8 @@
 	<div class="tabbable">
 	  <ul class="nav nav-tabs">
 	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
-		<li><a href="#protocol" data-toggle="tab">Protocol</a></li>
 	    <li><a href="#plate" data-toggle="tab">Plate</a></li>
-	    
+	    <li><a href="#protocol" data-toggle="tab">Protocol</a></li>
 	  </ul>
 	
 	  <div class="tab-content">
@@ -30,20 +29,7 @@
 			</div>
 			
 			<div class="tab-pane" id="protocol">
-				<p></p>
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>Reagent</th>
-							<th>Stock Concentration</th>
-							<th>Final Concentration</th>
-							<th>Volume for One Reaction</th>
-							<th>Volume for <%= @cspcr.cspcr_products.size %> Reactions</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
+				<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @cspcr.protocol, :number_reactions => @cspcr.cspcr_products.size }%>
 			</div>
 	  </div>
 	</div>

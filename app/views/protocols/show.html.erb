@@ -1,10 +1,4 @@
-<div class="page-header">
-	<h1><i class="icon-book"> </i><%= @protocol.name %></h1>
-</div>
-<<<<<<< HEAD
-<p><%= raw @protocol.content %></p>
-=======
-<p>
-	<%= raw @protocol.content %>
-</p>
->>>>>>> f864cee1ab08ca4db18db49659ae4a75be7a850a
+<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @protocol, :number_reactions => 0 }%>
+
+
+
