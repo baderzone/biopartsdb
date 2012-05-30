@@ -18,6 +18,12 @@
 		<% current_user.clonings.each do |cl| %>
 			<div class="tab-pane fade" id="<%= cl.growth_plate.name %>">
 				<p>
+					<div class="control-group">
+						<label class="control-label" for="all">Select all</label>
+						<div class="controls">
+							<%= check_box_tag :all, :all, false, :class => :checkall %>
+						</div>
+					</div>
 					<%= f.association :clones, :collection => cl.clones.qc_pass, :as => :check_boxes %>
 				</p>
 			</div>

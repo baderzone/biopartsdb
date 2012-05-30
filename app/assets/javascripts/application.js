@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+/* select all for checkboxes */
+$('.checkall').click(function () {
+  $(this).parent().parent().parent().find(':checkbox').prop('checked', this.checked);
+});

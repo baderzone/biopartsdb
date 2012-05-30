@@ -12,19 +12,37 @@
 
   <div class="tab-content">
 		<div class="tab-pane active" id="spcrs">
+			<div class="control-group">
+				<label class="control-label" for="all">Select all</label>
+				<div class="controls">
+					<%= check_box_tag :all, :all, false, :class => :checkall %>
+				</div>
+			</div>
 			<%= f.association :spcr_products, :collection => current_user.spcr_products.reaction_pass, :as => :check_boxes %>
 		</div>
 		<div class="tab-pane" id="tpcrs">
+			<div class="control-group">
+				<label class="control-label" for="all">Select all</label>
+				<div class="controls">
+					<%= check_box_tag :all, :all, false, :class => :checkall %>
+				</div>
+			</div>
 			<%= f.association :tpcr_products, :collection => current_user.tpcr_products.reaction_pass, :as => :check_boxes %>
 		</div>
 		<div class="tab-pane" id="fpcrs">
+			<div class="control-group">
+				<label class="control-label" for="all">Select all</label>
+				<div class="controls">
+					<%= check_box_tag :all, :all, false, :class => :checkall %>
+				</div>
+			</div>
 			<%= f.association :fpcr_products, :collection => current_user.fpcr_products.reaction_pass, :as => :check_boxes %>
 		</div>
   </div>
 	
 	<div class="form-actions">
 		<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
-		<%= link_to 'Cancel', tpcrs_path, :class => 'btn'%>
+		<%= link_to 'Cancel', pcr_gels_path, :class => 'btn'%>
 	</div>
 	<% end %>
 </p>
