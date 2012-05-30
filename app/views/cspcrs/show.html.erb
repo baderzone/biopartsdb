@@ -10,22 +10,27 @@
 	
 	  <div class="tab-content">
 			<div class="tab-pane active" id="info">
+					<dl class="dl-horizontal">
+						<dt>Status</dd>
+						<dd><%= @cspcr.status %></dt>
+						<dt>Device</dd>
+						<dd><%= @cspcr.device %></dt>
+						<dt>Date</dd>
+						<dd><%= @cspcr.created_at %></dt>		
+					</dl>
 				
-				<dl class="dl-horizontal">
-					<dt>Status</dd>
-					<dd><%= @cspcr.status %></dt>
-					<dt>Device</dd>
-					<dd><%= @cspcr.device %></dt>
-					<dt>Date</dd>
-					<dd><%= @cspcr.created_at %></dt>		
-				</dl>
-				
-				<%= link_to 'Update', edit_cspcr_path(@cspcr), :class => 'btn'%>
+					<%= link_to 'Update', edit_cspcr_path(@cspcr), :class => 'btn'%>
 			</div>
 			
 			<div class="tab-pane" id="plate">
-				<h3><%= @cspcr.cspcr_plate.name %></h3>
-				<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @cspcr.cspcr_plate.wells_index }%>
+				<div class="row-fluid">
+					<div class="span4">
+						<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @cspcr.cspcr_plate.wells_index }%>
+					</div>
+					<div class="span4">
+						<%= render :partial => "plate_legend", :locals => {:index => @cspcr.cspcr_plate.index_by_part }%>
+					</div>
+				</div>
 			</div>
 			
 			<div class="tab-pane" id="protocol">

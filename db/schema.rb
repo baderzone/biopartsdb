@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529232539) do
+ActiveRecord::Schema.define(:version => 20120530154720) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -394,6 +394,29 @@ ActiveRecord::Schema.define(:version => 20120529232539) do
   end
 
   add_index "sequencing_growth_plates", ["user_id"], :name => "index_sequencing_growth_plates_on_user_id"
+
+  create_table "sequencing_plate_wells", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sequencing_plate_id"
+    t.integer  "sequencing_growth_plate_well_id"
+    t.string   "well"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "sequencing_plate_wells", ["sequencing_growth_plate_well_id"], :name => "index_spw_sgpw"
+  add_index "sequencing_plate_wells", ["sequencing_plate_id"], :name => "index_spw_sp"
+  add_index "sequencing_plate_wells", ["user_id"], :name => "index_sequencing_plate_wells_on_user_id"
+
+  create_table "sequencing_plates", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "status_id"
+  end
+
+  add_index "sequencing_plates", ["user_id"], :name => "index_sequencing_plates_on_user_id"
 
   create_table "sequencing_products", :force => true do |t|
     t.integer  "user_id"

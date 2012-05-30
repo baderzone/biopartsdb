@@ -1,0 +1,29 @@
+<h3>Legend</h3>
+<br/>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Part</th>
+			<th>User</th>
+			<th>Plate</th>
+			<th>Wells</th>
+		</tr>
+	</thead>
+	<tbody>		
+		<% index.keys.each do |part| %>
+			<% index[part].keys.each do |plate| %>
+				<tr>
+					<td><%= part %></td>
+					<td><%= plate.user.fullname %></td>
+					<td><%= plate.name %></td>
+					<td>
+						<%= index[part][plate].first %>
+						<% if index[part][plate].size > 1 %>
+							- <%= index[part][plate].last %>
+						<% end %>
+						</td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

@@ -3,6 +3,10 @@ class GrowthPlate < ActiveRecord::Base
   
   has_many :growth_plate_wells, :dependent => :destroy
   attr_accessible :name, :user
+
+  def to_s
+    "#{name}"
+  end
   
   def wells_index
     plate = Hash.new
@@ -12,7 +16,20 @@ class GrowthPlate < ActiveRecord::Base
     return plate
   end
   
-  def to_s
-    "#{name}"
+  def index_by_part
+    index = Hash.new
+    
+    growth_plate_wells.each do |w|
+      part = w.clone.transformation.ligation_product.to_s
+        
+      if !index.key?(part)
+        index[part] = []
+      end
+        
+      index[part] << w.well
+    end
+    
+    return index
   end
+  
 end

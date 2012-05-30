@@ -1,0 +1,24 @@
+<div class="page-header">
+	<h1><i class="icon-user"> </i>Users</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>uid</th>
+				<th>Name</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @users.each do |user| %>
+				<tr>
+					<td><%= link_to user.id, admin_user_path(user) %></td>
+					<td><%= user.fullname %></td>
+					<td><%= user.email %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>
+

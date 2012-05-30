@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  sequencing_plate: 
+  sequencing_growth_plate_well: 
+  well: MyString
+
+two:
+  user: 
+  sequencing_plate: 
+  sequencing_growth_plate_well: 
+  well: MyString

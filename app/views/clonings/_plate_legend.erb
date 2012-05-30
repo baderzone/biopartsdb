@@ -1,0 +1,23 @@
+<h3>Legend</h3>
+<br/>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Part</th>
+			<th>Wells</th>
+		</tr>
+	</thead>
+	<tbody>		
+		<% index.keys.each do |part| %>
+			<tr>
+				<td><%= part %></td>
+				<td>
+					<%= index[part].first %>
+					<% if index[part].size > 1 %>
+						- <%= index[part].last %>
+					<% end %>
+					</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

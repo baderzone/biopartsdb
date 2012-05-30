@@ -6,5 +6,9 @@ class GrowthPlateWell < ActiveRecord::Base
   def to_s
     clone.name[-2..-1]
   end
-
+  
+  def plate_name
+    growth_plate.name
+  end
+  
 end

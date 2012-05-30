@@ -6,4 +6,8 @@ class CspcrPlateWell < ActiveRecord::Base
   def to_s
     clone.name[-2..-1]
   end
+  
+  def plate_name
+    cspcr_plate.name
+  end
 end

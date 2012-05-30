@@ -17,4 +17,21 @@ class CspcrPlate < ActiveRecord::Base
     end
     return plate
   end
+  
+  def index_by_part
+    index = Hash.new
+    
+    cspcr_plate_wells.each do |w|
+      part = w.clone.transformation.ligation_product.to_s
+        
+      if !index.key?(part)
+        index[part] = []
+      end
+        
+      index[part] << w.well
+    end
+    
+    return index
+  end
+  
 end

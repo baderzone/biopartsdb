@@ -1,2 +1,51 @@
-<h1>Sequencings#show</h1>
-<p>Find me in app/views/sequencings/show.html.erb</p>
+<div class="page-header">
+	<h1><i class="icon-random"> </i>Sequencing <%= @sequencing.id %></h1>
+</div>
+	<div class="tabbable">
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+		<li><a href="#protocol" data-toggle="tab">Protocol</a></li>
+	    <li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sequencing Growth Plates<b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<% @sequencing.sequencing_growth_plates.each do |plate| %>
+				<li><a href="#<%= plate.name %>" data-toggle="tab"><%= plate.name %></a></li>
+				<% end %>
+			</ul>
+		</li>
+	    
+	  </ul>
+	
+	  <div class="tab-content">
+			<div class="tab-pane active" id="info">
+		    <dl class="dl-horizontal">
+					<dt>Status</dt>
+					<dd><%= @sequencing.status %></dd>
+					<dt>Date</dt>
+					<dd><%= @sequencing.created_at %></dd>		
+				</dl>
+				
+				<%= link_to 'Update', edit_spcr_path(@spcr), :class => 'btn'%>
+			</div>
+			
+			<div class="tab-pane" id="protocol">
+
+			</div>
+			
+			<% @sequencing.sequencing_growth_plates.each do |plate| %>
+				<div class="tab-pane" id="<%= plate.name %>">
+					<div class="row-fluid">
+						<div class="span4">
+							<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => plate.wells_index }%>
+						</div>
+						<div class="span4">
+							<%= render :partial => "plate_legend", :locals => {:index => plate.index_by_part }%>
+						</div>
+					</div>
+				</div>
+			<% end %>
+
+	  </div>
+	</div>
+	
+</p>

@@ -4,6 +4,7 @@ class SequencingsController < ApplicationController
   end
 
   def show
+    @sequencing = Sequencing.find(params[:id])
   end
 
   def new
@@ -16,25 +17,43 @@ class SequencingsController < ApplicationController
       ActiveRecord::Base.transaction do
         @seq = Sequencing.new(params[:sequencing])
         @seq.user = current_user
+        @seq.status = Status.find_by_process_and_default(:sequencing,true)
         @seq.save
-        
-        #creating a new sequencing growth plate 
-        plate = SequencingGrowthPlate.new
-        plate.user = current_user
-        plate.sequencing = @seq
-        plate.save
-        plate.name = "seq_growth_#{plate.id}"
-        plate.save
-                
-        wells = create_wells()
+
+        #retrieving the list of empty plates        
+        seqplates = SequencingPlate.available.reverse
+        seqplate = nil
+        seqgrowthplate = nil
+        wells = [] 
+         
         @seq.sequencing_products.each do |rxn|
-          well = SequencingGrowthPlateWell.create(sequencing_product: rxn, sequencing_growth_plate: plate, well: wells.pop())
+          
+          if wells.empty?
+            seqplate = seqplates.pop()
+            
+            #creating a new growth plate
+            seqgrowthplate = SequencingGrowthPlate.new
+            seqgrowthplate.user = current_user
+            seqgrowthplate.sequencing = @seq
+            seqgrowthplate.save
+            seqgrowthplate.name = "seq_growth_#{seqplate.id}_#{seqgrowthplate.id}"
+            seqgrowthplate.save
+            
+            #getting the list of databases and locking the objects so that nobody can put
+            #anything on the plate until the operation is completed. 
+            #Pessimistic locking is enforced to avoid all the mess 
+            wells = seqplate.sequencing_plate_wells.available.lock(:true).reverse
+            
+          end
+          
+          sp_well = wells.pop()
+          sgp_well = SequencingGrowthPlateWell.create(sequencing_product: rxn, sequencing_growth_plate: seqgrowthplate, well: sp_well.well)
+          sp_well.sequencing_growth_plate_well = sgp_well
+          sp_well.save
         end
         
       end
-      
       redirect_to sequencing_path(@seq), :notice => "Clones submitted for sequencing."
-      
     rescue => ex
       puts ex.message
     end
@@ -43,14 +62,4 @@ class SequencingsController < ApplicationController
   def edit
   end
   
-  private
-    def create_wells
-      wells = []
-      ('A'..'H').each do |row|
-        ('01'..'12').each do |col|
-          wells.push(row+col)
-        end
-      end  
-      return wells.reverse!
-    end
 end

@@ -8,4 +8,8 @@ class OligoPlateWell < ActiveRecord::Base
     oligo.name[-2..-1]
   end
   
+  def plate_name
+    oligo_plate.name
+  end
+  
 end

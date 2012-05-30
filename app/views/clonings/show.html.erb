@@ -11,17 +11,21 @@
 
   <div class="tab-content">
 		<div class="tab-pane active" id="info">
-			<p>
-									
-				<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @cloning.growth_plate.wells_index }%>
+			<div class="row-fluid">
+				<div class="span4">					
+					<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @cloning.growth_plate.wells_index }%>
 				
-				<dl class="dl-horizontal">
-					<dt>Date</dd>
-					<dd><%= @cloning.created_at %></dt>		
-				</dl>
+					<dl class="dl-horizontal">
+						<dt>Date</dd>
+						<dd><%= @cloning.created_at %></dt>		
+					</dl>
 				
-				<%= link_to 'Update', edit_cloning_path(@cloning), :class => 'btn'%>
-			</p>
+					<%= link_to 'Update', edit_cloning_path(@cloning), :class => 'btn'%>
+				</div>
+				<div class="span4">
+					<%= render :partial => "plate_legend", :locals => {:index => @cloning.growth_plate.index_by_part }%>
+				</div>
+			</div>
 			
 		</div>
 	
