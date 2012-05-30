@@ -13,7 +13,7 @@
 		<div class="tab-pane active" id="info">
 			<div class="row-fluid">
 				<div class="span4">					
-					<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @cloning.growth_plate.wells_index }%>
+					<%= render :partial => "layouts/commons/plates/growth_plate_96_wells", :locals => {:plate => @cloning.growth_plate.wells_index }%>
 				
 					<dl class="dl-horizontal">
 						<dt>Date</dd>
@@ -22,7 +22,7 @@
 				
 					<%= link_to 'Update', edit_cloning_path(@cloning), :class => 'btn'%>
 				</div>
-				<div class="span4">
+				<div class="span6">
 					<%= render :partial => "plate_legend", :locals => {:index => @cloning.growth_plate.index_by_part }%>
 				</div>
 			</div>

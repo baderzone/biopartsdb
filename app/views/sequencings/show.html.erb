@@ -36,9 +36,9 @@
 				<div class="tab-pane" id="<%= plate.name %>">
 					<div class="row-fluid">
 						<div class="span4">
-							<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => plate.wells_index }%>
+							<%= render :partial => "layouts/commons/plates/seq_growth_plate_96_wells", :locals => {:plate => plate.wells_index }%>
 						</div>
-						<div class="span4">
+						<div class="span6">
 							<%= render :partial => "plate_legend", :locals => {:index => plate.index_by_part }%>
 						</div>
 					</div>

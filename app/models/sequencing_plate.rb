@@ -2,7 +2,7 @@ class SequencingPlate < ActiveRecord::Base
   belongs_to :user
   belongs_to :status
   
-  has_many :sequencing_plate_wells
+  has_many :sequencing_plate_wells, :dependent => :destroy 
   
   scope :available, joins(:sequencing_plate_wells).where(:sequencing_plate_wells => {:sequencing_growth_plate_well_id => nil}).uniq
 

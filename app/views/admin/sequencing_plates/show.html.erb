@@ -11,7 +11,7 @@
 		<div class="tab-pane active" id="info">
 			<div class="row-fluid">
 				<div class="span4">
-					<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @sequencing_plate.index_by_well }%>
+					<%= render :partial => "layouts/commons/plates/seq_plate_96_wells", :locals => {:plate => @sequencing_plate.index_by_well }%>
 				
 					<dl class="dl-horizontal">
 						<dt>Date</dt>
@@ -20,7 +20,7 @@
 						<dd><%= @sequencing_plate.status %></dd>		
 					</dl>
 				</div>
-				<div class="span4">
+				<div class="span6">
 					<%= render :partial => "admin/sequencing_plates/plate_legend", :locals => {:index => @sequencing_plate.index_by_part }%>
 				</div>
 			</div>

@@ -1,0 +1,42 @@
+<h3><%= plate[plate.keys.first].plate_name%></h3>
+<br/>
+<table class="plate">
+	<tr>
+	<% ('00'..'12').each do |col| %>
+		<td class="well_label"><%= col %></td>
+	<% end %>
+	</tr>
+	
+		<% 
+			well_class = "well_in_use_1";
+			product = nil
+			('A'..'H').each do |row| 
+		%>
+		<tr>
+			<td class="well_label"><%= row %></td>
+			
+			<% ('01'..'12').each do |col| %>
+				
+				<% 
+					if plate.key?(row+col)
+						 if product.nil? 
+							product = plate[row+col].sequencing_product.clone.transformation.ligation_product.to_s
+						 else
+							if plate[row+col].sequencing_product.clone.transformation.ligation_product.to_s != product
+								product = plate[row+col].sequencing_product.clone.transformation.ligation_product.to_s
+								well_class = well_class == "well_in_use_1" ? "well_in_use_2" : "well_in_use_1"
+							end
+						end
+					end
+				%>
+
+				<% if plate.key?(row+col) %>
+					<td class="<%= well_class %>"><%= plate[row+col] %></td>
+				<% else %>
+					<td class="well_is_empty"/>
+				<% end %>
+				
+			<% end %>
+		</tr>
+	<% end %>
+</table>
