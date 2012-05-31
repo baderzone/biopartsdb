@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  authorize_resource :class => :admin
   
   layout 'admin'
   

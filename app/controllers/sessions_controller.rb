@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_filter :is_valid_session?
   
   def create
     auth = request.env['omniauth.auth']    

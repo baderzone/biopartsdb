@@ -2,20 +2,15 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 
-
-gem 'redcarpet'
-
-
-gem 'ruby-units'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
 
-# omniauth gemfile for authentications
+# gemfile for authentications and authorization
 gem 'omniauth'
 gem 'omniauth-openid'
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,6 +29,8 @@ gem 'jquery-rails'
 
 gem 'simple_form'
 gem 'carrierwave'
+gem 'redcarpet'
+gem 'ruby-units'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

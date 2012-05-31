@@ -9,8 +9,13 @@
       <li><%= link_to 'Parts', parts_path %></li>
       <li><%= link_to 'Protocols', protocols_path %></li>	
       <li class="divider"></li>
-      <li><%= link_to 'Personal Info', users_path %></li>						
-      <li><%= link_to 'Logout', signout_path %></li>						
+      <li><%= link_to 'Personal Info', users_path %></li>
+			<% if current_user.member?("admin") %>
+				<li class="divider"></li>
+				<li><%= link_to 'Administration', admin_root_path %></li>
+				<li class="divider"></li>
+			<% end %>
+      <li><%= link_to 'Logout', signout_path %></li>
     </ul>
   </li>
 	<li class="divider-vertical"/>

@@ -1,4 +1,5 @@
 class Admin::SequencingPlatesController < ApplicationController
+  authorize_resource :class => :admin
   
   layout 'admin'
   
