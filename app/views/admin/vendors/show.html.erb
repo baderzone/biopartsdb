@@ -1,0 +1,21 @@
+<div class="page-header">
+	<h1><i class="icon-folder-open"> </i>Vendor <%= @vendor.name %></h1>
+</div>
+<p>
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	  </ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="info">
+				<dl class="dl-horizontal">
+					<dt>Name</dt>
+					<dd><%= @vendor.name %></dd>
+				</dl>
+			</div>
+	  </div>
+
+		<div class="form-actions">
+			<%= link_to 'Update', edit_admin_vendor_path(@vendor), :class => 'btn'%>
+		</div>
+</p>

@@ -1,0 +1,22 @@
+<div class="page-header">
+	<h1><i class="icon-folder-open"> </i>Vendors</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>IDT</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @vendors.each do |v| %>
+				<tr>
+					<td><%= link_to v.id, admin_vendor_path(v) %></td>
+					<td><%= v.name %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>
+

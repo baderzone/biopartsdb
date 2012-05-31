@@ -1,0 +1,2 @@
+module Admin::VendorsHelper
+end
