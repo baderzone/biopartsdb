@@ -1,0 +1,25 @@
+<div class="page-header">
+	<h1><i class="icon-folder-open"> </i>Strain <%= @strain.name %></h1>
+</div>
+<p>
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	  </ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="info">
+				<dl class="dl-horizontal">
+					<dt>Name</dt>
+					<dd><%= @strain.name %></dd>
+					<dt>Organism</dt>
+					<dd><%= @strain.organism.name %></dd>
+					<dt>Vendor</dt>
+					<dd><%= @strain.vendor.name %></dd>
+				</dl>
+			</div>
+	  </div>
+
+		<div class="form-actions">
+			<%= link_to 'Update', edit_admin_strain_path(@strain), :class => 'btn'%>
+		</div>
+</p>

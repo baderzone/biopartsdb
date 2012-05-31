@@ -1,0 +1,23 @@
+<div class="page-header">
+	<h1><i class="icon-folder-open"> </i>Plasmid <%= @plasmid.name %></h1>
+</div>
+<p>
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	  </ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="info">
+				<dl class="dl-horizontal">
+					<dt>Name</dt>
+					<dd><%= @plasmid.name %></dd>
+					<dt>Vendor</dt>
+					<dd><%= @plasmid.vendor.name %></dd>
+				</dl>
+			</div>
+	  </div>
+
+		<div class="form-actions">
+			<%= link_to 'Update', edit_admin_plasmid_path(@plasmid), :class => 'btn'%>
+		</div>
+</p>

@@ -1,0 +1,26 @@
+<div class="page-header">
+	<h1><i class="icon-folder-open"> </i>Strains</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Strain</th>
+				<th>Organism</th>
+				<th>Vendor</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @strains.each do |s| %>
+				<tr>
+					<td><%= link_to s.id, admin_strain_path(s) %></td>
+					<td><%= s.name %></td>
+					<td><%= s.organism.name %></td>
+					<td><%= s.vendor.name %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>
+
