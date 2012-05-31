@@ -1,2 +1,25 @@
-<h1>Admin</h1>
-<p></p>
+<div class="page-header">
+	<h1><i class="icon-folder-open"> </i>Admin</h1>
+</div>
+<p>
+	<div class="row-fluid">
+		<div class="span4">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>		
+					<tr>
+						<td><span class="badge badge-info"><%= @count_users %></span> Registered Users</td>
+					</tr>
+					<tr>
+						<td><span class="badge badge-success"><%= @count_plates %></span> Sequencing Plates</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</p>
+

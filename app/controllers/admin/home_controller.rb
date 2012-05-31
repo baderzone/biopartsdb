@@ -4,5 +4,7 @@ class Admin::HomeController < ApplicationController
   layout 'admin'
   
   def index
+    @count_users = User.all.size
+    @count_plates = SequencingPlate.all.size
   end
 end
