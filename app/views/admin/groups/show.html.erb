@@ -1,31 +1,31 @@
 <div class="page-header">
-	<h1><i class="icon-user"> </i>Update User</h1>
+	<h1><i class="icon-folder-open"> </i>Group <%= @group.name %></h1>
 </div>
 <p>
 			<ul class="nav nav-tabs">
 	    <li class="active"><a href="#parts" data-toggle="tab">Info</a></li>
-	    <li><a href="#device" data-toggle="tab">Groups</a></li>
+	    <li><a href="#device" data-toggle="tab">Users</a></li>
 	  </ul>
 
 		<div class="tab-content">
 			<div class="tab-pane active" id="parts">
 				<dl class="dl-horizontal">
-					<dt>Full Name</dd>
-					<dd><%= @user.fullname %></dt>
-					<dt>Email</dd>
-					<dd><%= @user.email %></dt>
+					<dt>Name</dd>
+					<dd><%= @group.name %></dt>
+					<dt>Description</dd>
+					<dd><%= @group.description %></dt>
 				</dl>
 			</div>
 			<div class="tab-pane" id="device">
 				<ul>
-					<% @user.groups.each do |g| %>
-						<li><%= g.name %></li>
+					<% @group.users.each do |u| %>
+						<li><%= u.fullname %></li>
 					<% end %>
 				</ul>
 			</div>	
 	  </div>
 
 		<div class="form-actions">
-			<%= link_to 'Update', edit_admin_user_path(@user), :class => 'btn'%>
+			<%= link_to 'Update', edit_admin_group_path(@group), :class => 'btn'%>
 		</div>
 </p>

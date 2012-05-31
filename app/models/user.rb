@@ -33,9 +33,13 @@ class User < ActiveRecord::Base
   has_many :sequencings
   has_many :sequencing_products, :through => :sequencings
   
-  attr_accessible :email, :fullname, :provider
+  attr_accessible :email, :fullname, :provider, :group_ids
   
   validates :fullname, :email, :presence => true
+  
+  def to_s
+    fullname
+  end
   
   #utility method for creating an user at the first login
   def self.create_with_omniauth(auth)

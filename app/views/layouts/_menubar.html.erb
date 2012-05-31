@@ -10,7 +10,7 @@
       <li><%= link_to 'Protocols', protocols_path %></li>	
       <li class="divider"></li>
       <li><%= link_to 'Personal Info', users_path %></li>
-			<% if current_user.member?("admin") %>
+			<% if can? :manage, :admin %>
 				<li class="divider"></li>
 				<li><%= link_to 'Administration', admin_root_path %></li>
 				<li class="divider"></li>
@@ -28,7 +28,7 @@
     </a>
     <ul class="dropdown-menu">
 	    <li class="nav-header">sPCRs</li>
-	  <li><a href="<%= spcrs_path %>" >Status <span style ="float:right" class="label"><%= current_user.spcrs.pendings.size %></span></a></li>
+	  	<li><a href="<%= spcrs_path %>" >Status <span style ="float:right" class="label"><%= current_user.spcrs.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_spcr_path %></li>
 			<li class="divider"></li>
       <li class="nav-header">tPCRs</li>
