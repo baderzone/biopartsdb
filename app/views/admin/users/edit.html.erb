@@ -4,17 +4,21 @@
 <p>
 	<%= simple_form_for([:admin,@user], :html => {:class => 'form-horizontal' }) do |f| %>
 		<ul class="nav nav-tabs">
-	    <li class="active"><a href="#parts" data-toggle="tab">Info</a></li>
-	    <li><a href="#device" data-toggle="tab">Groups</a></li>
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#groups" data-toggle="tab">Groups</a></li>
+			<li><a href="#parts" data-toggle="tab">Parts</a></li>
 	  </ul>
 
 		<div class="tab-content">
-			<div class="tab-pane active" id="parts">
+			<div class="tab-pane active" id="info">
 				<%= f.input :fullname %>
 				<%= f.input :email, :disabled => true %>
 			</div>
-			<div class="tab-pane" id="device">
+			<div class="tab-pane" id="groups">
 				<%= f.association :groups, :as => :check_boxes %>
+			</div>
+			<div class="tab-pane" id="parts">
+				<%= f.association :parts, :as => :check_boxes %>
 			</div>
 	  </div>
 

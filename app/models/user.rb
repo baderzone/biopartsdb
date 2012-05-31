@@ -33,7 +33,8 @@ class User < ActiveRecord::Base
   has_many :sequencings
   has_many :sequencing_products, :through => :sequencings
   
-  attr_accessible :email, :fullname, :provider, :group_ids
+  attr_accessible :email, :fullname, :provider
+  attr_accessible :group_ids, :part_ids
   
   validates :fullname, :email, :presence => true
   

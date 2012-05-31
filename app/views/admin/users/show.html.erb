@@ -3,12 +3,13 @@
 </div>
 <p>
 			<ul class="nav nav-tabs">
-	    <li class="active"><a href="#parts" data-toggle="tab">Info</a></li>
-	    <li><a href="#device" data-toggle="tab">Groups</a></li>
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#groups" data-toggle="tab">Groups</a></li>
+			<li><a href="#parts" data-toggle="tab">Parts</a></li>
 	  </ul>
 
 		<div class="tab-content">
-			<div class="tab-pane active" id="parts">
+			<div class="tab-pane active" id="info">
 				<dl class="dl-horizontal">
 					<dt>Full Name</dd>
 					<dd><%= @user.fullname %></dt>
@@ -16,10 +17,17 @@
 					<dd><%= @user.email %></dt>
 				</dl>
 			</div>
-			<div class="tab-pane" id="device">
+			<div class="tab-pane" id="groups">
 				<ul>
 					<% @user.groups.each do |g| %>
 						<li><%= g.name %></li>
+					<% end %>
+				</ul>
+			</div>
+			<div class="tab-pane" id="parts">
+				<ul>
+					<% @user.parts.each do |p| %>
+						<li><%= p.name %></li>
 					<% end %>
 				</ul>
 			</div>	
