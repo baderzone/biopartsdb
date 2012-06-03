@@ -33,7 +33,9 @@
 				<dd><%= @ligation.created_at %></dt>		
 			</dl>
 			
-			<%= link_to 'Update', edit_ligation_path(@ligation), :class => 'btn'%>
+			<div class="form-actions"> 
+				<%= link_to 'Update', edit_ligation_path(@ligation), :class => 'btn'%>
+			</div>
 		</div>
 		
 		<div class="tab-pane" id="protocol">

@@ -19,7 +19,9 @@
 						<dd><%= @cspcr.created_at %></dt>		
 					</dl>
 				
-					<%= link_to 'Update', edit_cspcr_path(@cspcr), :class => 'btn'%>
+					<div class="form-actions"> 
+						<%= link_to 'Update', edit_cspcr_path(@cspcr), :class => 'btn'%>
+					</div>
 			</div>
 			
 			<div class="tab-pane" id="plate">

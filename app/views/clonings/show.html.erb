@@ -20,7 +20,9 @@
 						<dd><%= @cloning.created_at %></dt>		
 					</dl>
 				
-					<%= link_to 'Update', edit_cloning_path(@cloning), :class => 'btn'%>
+					<div class="form-actions"> 
+						<%= link_to 'Update', edit_cloning_path(@cloning), :class => 'btn'%>
+					</div>
 				</div>
 				<div class="span6">
 					<%= render :partial => "plate_legend", :locals => {:index => @cloning.growth_plate.index_by_part }%>

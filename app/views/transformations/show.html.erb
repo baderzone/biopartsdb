@@ -35,7 +35,9 @@
 				<dd><%= @transformation.created_at %></dt>		
 				</dl>
 	
-				<%= link_to 'Update', edit_transformation_path(@transformation), :class => 'btn'%>
+				<div class="form-actions"> 
+					<%= link_to 'Update', edit_transformation_path(@transformation), :class => 'btn'%>
+				</div>
 			</p>
 			
 		</div>

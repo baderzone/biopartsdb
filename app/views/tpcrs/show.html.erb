@@ -42,7 +42,9 @@
 					<dd><%= @tpcr.created_at %></dt>		
 				</dl>
 				
-				<%= link_to 'Update', edit_tpcr_path(@tpcr), :class => 'btn'%>
+				<div class="form-actions"> 
+					<%= link_to 'Update', edit_tpcr_path(@tpcr), :class => 'btn'%>
+				</div>
 			</div>
 			
 			<% @tpcr.tpcr_products.each do |product| %>

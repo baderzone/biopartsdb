@@ -28,9 +28,6 @@
 							<tr>
 								<td>
 									<%= product.tpcr_product.part.name  %>
-									<% if !product.quality_control.nil? and product.quality_control.name == "PASS" %>
-										<span class="label label-success"> PASS </span>
-									<% end %>
 								</td>	
 							</tr>
 						<% end %>
@@ -46,7 +43,9 @@
 					<dd><%= @fpcr.created_at %></dt>		
 				</dl>
 				
-				<%= link_to 'Update', edit_fpcr_path(@fpcr), :class => 'btn'%>
+				<div class="form-actions"> 
+					<%= link_to 'Update', edit_fpcr_path(@fpcr), :class => 'btn'%>
+				</div>
 			</div>
 			
 			<% @fpcr.fpcr_products.each do |product| %>

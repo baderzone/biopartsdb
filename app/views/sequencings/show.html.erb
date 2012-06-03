@@ -25,7 +25,10 @@
 					<dd><%= @sequencing.created_at %></dd>		
 				</dl>
 				
-				<%= link_to 'Update', edit_spcr_path(@spcr), :class => 'btn'%>
+				<div class="form-actions"> 
+					<%= link_to 'Update', edit_spcr_path(@spcr), :class => 'btn'%>
+				</div>
+				
 			</div>
 			
 			<div class="tab-pane" id="protocol">

@@ -32,7 +32,9 @@
 					<dd><%= @gel.created_at %></dt>		
 				</dl>
 				
-				<%= link_to 'Update', edit_cspcr_gel_path(@gel), :class => 'btn'%>
+				<div class="form-actions"> 
+					<%= link_to 'Update', edit_cspcr_gel_path(@gel), :class => 'btn'%>
+				</div>
 			</div>
 			<div class="tab-pane" id="images">
 				<ul class="thumbnails">
