@@ -8,6 +8,8 @@ class SequencingPlate < ActiveRecord::Base
 
   attr_accessible :name
   attr_accessible :status_id
+
+  validates :name, :status, :presence => true
   
   def index_by_well
     plate = Hash.new

@@ -3,6 +3,8 @@ class Device < ActiveRecord::Base
   
   attr_accessible :name, :device_type_id
   
+  validates :device_type, :name, :presence => true
+  
   def to_s
     name
   end

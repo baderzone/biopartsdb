@@ -4,6 +4,8 @@ class Plasmid < ActiveRecord::Base
   attr_accessible :name, :vendor
   attr_accessible :vendor_id
   
+  validates :name, :vendor, :presence => true
+  
   def to_s
     "#{name}"
   end

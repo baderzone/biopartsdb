@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><i class="icon-folder-open"> </i>Vendors</h1>
+	<h1><i class="icon-folder-open"> </i>Devices</h1>
 </div>
 <p>
 	<table class="table table-bordered table-striped">
@@ -7,13 +7,15 @@
 			<tr>
 				<th>id</th>
 				<th>Name</th>
+				<th>Type</th>
 			</tr>
 		</thead>
 		<tbody>		
-			<% @vendors.each do |v| %>
+			<% @devices.each do |d| %>
 				<tr>
-					<td><%= link_to v.id, admin_vendor_path(v) %></td>
-					<td><%= v.name %></td>
+					<td><%= link_to d.id, admin_device_path(d) %></td>
+					<td><%= d.name %></td>
+					<td><%= d.device_type %></td>
 				</tr>
 			<% end %>
 		</tbody>

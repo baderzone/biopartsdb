@@ -1,5 +1,13 @@
 Biopartsdb::Application.routes.draw do
 
+  get "devices/index"
+
+  get "devices/show"
+
+  get "devices/new"
+
+  get "devices/edit"
+
   get "strains/index"
 
   get "strains/show"
@@ -152,7 +160,7 @@ Biopartsdb::Application.routes.draw do
   
   namespace :admin do
     root :to => "home#index"
-    resources :home, :users, :groups, :plasmids, :strains, :sequencing_plates, :vendors
+    resources :home, :users, :groups, :plasmids, :strains, :sequencing_plates, :vendors, :devices
   end
   
   # The priority is based upon order of creation:
