@@ -22,6 +22,7 @@ class LigationsController < ApplicationController
     if @ligation.save
       @ligation.ligation_products.each do |lig|
         lig.plasmid = @plasmid
+        lig.part = lig.pcr_product.part
       end
       @ligation.save
       redirect_to ligation_path(@ligation), :notice => "Ligations created correctly."

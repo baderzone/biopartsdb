@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603210027) do
+ActiveRecord::Schema.define(:version => 20120603230021) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20120603210027) do
     t.integer  "quality_control_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "part_id"
   end
 
   add_index "ligation_products", ["ligation_id"], :name => "index_ligation_products_on_ligation_id"

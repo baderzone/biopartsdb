@@ -20,7 +20,7 @@ class TransformationsController < ApplicationController
     @transformation.blue_count = 0
     @transformation.light_blue_count = 0
     
-    if @transformation.save
+    if @transformation.save      
       redirect_to transformation_path(@transformation), :notice => "Transformation created correctly."
     else
       flash[:error] = "Error you forget something: " + get_model_error_message(@transformation)

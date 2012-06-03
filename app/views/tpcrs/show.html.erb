@@ -6,7 +6,7 @@
 	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
 		<li><a href="#protocol" data-toggle="tab">Protocol</a></li>
 	    <li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Growth Plates<b class="caret"></b></a>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Oligo Plates<b class="caret"></b></a>
 			<ul class="dropdown-menu">
 				<% @tpcr.tpcr_products.each do |product| %>
 				<li><a href="#<%= product.part.name %>" data-toggle="tab"><%= product.part.name %></a></li>
@@ -50,7 +50,9 @@
 			<% @tpcr.tpcr_products.each do |product| %>
 				<div class="tab-pane" id="<%= product.part.name %>">
 					<p>
-						<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => product.part.wells_index }%>
+						<% product.part.oligo_plates.each do |p| %>
+							<%= render :partial => "layouts/commons/plates/oligo_plate_96_wells.html.erb", :locals => {:plate => p.index_wells_for_part(product.part) }%>
+						<% end %>
 					</p>
 				</div>
 			<% end %>

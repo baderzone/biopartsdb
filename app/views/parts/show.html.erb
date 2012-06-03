@@ -30,7 +30,9 @@
 		</div>
 		
 		<div class="tab-pane" id="plate">
-			<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => @part.wells_index }%>
+			<% @part.oligo_plates.each do |p| %>
+				<%= render :partial => "layouts/commons/plates/oligo_plate_96_wells.html.erb", :locals => {:plate => p.index_wells_for_part(@part) }%>
+			<% end %>
 		</div>
 	</div>
 </div>

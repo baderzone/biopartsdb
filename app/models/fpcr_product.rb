@@ -6,7 +6,8 @@ class FpcrProduct < ActiveRecord::Base
   
   has_many :pcr_gel_lanes, :as => :pcr_product
   has_many :pcr_gels, :through => :pcr_gel_lanes
-  has_many :ligations, :as => :pcr_product
+  has_many :ligation_products, :as => :pcr_product
+  has_many :transformations, :through => :ligation_products, :as => :pcr_product
 
   scope :reaction_pass, where(:quality_control_id => QualityControl.find_by_process_and_name(Fpcr.to_s,:pass))
   scope :reaction_fail, where(:quality_control_id => QualityControl.find_by_process_and_name(Fpcr.to_s,:fail))

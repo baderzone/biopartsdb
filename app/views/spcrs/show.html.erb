@@ -54,7 +54,9 @@
 				<% @spcr.spcr_products.each do |product| %>
 					<div class="tab-pane" id="<%= product.part.name %>">
 						<p>
-							<%= render :partial => "layouts/plate_96_wells", :locals => {:plate => product.part.wells_index }%>
+							<% product.part.oligo_plates.each do |p| %>
+								<%= render :partial => "layouts/commons/plates/oligo_plate_96_wells.html.erb", :locals => {:plate => p.index_wells_for_part(product.part) }%>
+							<% end %>
 						</p>
 					</div>
 				<% end %>
