@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      redirect_to admin_user_path(@user)
+      redirect_to admin_user_path(@user), :notice => "User updated correctly."
     else
       render :edit
     end

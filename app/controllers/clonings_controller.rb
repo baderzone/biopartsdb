@@ -59,8 +59,7 @@ class CloningsController < ApplicationController
       redirect_to cloning_path(@cloning)
       
     rescue => ex
-      flash[:error] = "Error while performing cloning (#{ex.message})"
-      redirect_to :controller => :clonings, :action => :new
+      redirect_to :controller => :clonings, :action => :new, :flash => {:error => "Error while performing cloning (#{ex.message})" }
     end  
   end
 

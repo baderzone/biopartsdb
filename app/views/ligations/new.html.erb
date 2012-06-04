@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><i class="icon-play-circle"> </i>Run Ligations</h1>
+	<h1><i class="icon-play-circle"> </i>New Ligations</h1>
 </div>
 <p>
 	<%= simple_form_for(@ligation, :html => {:class => 'form-horizontal' }) do |f| %>
@@ -20,7 +20,7 @@
 		<%= collection_select(:plasmid, :id, Plasmid.all, :id, :name) %>
 		
 		<div class="form-actions">
-			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
+			<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
 			<%= link_to 'Cancel', ligations_path, :class => 'btn'%>
 		</div>
 	<% end %>

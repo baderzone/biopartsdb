@@ -24,7 +24,7 @@ class TpcrProduct < ActiveRecord::Base
   end
   
   def to_label
-    "#{part.name} (#{id})"
+    "#{part.name} (tPCR, #{id})"
   end
 
 end

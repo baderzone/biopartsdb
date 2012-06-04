@@ -20,7 +20,7 @@ class Admin::PlasmidsController < ApplicationController
     @plasmid = Plasmid.new(params[:plasmid])
     
     if @plasmid.save
-      redirect_to admin_plasmid_path(@plasmid)
+      redirect_to admin_plasmid_path(@plasmid), :notice => "Plasmid created correctly."
     else
       render :new
     end
@@ -34,7 +34,7 @@ class Admin::PlasmidsController < ApplicationController
     @plasmid = Plasmid.find(params[:id])
 
     if @plasmid.update_attributes(params[:plasmid])
-      redirect_to admin_plasmid_path(@plasmid)
+      redirect_to admin_plasmid_path(@plasmid), :notice => "Plasmid updated correctly."
     else
       render :edit
     end

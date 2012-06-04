@@ -19,7 +19,16 @@
 					<tbody>
 						<% @gel.cspcr_gel_lanes.each do |lane| %>
 							<tr>
-								<td><%= lane.cspcr_product %></td>	
+								<td>
+									<%= lane.cspcr_product %>
+									<% if lane.quality_control.nil? %>
+										<span class="label label-warning">Pending</span>
+									<% elsif lane.quality_control.name == "PASS" %>
+										<span class="label label-success">PASS</span>
+									<% else %>
+										<span class="label label-important"><%= lane.quality_control %></span>	
+									<% end %>
+								</td>	
 							</tr>
 						<% end %>						
 					</tbody>

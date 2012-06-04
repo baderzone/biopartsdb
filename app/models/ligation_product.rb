@@ -21,7 +21,7 @@ class LigationProduct < ActiveRecord::Base
   attr_accessible :quality_control_id, :ligation_id, :plasmid_id
   
   def to_s
-    pcr_product.to_s
+    "#{pcr_product.to_s} (#{id})"
   end
   
   

@@ -28,6 +28,13 @@
 							<tr>
 								<td>
 									<%= product.tpcr_product.part.name  %>
+									<% if product.quality_control.nil? %>
+										<span class="label label-warning">Pending</span>
+									<% elsif product.quality_control.name == "PASS" %>
+										<span class="label label-success">PASS</span>
+									<% else %>
+										<span class="label label-important"><%= product.quality_control %></span>	
+									<% end %>
 								</td>	
 							</tr>
 						<% end %>

@@ -5,13 +5,16 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   helper_method :get_model_error_message
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :flash => {:error => "You are not allowed to perform this operation. Your action has been recorded!"}
+  end
       
   private
 
     def is_valid_session?
       if session[:user_id].nil?
-        flash[:error] = "Login required."
-        redirect_to root_url
+        redirect_to root_url, :flash => { :error => "Login required." }
       end
     end
     

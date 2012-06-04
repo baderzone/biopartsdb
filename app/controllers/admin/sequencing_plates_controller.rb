@@ -31,7 +31,7 @@ class Admin::SequencingPlatesController < ApplicationController
         end
         
       end
-      redirect_to admin_sequencing_plate_path(@sequencing_plate)
+      redirect_to admin_sequencing_plate_path(@sequencing_plate), :notice => "Sequencing plate created correctly."
     rescue => ex
       flash[:error] = "Error while creating sequencing plate. #{ex.message}"
       render :new 

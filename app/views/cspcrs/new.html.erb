@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><i class="icon-random"> </i>Run csPCR</h1>
+	<h1><i class="icon-random"> </i>New csPCR</h1>
 </div>
 <p>
 	<%= simple_form_for(@cspcr, :html => {:class => 'form-horizontal' }) do |f| %>
@@ -15,7 +15,7 @@
 		</li>
 	</ul>
 	<div id="myTabContent" class="tab-content">
-		<div class="tab-pane fade in active" id="home">
+		<div class="tab-pane active" id="home">
 			<p>
 				<%= f.association :device, :collection => @devices %>
 			</p>
@@ -36,7 +36,7 @@
 	</div>
 		
 		<div class="form-actions">
-			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
+			<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
 			<%= link_to 'Cancel', cspcrs_path, :class => 'btn'%>
 		</div>
 	<% end %>

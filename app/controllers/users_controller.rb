@@ -14,9 +14,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update_attributes(params[:user])
-      redirect_to user_path(@user), :notice => "Info updated."
+      redirect_to user_path(@user), :notice => "User information updated."
     else
-      render action: "edit"
+      render action: "edit", :flash => {:error => "Problem while updating user information."}
     end
   end
 end

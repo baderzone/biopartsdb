@@ -6,8 +6,7 @@ class PcrGelImagesController < ApplicationController
     if @img.save
       redirect_to pcr_gel_path(@img.pcr_gel),:notice => "Image uploaded correctly"
     else
-      flash[:error] = "Error while uploading the image"
-      redirect_to pcr_gel_path(@img.pcr_gel)
+      redirect_to pcr_gel_path(@img.pcr_gel), :flash => {:error => "Error while uploading the image"}
     end
     
   end

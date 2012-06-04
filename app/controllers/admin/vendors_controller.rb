@@ -19,7 +19,7 @@ class Admin::VendorsController < ApplicationController
     @vendor = Vendor.new(params[:vendor])
     
     if @vendor.save
-      redirect_to admin_vendor_path(@vendor)
+      redirect_to admin_vendor_path(@vendor), :notice => "Vendor created correctly."
     else
       render :new
     end
@@ -34,7 +34,7 @@ class Admin::VendorsController < ApplicationController
     @vendor = Vendor.find(params[:id])
     
     if @vendor.update_attributes(params[:vendor])
-      redirect_to admin_vendor_path(@vendor)
+      redirect_to admin_vendor_path(@vendor), :notice => "Vendor updated correctly."
     else
       render :edit
     end

@@ -55,7 +55,7 @@ class SequencingsController < ApplicationController
       end
       redirect_to sequencing_path(@seq), :notice => "Clones submitted for sequencing."
     rescue => ex
-      puts ex.message
+      redirect_to new_sequencing_path, :flash => {:error => "Problem while sending clones for sequencing. #{ex.message}"}
     end
   end
 

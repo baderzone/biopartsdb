@@ -21,8 +21,7 @@ class FpcrsController < ApplicationController
     if @fpcr.save
       redirect_to fpcr_path(@fpcr), :notice => "fPCR created correctly."
     else
-      flash[:error] = "Error you forget something: " + get_model_error_message(@fpcr)
-      render :new, :error => "fPCR error."
+      render :new, :error => "fPCR error.", :flash => {:error => "Error you forget something: " + get_model_error_message(@fpcr)}
     end
   end
 
@@ -37,7 +36,7 @@ class FpcrsController < ApplicationController
     if @fpcr.update_attributes(params[:fpcr])
       redirect_to fpcr_path(@fpcr), :notice => "fPCR updated correctly."
     else
-      render :edit, :id => @fpcr, :error => "fPCR update error."
+      render :edit, :id => @fpcr, :flash => {:error => "fPCR update error."} 
     end
   end
 end

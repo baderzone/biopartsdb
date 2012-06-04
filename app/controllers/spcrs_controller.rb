@@ -23,8 +23,7 @@ class SpcrsController < ApplicationController
     if @spcr.save
       redirect_to spcr_path(@spcr), :notice => "spcr created correctly."
     else
-      flash[:error] = "Error you forget something: " + get_model_error_message(@spcr)
-      render :new, :error => "sPCR error."
+      render :new, :flash => {:error => "Error you forget something: " + get_model_error_message(@spcr)}
     end
   end
   
@@ -40,7 +39,7 @@ class SpcrsController < ApplicationController
     if @spcr.update_attributes(params[:spcr])
       redirect_to spcr_path(@spcr), :notice => "sPCR updated correctly."
     else
-      render :edit, :id => @spcr, :error => "sPCR update error."
+      render :edit, :id => @spcr, :flash => {:error => "sPCR update error."}
     end
   end
 end

@@ -19,7 +19,7 @@ class Admin::GroupsController < ApplicationController
     @group = Group.new(params[:group])
     
     if @group.save
-      redirect_to admin_group_path(@group), :notice => "Group created."
+      redirect_to admin_group_path(@group), :notice => "Group created correctly."
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::GroupsController < ApplicationController
     @group = Group.find(params[:id])
   
     if @group.update_attributes(params[:group])
-      redirect_to admin_group_path(@group), :notice => "Group updated."
+      redirect_to admin_group_path(@group), :notice => "Group updated updated."
     else
       render :edit
     end

@@ -35,8 +35,7 @@ class CspcrsController < ApplicationController
       redirect_to cspcr_path(@cspcr), :notice => "csPCR created correctly."
       
     rescue => ex
-      flash[:error] = "An error occured while creating a csPCR. #{ex.message}"
-      render :new
+      render :new, :flash => {:error => "An error occured while creating a csPCR. #{ex.message}" }
       return
     end
     

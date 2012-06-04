@@ -21,8 +21,7 @@ class TpcrsController < ApplicationController
     if @tpcr.save
       redirect_to tpcr_path(@tpcr), :notice => "tPCR created correctly."
     else
-      flash[:error] = "Error you forget something: " + get_model_error_message(@tpcr)
-      render :new, :error => "tPCR error."
+      render :new, :flash => {:error => "Error you forget something: " + get_model_error_message(@tpcr)}
     end
   end
   
@@ -37,7 +36,7 @@ class TpcrsController < ApplicationController
     if @tpcr.update_attributes(params[:tpcr])
       redirect_to tpcr_path(@tpcr), :notice => "tPCR updated correctly."
     else
-      render :edit, :id => @tpcr, :error => "tPCR update error."
+      render :edit, :id => @tpcr, :flash => {:error => "tPCR update error."}
     end
   end
 end

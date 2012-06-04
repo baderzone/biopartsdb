@@ -35,7 +35,7 @@ class Admin::StrainsController < ApplicationController
     @strain = Strain.find(params[:id])
     
     if @strain.update_attributes(params[:strain])
-      redirect_to admin_strain_path(@strain), :notice => "Strain created successfully."
+      redirect_to admin_strain_path(@strain), :notice => "Strain update successfully."
     else
       render :edit
     end
