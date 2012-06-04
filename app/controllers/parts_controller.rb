@@ -6,4 +6,9 @@ class PartsController < ApplicationController
   def show
     @part = Part.find(params[:id])
   end
+  
+  def status
+    @parts = current_user.parts
+  end
+  
 end

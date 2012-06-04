@@ -5,9 +5,6 @@ class Cloning < ActiveRecord::Base
   
   has_many :clones, :dependent => :destroy
   
-  scope :reaction_pass, where(:quality_control_id => QualityControl.find_by_process_and_name(Ligation.to_s,:pass).id)
-  scope :reaction_fail, where(:quality_control_id => QualityControl.find_by_process_and_name(Ligation.to_s,:fail).id)
-  
   accepts_nested_attributes_for :clones
 
   attr_accessible :user, :growth_plate, :protocol

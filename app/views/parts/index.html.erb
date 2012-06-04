@@ -1,21 +1,55 @@
 <div class="page-header">
-	<h1><i class="icon-cog"> </i>Parts</h1>
+	<h1><i class="icon-cog"> </i>Workflow Status</h1>
 </div>
 <p>
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Type</th>
-				<th>Organism</th>
+				<th>Part</th>
+				<th>sPCR</th>
+				<th>fPCR</th>
+				<th>Pass PCR</th>
+				<th>Transformations</th>
+				<th>Clones</th>
+				<th>Pass csPCR</th>
+				<th>Pass Sequencing</th>
 			</tr>
 		</thead>
 		<tbody>		
 			<% @parts.each do |p| %>
 				<tr>
 					<td><%= link_to p.name, part_path(p) %></td>
-					<td><%= p.feature.name %></td>
-					<td><%= p.location.organism.name %></td>
+					<td>
+						<span class="<%= p.spcr_products.reaction_pass_for(current_user).size > 0 ? "badge badge-success" : "badge badge-important"%>">
+							<%= p.spcr_products.reaction_pass_for(current_user).size %>
+						</span>
+					</td>
+					<td>
+						<span class="<%= p.fpcr_products.reaction_pass_for(current_user).size > 0 ? "badge badge-success" : "badge badge-important"%>">
+							<%= p.fpcr_products.reaction_pass_for(current_user).size %>
+						</span>
+					</td>
+					<td>
+						<span class="<%= p.fpcr_products.qc_pass_for(current_user).size > 0 ? "badge badge-success" : "badge badge-important"%>">
+							<%= p.fpcr_products.qc_pass.size %>
+						</span>
+					</td>
+					<td>
+						<span class="<%= p.transformations.reaction_pass(current_user).size > 0 ? "badge badge-success" : "badge badge-important"%>">
+							<%= p.transformations.size %>
+						</span>
+					</td>
+					<td>
+						<span class="<%= p.clones.picked_for(current_user).size > 0 ? "badge badge-success" : "badge badge-important"%>">
+							<%= p.clones.size %>
+						</span>
+					</td>
+					<td>
+						<span class="<%= p.clones.qc_pass_for(current_user).size > 0 ? "badge badge-success" : "badge badge-important"%>">
+							<%= p.clones.qc_pass.size %>
+						</span>
+					</td>
+					<td></td>
 				</tr>
 			<% end %>
 		</tbody>

@@ -9,7 +9,7 @@ class Cspcr < ActiveRecord::Base
   has_many :clones, :through => :cspcr_products
   
   scope :pendings, where(:status_id => Status.find_by_process_and_name(Cspcr.to_s,:pending))
-  
+    
   accepts_nested_attributes_for :cspcr_products
   
   #validates :cspcr_products, :length => {:minimum => 1, :maximum => 3 }

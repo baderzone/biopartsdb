@@ -4,7 +4,6 @@
 <p>
 	<%= simple_form_for(@fpcr, :html => {:class => 'form-horizontal' }) do |f| %>
 		
-		
 		<ul class="nav nav-tabs">
 	    <li class="active"><a href="#tpcrs" data-toggle="tab">tPCRs</a></li>
 	    <li><a href="#device" data-toggle="tab">Info</a></li>
@@ -18,10 +17,6 @@
 				<%= f.association :device, :collection => @devices %>
 			</div>
 	  </div>
-
-
-
-
 
 		<div class="form-actions">
 			<%= f.button :submit, 'Run', :class => 'btn btn-primary'%>
