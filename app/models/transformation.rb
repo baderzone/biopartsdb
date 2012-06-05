@@ -8,6 +8,8 @@ class Transformation < ActiveRecord::Base
   
   has_many :clones
   
+  scope :for_user, lambda {|user| where(:user_id => user.id)}
+  
   #fast status query scope
   scope :reaction_pass, where(:quality_control_id => QualityControl.find_by_process_and_name(Transformation.to_s,:pass).id)
   scope :reaction_pass_for, lambda {|user| where(:quality_control_id => QualityControl.find_by_process_and_name(Transformation.to_s,:pass).id, :user_id => user.id)}

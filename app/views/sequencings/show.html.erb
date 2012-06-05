@@ -18,7 +18,34 @@
 	
 	  <div class="tab-content">
 			<div class="tab-pane active" id="info">
-		    <dl class="dl-horizontal">
+				
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Clone</th>
+							<th>Traces</th>
+						</tr>
+					</thead>
+					<tbody>		
+						<% @sequencing.sequencing_products.each do |product| %>
+							<tr>
+								<td>
+									<%= product.clone.name %>
+									<% if product.quality_control.nil? %>
+										<span class="label label-warning">Pending</span>
+									<% elsif product.quality_control.name == "PASS" %>
+										<span class="label label-success">PASS</span>
+									<% else %>
+										<span class="label label-important"><%= product.quality_control %></span>	
+									<% end %>
+								</td>
+								<td></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+				
+				<dl class="dl-horizontal">
 					<dt>Status</dt>
 					<dd><%= @sequencing.status %></dd>
 					<dt>Date</dt>
@@ -26,13 +53,13 @@
 				</dl>
 				
 				<div class="form-actions"> 
-					<%= link_to 'Update', edit_spcr_path(@spcr), :class => 'btn'%>
+					
 				</div>
 				
 			</div>
 			
 			<div class="tab-pane" id="protocol">
-
+				<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @sequencing.protocol, :number_reactions => @sequencing.sequencing_products.size }%>
 			</div>
 			
 			<% @sequencing.sequencing_growth_plates.each do |plate| %>
@@ -47,8 +74,9 @@
 					</div>
 				</div>
 			<% end %>
-
 	  </div>
+		
+	
 	</div>
 	
 </p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603230021) do
+ActiveRecord::Schema.define(:version => 20120604235810) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -456,8 +456,9 @@ ActiveRecord::Schema.define(:version => 20120603230021) do
   create_table "sequencings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "status_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "protocol_id"
   end
 
   add_index "sequencings", ["status_id"], :name => "index_sequencings_on_status_id"

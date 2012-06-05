@@ -9,11 +9,10 @@ class LigationProduct < ActiveRecord::Base
   has_many :transformations
   has_many :clones, :through => :transformations
   
+  scope :for_user, lambda {|user| joins(:ligation).where(:ligations => {:user_id => user.id})}
+  
   scope :reaction_pass, where(:quality_control_id => QualityControl.find_by_process_and_name(Ligation.to_s,:pass).id)
-  scope :reaction_pass_for, lambda {|user| joins(:ligation).where(:quality_control_id => QualityControl.find_by_process_and_name(Ligation.to_s,:pass).id, :ligations => {:user_id => user.id})}
-
   scope :reaction_fail, where(:quality_control_id => QualityControl.find_by_process_and_name(Ligation.to_s,:fail).id)
-  scope :reaction_fail_for, lambda {|user| joins(:ligation).where(:quality_control_id => QualityControl.find_by_process_and_name(Ligation.to_s,:fail).id, :ligations => {:user_id => user.id})}
   
   accepts_nested_attributes_for :pcr_product
   
@@ -24,5 +23,7 @@ class LigationProduct < ActiveRecord::Base
     "#{pcr_product.to_s} (#{id})"
   end
   
-  
+  def to_label
+    "#{pcr_product.to_label} (#{id})"
+  end
 end

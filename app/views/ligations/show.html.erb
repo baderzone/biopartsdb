@@ -19,7 +19,16 @@
 				<tbody>		
 					<% @ligation.ligation_products.each do |product| %>
 						<tr>
-							<td><%= product.pcr_product.to_label  %></td>
+							<td>
+								<%= product.pcr_product.to_label  %>
+								<% if product.quality_control.nil? %>
+									<span class="label label-warning">Pending</span>
+								<% elsif product.quality_control.name == "PASS" %>
+									<span class="label label-success">PASS</span>
+								<% else %>
+									<span class="label label-important"><%= product.quality_control %></span>	
+								<% end %>
+							</td>
 							<td><%= product.plasmid %></td>	
 						</tr>
 					<% end %>

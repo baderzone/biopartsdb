@@ -15,7 +15,7 @@
 			<tbody>
 				<% @transformations.each do |t| %>
 					<tr>
-						<td><%= check_box_tag "transformation_ids[]",t.id, false %> <%= t.ligation_product %> (<%= t.id %>)</td>
+						<td><%= check_box_tag "transformation_ids[]",t.id, false %> <%= t.ligation_product.to_label %></td>
 						<td><%= select_tag "transformations[#{t.id}[white]]", options_for_select((0..t.white_count).each {|n| [n,n]}) %></td>
 						<td><%= select_tag "transformations[#{t.id}[blue]]", options_for_select((0..t.blue_count).each {|n| [n,n]}) %></td>
 						<td><%= select_tag "transformations[#{t.id}[light_blue]]", options_for_select((0..t.light_blue_count).each {|n| [n,n]}) %></td>

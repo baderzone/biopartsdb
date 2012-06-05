@@ -10,6 +10,8 @@ class Clone < ActiveRecord::Base
   has_many :cspcr_products
   has_many :cspcr_gel_lanes, :through => :cspcr_products
 
+  scope :for_user, lambda {|user| where(:user_id => user.id)}
+
   scope :growing, where(:status_id => Status.find_by_process_and_name(Clone.to_s,:growing))
   scope :growing_for, lambda {|user| where(:status_id => Status.find_by_process_and_name(Clone.to_s,:growing), :user_id => user.id)}
   

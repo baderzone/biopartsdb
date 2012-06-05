@@ -17,7 +17,7 @@
 				
 				<div class="tab-pane" id="qc">
 					<%= f.association :pcr_gel_lanes do |p| %>
-						<%= p.association :quality_control, :collection => @quality_control, :label => p.object.pcr_product %>
+						<%= p.association :quality_control, :collection => @quality_control, :label => p.object.pcr_product.to_label %>
 					<% end %>
 				</div>
 				

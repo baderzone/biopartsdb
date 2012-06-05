@@ -1,7 +1,8 @@
 class Sequencing < ActiveRecord::Base
   belongs_to :user
   belongs_to :status
-
+  belongs_to :protocol
+  
   has_many :sequencing_growth_plates  
   has_many :sequencing_products
   has_many :clones, :through => :sequencing_products
