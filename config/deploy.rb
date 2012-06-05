@@ -31,13 +31,13 @@ set :rails_env, :development
 #unicorn setup
 set :unicorn_binary, "/home/deployer/.rbenv/shims/unicorn_rails"
 set :unicorn_config, "#{current_path}/config/unicorn.rb"
-set :unicorn_pid, "tmp/pids/unicorn.pid" 
+set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid" 
 
 
 namespace :deploy do
   #start task
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{try_sudo} #{unicorn_binary} -E #{rails_env} -D"
+    run "cd #{current_path} && #{try_sudo} #{unicorn_binary} -c #{unicorn_config} -E #{rails_env} -D"
   end
   
   #stop task
@@ -53,7 +53,7 @@ namespace :deploy do
   
   #linking data directory
   task :symlink do
-    run "cd #{current_path}; ln -s #{deploy_to}/shared/config/database.yml config/database.yml; ln -s #{deploy_to}/shared/uploads/ public/uploads"
+    run "cd #{current_path}; ln -s #{current_path}/shared/config/database.yml config/database.yml; ln -s #{current_path}/shared/uploads/ public/uploads"
   end
 end
 

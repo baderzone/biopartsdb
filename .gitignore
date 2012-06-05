@@ -16,3 +16,4 @@
 /log/*.log
 /tmp
 /public/uploads
+/config/database.yml
