@@ -38,27 +38,18 @@
       <li class="nav-header">fPCR</li>
       <li><a href="<%= fpcrs_path %>" >Status <span style ="float:right" class="label"><%= current_user.fpcrs.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_fpcr_path %></li>
-			<li class="divider"></li>
-      <li class="nav-header">csPCRs</li>
-      <li><a href = <%= cspcrs_path %> >Status <span style ="float:right" class="label"><%= current_user.cspcrs.pendings.size %></span></a></li>
-      <li><%= link_to 'Run', new_cspcr_path %></li>
     </ul>
   </li>
 
 	<!-- Gel menu -->
 	<li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-      Gels
+      PCR Gels
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-      <li class="nav-header">PCR Gels</li>
       <li><a href="<%= pcr_gels_path %>" >Status <span style ="float:right" class="label"><%= current_user.pcr_gels.pendings.size %></span></a></li>
       <li><%= link_to 'Run', new_pcr_gel_path %></li>
-			<li class="divider"></li>
-      <li class="nav-header">csPCR Gels</li>
-      <li><a href = <%= cspcr_gels_path %> >Status <span style ="float:right" class="label"><%= current_user.cspcr_gels.pendings.size %></span></a></li>
-      <li><%= link_to 'Run', new_cspcr_gel_path %></li>
     </ul>
   </li>
 	<li class="divider-vertical"/>
@@ -99,6 +90,31 @@
     </ul>
   </li>
 
+	<li class="divider-vertical"/>
+	
+	<!-- csPCR menu -->
+	<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      csPCR
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href = <%= cspcrs_path %> >Status <span style ="float:right" class="label"><%= current_user.cspcrs.pendings.size %></span></a></li>
+      <li><%= link_to 'Run', new_cspcr_path %></li>
+    </ul>
+  </li>
+	
+	<!-- Gel menu -->
+	<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      csPCR Gels
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href = <%= cspcr_gels_path %> >Status <span style ="float:right" class="label"><%= current_user.cspcr_gels.pendings.size %></span></a></li>
+      <li><%= link_to 'Run', new_cspcr_gel_path %></li>
+    </ul>
+  </li>
 	<li class="divider-vertical"/>
 	
 	<!-- Sequencing menu -->
