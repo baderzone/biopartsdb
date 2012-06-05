@@ -40,4 +40,12 @@ class PcrGelsController < ApplicationController
     end
   end
   
+  def sort
+    params[:pcr_gel_lane].each_with_index do |id, index|
+      PcrGelLane.update_all({position: index+1}, {id: id})
+    end
+
+   render :nothing => true
+  end
+  
 end

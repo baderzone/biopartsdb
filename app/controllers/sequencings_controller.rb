@@ -17,6 +17,7 @@ class SequencingsController < ApplicationController
       ActiveRecord::Base.transaction do
         @seq = Sequencing.new(params[:sequencing])
         @seq.user = current_user
+        @seq.protocol = Protocol.find_by_process(:sequencing)
         @seq.status = Status.find_by_process_and_default(:sequencing,true)
         @seq.save
 

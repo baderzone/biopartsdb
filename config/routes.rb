@@ -134,9 +134,11 @@ Biopartsdb::Application.routes.draw do
 
   get "home/index"
 
+  post "pcr_gels/:id/sort", :to => "pcr_gels#sort"
+  post "cspcr_gels/:id/sort", :to => "cspcr_gels#sort"
+
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
-  match "/parts/status" => "parts#status"
   
   resources :home
   resources :users

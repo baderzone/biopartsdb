@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604235810) do
+ActiveRecord::Schema.define(:version => 20120605171045) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20120604235810) do
     t.integer  "cspcr_product_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "position"
   end
 
   add_index "cspcr_gel_lanes", ["cspcr_gel_id"], :name => "index_cspcr_gel_lanes_on_cspcr_gel_id"
@@ -329,6 +330,7 @@ ActiveRecord::Schema.define(:version => 20120604235810) do
     t.string   "pcr_product_type"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "position"
   end
 
   add_index "pcr_gel_lanes", ["pcr_gel_id"], :name => "index_pcr_gel_lanes_on_pcr_gel_id"

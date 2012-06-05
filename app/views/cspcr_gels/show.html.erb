@@ -4,6 +4,7 @@
 	<div class="tabbable">
 	  <ul class="nav nav-tabs">
 	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#order" data-toggle="tab">Loading Order</a></li>
 	    <li><a href="#images" data-toggle="tab">Images</a></li>
 	    <li><a href="#protocol" data-toggle="tab">Protocol</a></li>
 	  </ul>
@@ -45,6 +46,17 @@
 					<%= link_to 'Update', edit_cspcr_gel_path(@gel), :class => 'btn'%>
 				</div>
 			</div>
+			
+			<div class="tab-pane" id="order">
+				<ul id="lanes" class="nav nav-tabs nav-stacked" data-update-url="<%= url_for :controller => :cspcr_gels, :action => :sort, :id => @gel.id %>">
+					<% @gel.cspcr_gel_lanes.order(:position).each do |lane| %>
+						<%= content_tag_for :li, lane do %>
+							<a href="#"><i class="icon-resize-vertical span1"> </i><%= lane.cspcr_product.to_s %></a>
+					  <% end %>
+					<% end %>
+				</ul>
+			</div>
+			
 			<div class="tab-pane" id="images">
 				<ul class="thumbnails">
 					<% @gel.cspcr_gel_images.each do |img| %>

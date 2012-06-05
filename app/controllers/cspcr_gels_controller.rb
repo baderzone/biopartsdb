@@ -38,7 +38,12 @@ class CspcrGelsController < ApplicationController
     else
       render :new, :flash => {:error => "csPCR Gel error."}
     end
-    
   end
-  
+
+  def sort
+    params[:cspcr_gel_lane].each_with_index do |id, index|
+      CspcrGelLane.update_all({position: index+1}, {id: id})
+    end
+    render :nothing => true
+  end
 end
