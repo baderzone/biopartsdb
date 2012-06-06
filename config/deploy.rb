@@ -52,7 +52,7 @@ namespace :deploy do
   end
   
   #linking data directory
-  task :symlink do
+  task :config_symlink do
     run "cd #{current_path}; ln -s #{shared_path}/config/database.yml config/database.yml; ln -s #{shared_path}/uploads/ public/uploads"
   end
   
@@ -61,8 +61,8 @@ namespace :deploy do
   end
 end
 
-after "deploy:update_code", "deploy:pipeline_precompile"
-before "deploy:finalize_update", "deploy:symlink"
+after "deploy:symlink", "deploy:config_symlink"
+after "deploy:symlink", "deploy:pipeline_precompile"
 
 # remove old releases
 after "deploy", "deploy:cleanup"
