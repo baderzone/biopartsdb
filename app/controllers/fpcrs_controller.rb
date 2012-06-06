@@ -21,7 +21,8 @@ class FpcrsController < ApplicationController
     if @fpcr.save
       redirect_to fpcr_path(@fpcr), :notice => "fPCR created correctly."
     else
-      render :new, :error => "fPCR error.", :flash => {:error => "Error you forget something: " + get_model_error_message(@fpcr)}
+      flash[:error] = "Error you forget something: " + get_model_error_message(@fpcr)
+      render :new
     end
   end
 
@@ -38,5 +39,15 @@ class FpcrsController < ApplicationController
     else
       render :edit, :id => @fpcr, :flash => {:error => "fPCR update error."} 
     end
+  end
+  
+  def update_all_qc_pass
+    FpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Fpcr.to_s,:pass).id}, {:fpcr_id => params[:id]})
+    redirect_to edit_fpcr_path(@fpcr), :notice => "All fPCR products marked as passed."
+  end
+  
+  def update_all_qc_fail
+    FpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Fpcr.to_s,:fail).id}, {:fpcr_id => params[:id]})
+    redirect_to edit_fpcr_path(@fpcr), :notice => "All fPCR products marked as failed."
   end
 end

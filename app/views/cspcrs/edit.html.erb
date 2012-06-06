@@ -24,8 +24,11 @@
 		</div>
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+			<%= link_to 'All Passed', {:action => :update_all_qc_pass, :id => @cspcr.id}, :class => 'btn btn-success'  %>
+			<%= link_to 'All Failed', {:action => :update_all_qc_fail, :id => @cspcr.id}, :class => 'btn btn-danger'  %>
 			<%= link_to 'Cancel', cspcr_path(@cspcr), :class => 'btn'%>
 		</div>
 
 	<% end %>
 </p>
+

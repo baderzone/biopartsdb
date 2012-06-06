@@ -27,7 +27,8 @@ class LigationsController < ApplicationController
       @ligation.save
       redirect_to ligation_path(@ligation), :notice => "Ligations created correctly."
     else
-      render :new, :flash => {:error => "Ligation error."}
+      flash[:error] = "Ligation error."
+      render :new
     end
   end
 
@@ -42,7 +43,8 @@ class LigationsController < ApplicationController
     if @ligation.update_attributes(params[:ligation])
       redirect_to ligation_path(@ligation), :notice => "Ligation updated correctly."
     else
-      render :edit, :id => @ligation, :flash => {:error => "Ligation update error."}
+      flash[:error] = "Ligation update error."
+      render :edit, :id => @ligation
     end
   end
   

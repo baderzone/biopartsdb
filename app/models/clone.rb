@@ -24,6 +24,6 @@ class Clone < ActiveRecord::Base
   scope :qc_fail, joins(:cspcr_products => :cspcr_gel_lanes).where(:cspcr_gel_lanes => {:quality_control_id => QualityControl.find_by_process_and_name(CspcrGelLane.to_s,:fail).id})
   scope :qc_fail_for, lambda {|user| joins(:cspcr_products => :cspcr_gel_lanes).where(:user_id => user.id, :cspcr_gel_lanes => {:quality_control_id => QualityControl.find_by_process_and_name(CspcrGelLane.to_s,:fail).id})}
 
-  attr_accessible :color, :name, :user, :user_id, :transformation, :transformation_id, :cloning, :status_id
+  attr_accessible :color, :name, :user, :user_id, :transformation, :transformation_id, :cloning, :status_id, :status
   
 end

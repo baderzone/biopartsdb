@@ -18,11 +18,16 @@ class CloningsController < ApplicationController
     num_colonies = count_colonies(transformation_ids, transformations)
     
     #checking if just one clone has been picked
-    if num_colonies > 95
-      redirect_to new_cloning_path, :notice => "You cannot pick more than 95 clones" 
+    if num_colonies == 0
+      redirect_to new_cloning_path, :flash => {:error => "You have to pick at least 1 clone"}
+      return
     end
     
-
+    if num_colonies > 95
+      redirect_to new_cloning_path, :flash => {:error => "You cannot pick more than 95 clones"}
+      return
+    end
+    
     begin
       #creating list of wells
       wells = create_wells()
@@ -49,7 +54,7 @@ class CloningsController < ApplicationController
           #creating clones
           colonies.each do |colony|
             name = transformation.ligation_product.pcr_product.part.name + ".c"+ (Clone.count(:conditions => {:transformation_id => tid})+1).to_s
-            clone = Clone.create(name: name, user: current_user, cloning: @cloning, transformation_id: tid, color: colony)
+            clone = Clone.create(name: name, user: current_user, cloning: @cloning, transformation_id: tid, color: colony, status: Status.find_by_process_and_default(Clone.to_s,true))
             #associating clones to growth plate wells
             GrowthPlateWell.create(clone: clone, growth_plate: plate, well: wells.pop())
           end      
@@ -57,10 +62,11 @@ class CloningsController < ApplicationController
       end
       
       redirect_to cloning_path(@cloning)
-      
+    
     rescue => ex
       redirect_to :controller => :clonings, :action => :new, :flash => {:error => "Error while performing cloning (#{ex.message})" }
-    end  
+    end
+
   end
 
   def edit
@@ -80,9 +86,17 @@ class CloningsController < ApplicationController
     
   end
   
+  def update_picked_all
+    Clone.update_all({:status_id => Status.find_by_process_and_name(Clone.to_s,:picked).id}, {:cloning_id => params[:id]})
+    redirect_to cloning_path(@cloning), :notice => "All clones marked as picked."
+  end
+  
   private
-    def count_colonies(transformation_ids, transformations)
+    def count_colonies(transformation_ids, transformations)          
       num_clones = 0
+      if transformation_ids.nil? or transformations.nil?
+        return 0
+      end
       transformation_ids.each do |tid|
         num_clones += transformations[tid][:white].to_i+transformations[tid][:blue].to_i+transformations[tid][:light_blue].to_i
       end

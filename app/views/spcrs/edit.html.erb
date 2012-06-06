@@ -13,6 +13,8 @@
 		<%= f.association :protocol, :collection => @protocols %>
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+			<%= link_to 'All Passed', {:action => :update_all_qc_pass, :id => @spcr.id}, :class => 'btn btn-success'  %>
+			<%= link_to 'All Failed', {:action => :update_all_qc_fail, :id => @spcr.id}, :class => 'btn btn-danger'  %>
 			<%= link_to 'Cancel', spcr_path(@spcr), :class => 'btn'%>
 		</div>
 	<% end %>

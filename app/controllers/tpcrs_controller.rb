@@ -21,7 +21,8 @@ class TpcrsController < ApplicationController
     if @tpcr.save
       redirect_to tpcr_path(@tpcr), :notice => "tPCR created correctly."
     else
-      render :new, :flash => {:error => "Error you forget something: " + get_model_error_message(@tpcr)}
+      flash[:error] = "Error you forget something: " + get_model_error_message(@tpcr)
+      render :new
     end
   end
   
@@ -38,5 +39,15 @@ class TpcrsController < ApplicationController
     else
       render :edit, :id => @tpcr, :flash => {:error => "tPCR update error."}
     end
+  end
+  
+  def update_all_qc_pass
+    TpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Tpcr.to_s,:pass).id}, {:tpcr_id => params[:id]})
+    redirect_to edit_tpcr_path(@tpcr), :notice => "All tPCR products marked as passed."
+  end
+  
+  def update_all_qc_fail
+    TpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Tpcr.to_s,:fail).id}, {:tpcr_id => params[:id]})
+    redirect_to edit_tpcr_path(@tpcr), :notice => "All tPCR products marked as failed."
   end
 end

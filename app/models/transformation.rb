@@ -24,5 +24,6 @@ class Transformation < ActiveRecord::Base
   attr_accessible :ligation_product_id, :strain_id, :status_id, :quality_control_id
   
   validates :ligation_product, :strain, :presence => :true
+  validates :white_count, :blue_count, :light_blue_count, :numericality => { :only_integer => true, :message => "Must be an integer" }
     
 end

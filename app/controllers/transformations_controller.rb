@@ -23,7 +23,8 @@ class TransformationsController < ApplicationController
     if @transformation.save      
       redirect_to transformation_path(@transformation), :notice => "Transformation created correctly."
     else
-      render :new, :flash => {:error => "Error you forget something: " + get_model_error_message(@transformation)}
+      flash[:error] = "Error you forget something: " + get_model_error_message(@transformation)
+      render :new
     end
   end
 
@@ -38,8 +39,9 @@ class TransformationsController < ApplicationController
     if @transformation.update_attributes(params[:transformation])
       redirect_to transformation_path(@transformation), :notice => "Transformation updated correctly."
     else
-      render transformation_path(@transformation), :flash => {:error => "Transformation update error."}
+      render :edit
     end
   end
+  
   
 end

@@ -20,7 +20,9 @@ class CspcrGelsController < ApplicationController
     if @gel.save
       redirect_to cspcr_gel_path(@gel), :notice => "csPCR Gel created correctly."
     else
-      render :new, :flash => {:error => "csPCR Gel error."}, :flash => {:error => "Error you forget something: " + get_model_error_message(@gel)}
+      flash[:error] = "csPCR Gel error."
+      flash[:error] = "Error you forget something: " + get_model_error_message(@gel)
+      render :new
     end
   end
 
@@ -46,4 +48,16 @@ class CspcrGelsController < ApplicationController
     end
     render :nothing => true
   end
+  
+  def update_all_qc_pass
+    CspcrGelLane.update_all({:quality_control_id => QualityControl.find_by_process_and_name(CspcrGelLane.to_s,:pass).id}, {:cspcr_gel_id => params[:id]})
+    redirect_to edit_cspcr_gel_path(@gel), :notice => "All lanes marked as passed."
+  end
+  
+  def update_all_qc_fail
+    CspcrGelLane.update_all({:quality_control_id => QualityControl.find_by_process_and_name(CspcrGelLane.to_s,:fail).id}, {:cspcr_gel_id => params[:id]})
+    redirect_to edit_cspcr_gel_path(@gel), :notice => "All lanes marked as failed."
+  end
+  
+  
 end

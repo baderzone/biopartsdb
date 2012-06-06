@@ -23,7 +23,8 @@ class SpcrsController < ApplicationController
     if @spcr.save
       redirect_to spcr_path(@spcr), :notice => "spcr created correctly."
     else
-      render :new, :flash => {:error => "Error you forget something: " + get_model_error_message(@spcr)}
+      flash[:error] = "Error you forget something: " + get_model_error_message(@spcr)
+      render :new
     end
   end
   
@@ -41,5 +42,15 @@ class SpcrsController < ApplicationController
     else
       render :edit, :id => @spcr, :flash => {:error => "sPCR update error."}
     end
+  end
+  
+  def update_all_qc_pass
+    SpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Spcr.to_s,:pass).id}, {:spcr_id => params[:id]})
+    redirect_to edit_spcr_path(@spcr), :notice => "All sPCR products marked as passed."
+  end
+  
+  def update_all_qc_fail
+    SpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Spcr.to_s,:fail).id}, {:spcr_id => params[:id]})
+    redirect_to edit_spcr_path(@spcr), :notice => "All sPCR products marked as failed."
   end
 end

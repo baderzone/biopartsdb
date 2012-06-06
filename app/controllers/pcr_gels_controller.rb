@@ -21,7 +21,8 @@ class PcrGelsController < ApplicationController
     if @pcr_gel.save
       redirect_to pcr_gel_path(@pcr_gel), :notice => "PCR Gel created correctly."
     else
-      render :new, :flash => {:error => "Error you forget something: " + get_model_error_message(@pcr_gel)}
+      flash[:error] = "Error you forget something: " + get_model_error_message(@pcr_gel)
+      render :new
     end
   end
 
@@ -46,6 +47,16 @@ class PcrGelsController < ApplicationController
     end
 
    render :nothing => true
+  end
+  
+  def update_all_qc_pass
+    PcrGelLane.update_all({:quality_control_id => QualityControl.find_by_process_and_name(PcrGelLane.to_s,:pass).id}, {:pcr_gel_id => params[:id]})
+    redirect_to edit_pcr_gel_path(@pcr_gel), :notice => "All lanes marked as passed."
+  end
+  
+  def update_all_qc_fail
+    PcrGelLane.update_all({:quality_control_id => QualityControl.find_by_process_and_name(PcrGelLane.to_s,:fail).id}, {:pcr_gel_id => params[:id]})
+    redirect_to edit_pcr_gel_path(@pcr_gel), :notice => "All lanes marked as failed."
   end
   
 end
