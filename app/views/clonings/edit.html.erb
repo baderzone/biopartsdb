@@ -22,7 +22,9 @@
 		
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+			<%= link_to 'All Picked', {:action => :update_picked_all, :id => @cloning.id}, :class => 'btn btn-success'  %>
 			<%= link_to 'Cancel', cloning_path(@cloning), :class => 'btn'%>
+
 		</div>
 	<% end %>
 </p>

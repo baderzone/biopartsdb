@@ -30,12 +30,14 @@ class CspcrsController < ApplicationController
             CspcrPlateWell.create(cspcr_plate: cspcr_plate, clone: pcr.clone, well: wells.pop())
           end
         end
+        
       end
       
       redirect_to cspcr_path(@cspcr), :notice => "csPCR created correctly."
       
     rescue => ex
-      render :new, :flash => {:error => "An error occured while creating a csPCR. #{ex.message}" }
+      flash[:error] = "Error you forget something: #{ex.message}"
+      render :new
       return
     end
     
@@ -57,6 +59,16 @@ class CspcrsController < ApplicationController
       flash[:error] = "Cannot update csPCR"
       redirect_to edit_cspcr_path(@cspcr)
     end
+  end
+  
+  def update_all_qc_pass
+    CspcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Cspcr.to_s,:pass).id}, {:cspcr_id => params[:id]})
+    redirect_to edit_cspcr_path(@cspcr), :notice => "All csPCR products marked as passed."
+  end
+  
+  def update_all_qc_fail
+    CspcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Cspcr.to_s,:fail).id}, {:cspcr_id => params[:id]})
+    redirect_to edit_cspcr_path(@cspcr), :notice => "All csPCR products marked as failed."
   end
   
   private 

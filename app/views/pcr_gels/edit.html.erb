@@ -25,6 +25,8 @@
 		</div>
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+			<%= link_to 'All Passed', {:action => :update_all_qc_pass, :id => @pcr_gel.id}, :class => 'btn btn-success'  %>
+			<%= link_to 'All Failed', {:action => :update_all_qc_fail, :id => @pcr_gel.id}, :class => 'btn btn-danger'  %>
 			<%= link_to 'Cancel', pcr_gel_path(@pcr_gel), :class => 'btn'%>
 		</div>
 	<% end %>
