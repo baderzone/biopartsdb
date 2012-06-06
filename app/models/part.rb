@@ -8,7 +8,7 @@ class Part < ActiveRecord::Base
 
   has_many :oligos
   has_many :oligo_plate_wells, :through => :oligos
-  has_many :oligo_plates, :through => :oligo_plate_wells
+  has_many :oligo_plates, :through => :oligo_plate_wells, :uniq => true
   
   has_many :spcr_products
   has_many :tpcr_products

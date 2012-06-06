@@ -29,6 +29,7 @@ end
 gem 'jquery-rails'
 gem "acts_as_list"
 
+gem 'gene_ontology'
 gem 'simple_form'
 gem 'carrierwave'
 gem 'redcarpet'
