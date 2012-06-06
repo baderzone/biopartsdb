@@ -26,7 +26,7 @@ set :user, "deployer"
 set :use_sudo, false
 set :deploy_to, "/home/deployer/applications/#{application}"
 
-set :rails_env, :development
+set :rails_env, :production
 
 #unicorn setup
 set :unicorn_binary, "/home/deployer/.rbenv/shims/unicorn_rails"
@@ -53,12 +53,10 @@ namespace :deploy do
   
   #linking data directory
   task :symlink do
-    run "cd #{current_path}; ln -s #{current_path}/shared/config/database.yml config/database.yml; ln -s #{current_path}/shared/uploads/ public/uploads"
+    run "cd #{current_path}; ln -s #{shared_path}/config/database.yml config/database.yml; ln -s #{shared_path}/uploads/ public/uploads"
   end
 end
 
-# linking datadirs
-#before "deploy:restart", "deploy:symlink" 
-
 # remove old releases
+after "deploy", "deploy:symlink"
 after "deploy", "deploy:cleanup"
