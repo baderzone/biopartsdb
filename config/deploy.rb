@@ -55,8 +55,14 @@ namespace :deploy do
   task :symlink do
     run "cd #{current_path}; ln -s #{shared_path}/config/database.yml config/database.yml; ln -s #{shared_path}/uploads/ public/uploads"
   end
+  
+  task :pipeline_precompile do
+    run "cd #{current_path}; RAILS_ENV=production rake assets:precompile"
+  end
 end
 
+after "deploy:update_code", "deploy:pipeline_precompile"
+before "deploy:finalize_update", "deploy:symlink"
+
 # remove old releases
-after "deploy", "deploy:symlink"
 after "deploy", "deploy:cleanup"
