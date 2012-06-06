@@ -28,6 +28,8 @@ class SequencingsController < ApplicationController
         wells = [] 
          
         @seq.sequencing_products.each do |rxn|
+          rxn.part = rxn.clone.transformation.ligation_product.part
+          rxn.save
           
           if wells.empty?
             seqplate = seqplates.pop()
@@ -51,6 +53,7 @@ class SequencingsController < ApplicationController
           sgp_well = SequencingGrowthPlateWell.create(sequencing_product: rxn, sequencing_growth_plate: seqgrowthplate, well: sp_well.well)
           sp_well.sequencing_growth_plate_well = sgp_well
           sp_well.save
+          
         end
         
       end
