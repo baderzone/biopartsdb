@@ -1,6 +1,6 @@
 class TransformationsController < ApplicationController
   def index
-    @transformations = current_user.transformations.reaction_pass.order("id DESC")
+    @transformations = current_user.transformations.order("id DESC")
   end
 
   def show

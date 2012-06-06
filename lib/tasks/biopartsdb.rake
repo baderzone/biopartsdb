@@ -70,6 +70,25 @@ namespace :biopartsdb do
       end
       
     end
+  end
+  
+  namespace :account do
+    desc 'Admin account creation'
+    
+    task :create_admin => :environment do
+      email = ENV['email']
+      fullname = ENV['fullname']
+      
+      user = User.new
+      user.fullname = fullname
+      user.email = email
+      user.provider = "google"
+      user.groups << Group.find_by_name(:admin)
+      user.save
+      
+      puts "Admin user created for email: #{user.email}"
+      
+    end
     
   end
   

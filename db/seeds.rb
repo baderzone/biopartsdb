@@ -1,27 +1,50 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+################################################################################################
+### SEED FILE FOR SAMPLE DATA
+################################################################################################
 
+##########################################################################################################################################################################
+# => User account
+##########################################################################################################################################################################
+user = User.create(fullname: 'root', provider: 'unkown', email: 'root@bioparts')
+group1 = Group.create(name: 'admin', description: 'groups for biopartsdb admin')
+group2 = Group.create(name: 'staff', description: 'groups for biopartsdb users')
+
+##########################################################################################################################################################################
+# => Parts
+##########################################################################################################################################################################
 organism = Organism.create(name: 'yeast', latin: 'Saccharomyces cerevisiae', gbtaxonid: 4932)
 feature = Feature.create(so: 'SO:0000167', name: 'promoter', namespace: 'sequence', definition: 'A regulatory_region composed of the TSS(s) and binding sites for TF_complexes of the basal transcription machinery.')
 sequence = Sequence.create(data: 'AATATTTGTATTGTTTTATGTAATTATAATCTTAAGCTTGCAATACCAATCACTATTACCATGTTAATGATCCCCCAGATAAAAAGACAAGACAGAGCATATATCAGACTACATTAACATCTGTACACCCCCAACTGCTTTGAAAAAACCCATGCAGTTATTATTTTCAACAGACCAAGTTTTTTTATCGCTTATCCGGCTCACAGAACGAGCCGTACAACCGTCATCAGACTTGCATGGAAATGTTGAAAAAGAGGTAAAAAAGAAAATATCAAACCCAAACACGCTCGGGCTGAAAAATTAATATGGCAGGAAACGAACTGTAGCCATAATGTACCTGTTCCCGCTAATAGTAATACCATCGTATTGCTAAGGTTAGTAGCTAAAAATCTCTTACTTTCTTTATTTTGACTCTTAGGTCTTACAAGCAATACAAAACCAACACACCTATATATAACTAATA')
 location = Location.create(organism: organism, chromosome: 'chr02', start: 60736, stop: 61198, strand: -1 )
 part = Part.create(name: 'yeast_promoter_YBL087C', sequence: sequence, feature:feature, location: location)
-user = User.create(fullname: 'Giovanni Stracquadanio', provider: 'facebook', email: 'stracquadanio@jhu.edu')
-user = User.create(fullname: 'Nicholas Culbertson', provider: 'google', email: 'nculbertson1@gmail.com')
-user = User.create(fullname: 'Emily Scher', provider: 'google', email: 'scher.emily@gmail.com')
+
+##########################################################################################################################################################################
+# => Vendor
+##########################################################################################################################################################################
 vendor = Vendor.create(name: 'IDT')
+
+##########################################################################################################################################################################
+# => Strain
+##########################################################################################################################################################################
+strain = Strain.create(name: "Test Strain", vendor_id: 1, organism_id: 1)
+
+##########################################################################################################################################################################
+# => Oligo Plates
+##########################################################################################################################################################################
 oligoPlate = OligoPlate.create(name: 'JHU_PARTS_2012_OLIGO_1', vendor: vendor, user: user)
 oligo = Oligo.create(part: part, name: 'yeast_promoter_YBL087C.o01', start: 1, stop: 150, sequence: 'AATATTTGTATTGTTTTATGTAATTATAATCTTAAGCTTGCAATACCAATCACTATTAC')
 well = OligoPlateWell.create(oligo: oligo, oligo_plate: oligoPlate, well: 'A01')
 plasmid = Plasmid.create(vendor: vendor, name: "pGEM-T")
 
-device_type = DeviceType.create(value: "pcr")
+##########################################################################################################################################################################
+# => Devices
+##########################################################################################################################################################################
+device_type = DeviceType.create(value: "pcr", description: "PCR Device")
 device = Device.create(device_type_id: 1, name: "Test PCR Machine")
+
+######################################################################################################
+# =>            STATUS
+######################################################################################################
 status1 = Status.create(process: "Spcr", name: "Pending", default: 1 )
 status2 = Status.create(process: "Spcr", name: "Finished")
 status3 = Status.create(process: "Tpcr", name: "Pending", default: 1 )
@@ -44,6 +67,9 @@ status19 = Status.create(process: "Sequencing", name: "Pending", default: 1 )
 status20 = Status.create(process: "Sequencing", name: "Finished")
 status21 = Status.create(process: "Sequencing", name: "Mailed")
 
+######################################################################################################
+# => Quality Control
+######################################################################################################
 qc1 = QualityControl.create(process: "Spcr", name: "PASS")
 qc2 = QualityControl.create(process: "Spcr", name: "FAIL")
 qc3 = QualityControl.create(process: "Tpcr", name: "PASS")
@@ -70,6 +96,9 @@ qc23 = QualityControl.create(process: "Sequencing", name: "CHECK")
 qc24 = QualityControl.create(process: "Sequencing", name: "FIXABLE")
 qc25 = QualityControl.create(process: "Sequencing", name: "MISLABELLED")
 
+###########################################################################################################################################################################################
+# => Protocol reagents
+###########################################################################################################################################################################################
 prot_reag1 = ProtocolReagent.create(protocol_id: "6", name: "H2O", stock_concentration: "-", final_concentration: "-", volume_reaction: "14.25 ul")
 prot_reag2 = ProtocolReagent.create(protocol_id: "6", name: "Herculase Bffer", stock_concentration: "5 x", final_concentration: "1 x", volume_reaction: "5.0 ul")
 prot_reag3 = ProtocolReagent.create(protocol_id: "6", name: "dNTPs", stock_concentration: "2.5 mM", final_concentration: "250 uM", volume_reaction: "2.5 ul")
@@ -99,6 +128,9 @@ prot_reag26 = ProtocolReagent.create(protocol_id: "9", name: "Total", stock_conc
 prot_reag27 = ProtocolReagent.create(protocol_id: "5", name: "Cloning Buffer", stock_concentration: "-", final_concentration: "-", volume_reaction: "4.5 ul")
 prot_reag28 = ProtocolReagent.create(protocol_id: "5", name: "Vector Mix", stock_concentration: "-", final_concentration: "-", volume_reaction: "1.5 ul")
 
+##########################################################################################################################################################################
+# => Protocol
+##########################################################################################################################################################################
 prot1 = Protocol.create(process: "Spcr", name: "cDNA PCR", scaling_factor: 3, user: user)
 prot2 = Protocol.create(process: "Tpcr", name: "tPCR", scaling_factor: 3, user: user)
 prot3 = Protocol.create(process: "Fpcr", name: "fCPR", scaling_factor: 3, user: user)
@@ -110,6 +142,3 @@ prot8 = Protocol.create(process: "Cloning", name: "Cloning", scaling_factor: 3, 
 prot9 = Protocol.create(process: "Cspcr", name: "csPCR", scaling_factor: 3, user: user)
 prot10 = Protocol.create(process: "CspcrGel", name: "csPCR Gel", scaling_factor: 3, user: user)
 prot11 = Protocol.create(process: "Sequencing", name: "Submitting Clones for Sequencing", scaling_factor: 3, user: user)
-
-strain = Strain.create(name: "Test Strain", vendor_id: 1, organism_id: 1)
-seq_plate = SequencingPlate.create(name: "test plate")
