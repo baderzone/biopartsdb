@@ -1,0 +1,26 @@
+<div class="page-header">
+	<h1><i class="icon-folder-open"> </i>Organisms</h1>
+</div>
+<p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Name</th>
+				<th>Latin</th>
+				<th>gbtaxonid</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<% @organisms.each do |o| %>
+				<tr>
+					<td><%= link_to o.id, admin_organism_path(o) %></td>
+					<td><%= o.name %></td>
+					<td><i><%= o.latin %></i></td>
+					<td><%= o.gbtaxonid %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>
+

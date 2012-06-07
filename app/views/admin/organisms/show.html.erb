@@ -1,0 +1,25 @@
+<div class="page-header">
+	<h1><i class="icon-folder-open"> </i>Organism <%= @organism.name %></h1>
+</div>
+<p>
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	  </ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="info">
+				<dl class="dl-horizontal">
+					<dt>Name</dt>
+					<dd><%= @organism.name %></dd>
+					<dt>Latin</dt>
+					<dd><i><%= @organism.latin %></i></dd>
+					<dt>gbtaxonid</dt>
+					<dd><i><%= @organism.gbtaxonid %></i></dd>
+				</dl>
+			</div>
+	  </div>
+
+		<div class="form-actions">
+			<%= link_to 'Update', edit_admin_organism_path(@organism), :class => 'btn'%>
+		</div>
+</p>
