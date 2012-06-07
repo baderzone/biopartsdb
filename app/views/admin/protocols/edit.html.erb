@@ -3,6 +3,7 @@
 </div>
 <p>
 	<%= simple_form_for([:admin,@protocol], :html => {:class => 'form-horizontal' }) do |f| %>
+		<%= f.input :process, :disabled => true, :label => 'Step' %>
 		<%= f.input :name %>
 		<%= f.input :content %>
 		<%= f.input :scaling_factor %>			
