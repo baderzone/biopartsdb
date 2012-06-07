@@ -1,10 +1,10 @@
-<h3><%= protocol.name %></h3>
+<h1><%= protocol.name %></h1>
 
-<p><%= raw protocol.content %></p>
+<p><%= raw markdown(protocol.content) %></p>
 
 <% if protocol.protocol_reagents.size > 0 %>
 	
-	<h2>Mastermix Preparation</h2>
+	<h3>Mastermix Preparation</h3>
 	
 	<table class="table table-bordered table-striped">
 		<thead>

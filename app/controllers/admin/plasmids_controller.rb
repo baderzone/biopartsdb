@@ -22,6 +22,7 @@ class Admin::PlasmidsController < ApplicationController
     if @plasmid.save
       redirect_to admin_plasmid_path(@plasmid), :notice => "Plasmid created correctly."
     else
+      flash[:error] = "Error you forget something: " + get_model_error_message(@plasmid)
       render :new
     end
   end
@@ -36,6 +37,7 @@ class Admin::PlasmidsController < ApplicationController
     if @plasmid.update_attributes(params[:plasmid])
       redirect_to admin_plasmid_path(@plasmid), :notice => "Plasmid updated correctly."
     else
+      flash[:error] = "Error you forget something: " + get_model_error_message(@plasmid)
       render :edit
     end
 
