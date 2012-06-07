@@ -1,4 +1,8 @@
+require 'ligation_validator'
+
 class Ligation < ActiveRecord::Base
+  validates_with LigationValidator
+  
   belongs_to :user
   belongs_to :status
   belongs_to :protocol
@@ -17,6 +21,4 @@ class Ligation < ActiveRecord::Base
   attr_accessible :spcr_products, :fpcr_products
   attr_accessible :spcr_product_ids, :fpcr_product_ids
   attr_accessible :spcr_products_attributes, :fpcr_products_attributes, :ligation_products_attributes
-
-
 end

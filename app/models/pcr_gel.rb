@@ -1,4 +1,8 @@
+require 'pcr_gel_validator'
+
 class PcrGel < ActiveRecord::Base
+  validates_with PcrGelValidator
+    
   belongs_to :user
   belongs_to :protocol
   belongs_to :status
@@ -20,6 +24,7 @@ class PcrGel < ActiveRecord::Base
   attr_accessible :spcr_product_ids, :tpcr_product_ids, :fpcr_product_ids
   attr_accessible :spcr_products_attributes, :tpcr_products_attributes, :fpcr_products_attributes
   attr_accessible :pcr_gel_lanes_attributes, :pcr_gel_images_attributes
-  
-  
+    
 end
+
+

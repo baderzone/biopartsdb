@@ -29,8 +29,16 @@
 		</div>
 		
 		<div class="tab-pane" id="sequence">
-			<h3>Sequence</h3>
-			<pre class="prettyprint linenums"><%= @part.sequence.data %></pre>
+			<dl class="dl-horizontal">
+				<dt>Length</dt>
+				<dd><%= @sequence.size %></dd>
+				<dt>GC content</dt>
+				<dd><%= @sequence.gc_percent().to_f %></dd>
+				<dt>GC skew</dt>
+				<dd><%= @sequence.gc_skew().to_f %></dd>
+			</dl>
+			<pre class="prettyprint linenums"><%= @sequence.to_fasta(@part.name,80) %></pre>
+			<i class="icon-download-alt"> </i><%= link_to 'Download FASTA file', :action => :fasta, :id => @part.id %>
 		</div>
 		
 		<div class="tab-pane" id="plate">

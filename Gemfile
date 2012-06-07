@@ -27,13 +27,17 @@ group :assets do
   gem "twitter-bootstrap-rails"
 end
 
+#gui gems
 gem 'jquery-rails'
-gem 'acts_as_list'
-gem 'gene_ontology'
 gem 'simple_form'
 gem 'carrierwave'
 gem 'redcarpet'
 gem 'ruby-units'
+gem 'acts_as_list'
+
+#bio gems
+gem 'bio'
+gem 'gene_ontology'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

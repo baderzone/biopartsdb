@@ -1,5 +1,4 @@
 class PcrGelsController < ApplicationController
-
   def index
     @pcr_gels = current_user.pcr_gels
   end
