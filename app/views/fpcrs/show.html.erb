@@ -66,7 +66,7 @@
 			<% end %>
 			
 			<div class="tab-pane" id="protocol">
-				<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @fpcr.protocol, :number_reactions => @fpcr.tpcr_products.size }%>
+				<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @fpcr.protocol, :number_reactions => @fpcr.fpcr_products.size }%>
 			</div>
 	  </div>
 	</div>

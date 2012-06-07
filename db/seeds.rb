@@ -132,19 +132,17 @@ prot_reag30 = ProtocolReagent.create(protocol_id: "5", name: "PCR II Blunt TOPO"
 prot_reag31 = ProtocolReagent.create(protocol_id: "5", name: "Fresh Pcr Product", stock_concentration: "-", final_concentration: "-", volume_reaction: "0.5 ul")
 prot_reag32 = ProtocolReagent.create(protocol_id: "5", name: "Total", stock_concentration: "-", final_concentration: "-", volume_reaction: "3 ul")
 
-
-
 ##########################################################################################################################################################################
 # => Protocol
 ##########################################################################################################################################################################
-prot1 = Protocol.create(process: "Spcr", name: "cDNA PCR", scaling_factor: 3, user: user)
-prot2 = Protocol.create(process: "Tpcr", name: "tPCR", scaling_factor: 3, user: user)
-prot3 = Protocol.create(process: "Fpcr", name: "fCPR", scaling_factor: 3, user: user)
-prot4 = Protocol.create(process: "PcrGel", name: "PCR Gel", scaling_factor: 3, user: user)
-prot5 = Protocol.create(process: "Ligation", name: "Ligation", scaling_factor: 3, user: user)
-prot6 = Protocol.create(process: "Spcr", name: "Genomic DNA PCR", scaling_factor: 3, user: user)
-prot7 = Protocol.create(process: "Transformation", name: "Transformation", scaling_factor: 3, user: user)
-prot8 = Protocol.create(process: "Cloning", name: "Cloning", scaling_factor: 3, user: user)
-prot9 = Protocol.create(process: "Cspcr", name: "csPCR", scaling_factor: 3, user: user)
-prot10 = Protocol.create(process: "CspcrGel", name: "csPCR Gel", scaling_factor: 3, user: user)
-prot11 = Protocol.create(process: "Sequencing", name: "Submitting Clones for Sequencing", scaling_factor: 3, user: user)
+prot1 = Protocol.create(process: "Spcr", name: "cDNA PCR", content: "test", scaling_factor: 3, user: user)
+prot2 = Protocol.create(process: "Tpcr", name: "tPCR", content: "test", scaling_factor: 3, user: user)
+prot3 = Protocol.create(process: "Fpcr", name: "fCPR", content: "test", scaling_factor: 3, user: user)
+prot4 = Protocol.create(process: "PcrGel", name: "PCR Gel", content: "test", scaling_factor: 3, user: user)
+prot5 = Protocol.create(process: "Ligation", name: "Ligation", content: "test", scaling_factor: 3, user: user)
+prot6 = Protocol.create(process: "Spcr", name: "Genomic DNA PCR", content: "test", scaling_factor: 3, user: user)
+prot7 = Protocol.create(process: "Transformation", name: "Transformation", content: "test", scaling_factor: 3, user: user)
+prot8 = Protocol.create(process: "Cloning", name: "Cloning", content: "test", scaling_factor: 3, user: user)
+prot9 = Protocol.create(process: "Cspcr", name: "csPCR", content: "test", scaling_factor: 3, user: user)
+prot10 = Protocol.create(process: "CspcrGel", name: "csPCR Gel", content: "test", scaling_factor: 3, user: user)
+prot11 = Protocol.create(process: "Sequencing", name: "Submitting Clones for Sequencing", content: "test", scaling_factor: 3, user: user)

@@ -77,7 +77,7 @@
 				<% end %>
 			</div>
 			<div class="tab-pane" id="protocol">
-				<p><%= raw @pcr_gel.protocol.content %></p>
+				<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @pcr_gel.protocol, :number_reactions => @pcr_gel.pcr_gel_lanes.size }%>
 			</div>
 	  </div>
 	</div>

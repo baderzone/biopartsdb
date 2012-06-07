@@ -48,29 +48,7 @@
 		</div>
 		
 		<div class="tab-pane" id="protocol">
-			<p><%= raw @ligation.protocol.content %></p>
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>Reagent</th>
-						<th>Stock Concentration</th>
-						<th>Final Concentration</th>
-						<th>Volume for One Reaction</th>
-						<th>Volume for <%= @ligation.ligation_products.size + @ligation.protocol.scaling_factor %> Reactions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @ligation.protocol.protocol_reagents.each do |r| %>
-						<tr>
-							<td><%= r.name %></td>
-							<td><%= r.stock_concentration %></td>
-							<td><%= r.final_concentration %></td>
-							<td><%= r.volume_reaction %></td>
-							<td><%= Unit(r.volume_reaction) * (@ligation.ligation_products.size + @ligation.protocol.scaling_factor)%></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
+			<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @ligation.protocol, :number_reactions => @ligation.ligation_products.size }%>
 		</div>
   </div>
 </div>	

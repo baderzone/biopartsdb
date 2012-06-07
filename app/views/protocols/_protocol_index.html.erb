@@ -1,6 +1,10 @@
 <h1><%= protocol.name %></h1>
 
-<p><%= raw markdown(protocol.content) %></p>
+<p>
+	<%= raw markdown(protocol.content) %>
+</p>
+
+<br/>
 
 <% if protocol.protocol_reagents.size > 0 %>
 	
