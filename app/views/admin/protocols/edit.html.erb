@@ -1,2 +1,18 @@
-<h1>Admin::Protocols#edit</h1>
-<p>Find me in app/views/admin/protocols/edit.html.erb</p>
+<div class="page-header">
+	<h1><i class="icon-reload"> </i>Update Protocol: <%= @protocol.name %></h1>
+</div>
+<p>
+	<%= simple_form_for([:admin,@protocol], :html => {:class => 'form-horizontal' }) do |f| %>
+		<%= f.input :name %>
+		<%= f.input :content %>
+		<%= f.input :scaling_factor %>			
+		
+
+		<div class="form-actions">
+			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', admin_protocols_path, :class => 'btn'%>
+		</div>
+<% end %>
+
+</p>
+

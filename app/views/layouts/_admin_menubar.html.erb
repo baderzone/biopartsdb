@@ -41,9 +41,12 @@
 			<li><%= link_to 'List', admin_strains_path %></li>
 			<li><%= link_to 'Add new strain', new_admin_strain_path %></li>
 			<li class="divider"/>
-			<li class="nav-header">Device</li>
+			<li class="nav-header">Devices</li>
 			<li><%= link_to 'List', admin_devices_path %></li>
 			<li><%= link_to 'Add new device', new_admin_device_path %></li>
+			<li class="nav-header">Organisms</li>
+			<li><%= link_to 'List', admin_organisms_path %></li>
+			<li><%= link_to 'Add new organism', new_admin_organism_path %></li>
     </ul>
   </li>
 		
@@ -58,6 +61,19 @@
     </ul>
   </li>
 	<li class="divider-vertical"/>
+	
+	
+	<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Protocols
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'List', admin_protocols_path %></li>
+	</ul>
+  </li>
+	<li class="divider-vertical"/>
+	
 </ul>
 
 <ul class="nav pull-right">

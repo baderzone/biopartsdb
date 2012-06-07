@@ -1,2 +1,35 @@
-<h1>Admin::Protocols#show</h1>
-<p>Find me in app/views/admin/protocols/show.html.erb</p>
+<h1><%= @protocol.name %></h1>
+
+<p><%= raw markdown(@protocol.content) %></p>
+
+<% if @protocol.protocol_reagents.size > 0 %>
+	
+	<h3>Mastermix Preparation</h3>
+	
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Reagent</th>
+				<th>Stock Concentration</th>
+				<th>Final Concentration</th>
+				<th>Volume for One Reaction</th>
+				<th>Volume for <%= @protocol.scaling_factor %> Reactions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @protocol.protocol_reagents.each do |r| %>
+				<tr>
+					<td><%= r.name %></td>
+					<td><%= r.stock_concentration %></td>
+					<td><%= r.final_concentration %></td>
+					<td><%= r.volume_reaction %></td>
+					<td><%= Unit(r.volume_reaction) * (@protocol.scaling_factor)%></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+	
+	
+<% end %>
+
