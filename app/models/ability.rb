@@ -7,7 +7,7 @@ class Ability
     
     if user.member?(:admin)
       can :manage, :all
-    elsif user.member?(:operator)
+    elsif user.member?(:staff)
       can :manage, :all
       cannot :manage, :admin
     else
