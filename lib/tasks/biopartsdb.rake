@@ -17,13 +17,12 @@ namespace :biopartsdb do
         part = Part.new
         part.transaction do
           part.name = row[0]
-          part.build_sequence(data: row[8])
-          part.build_location(organism: Organism.find_by_latin(row[2]))
           part.feature = Feature.find_by_name(row[1])
+          part.build_sequence(data: row[-1])
+          part.build_location(organism: Organism.find_by_latin(row[3]), chromosome: row[4], start: row[5], stop: row[6], strand: row[7])
           part.save!
           puts "#{part.name} loaded."
         end
-        
       end 
     end    
   end
@@ -41,7 +40,7 @@ namespace :biopartsdb do
         oligo.transaction do
           oligo.name = row[1]
           oligo.part = Part.find_by_name(row[0])
-          oligo.sequence = row[2]
+          oligo.sequence = row[4]
           oligo.save!
           
           plate = OligoPlate.find_by_name(row[5]) || OligoPlate.new(name: row[5])
@@ -86,10 +85,8 @@ namespace :biopartsdb do
       user.groups << Group.find_by_name(:admin)
       user.save
       
-      puts "Admin user created for email: #{user.email}"
-      
+      puts "Admin user created for email: #{user.email}"      
     end
-    
   end
   
 end

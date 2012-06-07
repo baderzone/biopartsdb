@@ -4,6 +4,7 @@
 <div class="tabbable">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+    <li><a href="#sequence" data-toggle="tab">Sequence</a></li>
     <li><a href="#plate" data-toggle="tab">Oligo Plates</a></li>
     <li><a href="#history" data-toggle="tab">History</a></li>
   </ul>
@@ -26,6 +27,10 @@
 				</dl>
 			</p>
 
+
+		</div>
+		
+		<div class="tab-pane" id="sequence">
 			<h3>Sequence</h3>
 			<pre class="prettyprint linenums"><%= @part.sequence.data %></pre>
 		</div>
