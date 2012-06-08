@@ -31,7 +31,7 @@ set :rails_env, :production
 #unicorn setup
 set :unicorn_binary, "/home/deployer/.rbenv/shims/unicorn_rails"
 set :unicorn_config, "#{current_path}/config/unicorn.rb"
-set :unicorn_pid, "/tmp/biopartsdb_unicorn.pid" 
+set :unicorn_pid, "#{shared_path}/pids/unicorn.pid" 
 
 
 namespace :deploy do
