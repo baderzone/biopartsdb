@@ -3,7 +3,8 @@ class OligoPlate < ActiveRecord::Base
   belongs_to :user
   
   has_many :oligo_plate_wells, :dependent => :destroy
-  has_many :oligo, :through => :oligo_plate_wells
+  has_many :oligos, :through => :oligo_plate_wells
+  has_many :parts, :through => :oligos
   
   attr_accessible :name, :user, :vendor
   

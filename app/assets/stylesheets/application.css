@@ -17,3 +17,8 @@
 form input, textarea, form select {
     margin-left: 40px;
 }
+
+.checkbox-container { 
+   height: 300px;
+   overflow-y: scroll;
+}

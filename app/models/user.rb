@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :fullname, :provider
   attr_accessible :group_ids, :part_ids
   
+  accepts_nested_attributes_for :tasks
+  
   validates :fullname, :email, :presence => true
   
   def to_s

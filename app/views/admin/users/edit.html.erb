@@ -1,34 +1,44 @@
 <div class="page-header">
 	<h1><i class="icon-user"> </i>Edit User</h1>
 </div>
-
-<style>
-
-
-</style>
-
-
-<p>
 	<%= simple_form_for([:admin,@user], :html => {:class => 'form-horizontal' }) do |f| %>
 		<ul class="nav nav-tabs">
 	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
 	    <li><a href="#groups" data-toggle="tab">Groups</a></li>
-			<li><a href="#parts" data-toggle="tab">Parts</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Oligo Plates<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<% @plates.each do |plate| %>
+						<li><a href="#<%= plate.name %>" data-toggle="tab"><%= plate.name %></a></li>
+					<% end %>
+				</ul>
+			</li>	    
 	  </ul>
 
 		<div class="tab-content">
+
 			<div class="tab-pane active" id="info">
 				<%= f.input :fullname %>
 				<%= f.input :email, :disabled => true %>
 			</div>
+
 			<div class="tab-pane" id="groups">
 				<%= f.association :groups, :as => :check_boxes %>
 			</div>
-			<div class="tab-pane" id="parts">
-				<div id = "parts_container">
-					<%= f.association :parts, :as => :check_boxes %>
+			
+			<% @plates.each do |plate| %>
+				<div class="tab-pane" id="<%= plate.name %>">
+					<div class="control-group">
+						<label class="control-label" for="all">Select all</label>
+						<div class="controls">
+							<%= check_box_tag :all, :all, false, :class => :checkall %>
+						</div>
+					</div>
+					
+					<%= f.association :parts, :as => :check_boxes, :collection => plate.parts %>	
 				</div>
-			</div>
+			<% end %>
+			
 	  </div>
 
 		<div class="form-actions">
@@ -36,4 +46,3 @@
 			<%= link_to 'Cancel', admin_user_path(@user), :class => 'btn'%>
 		</div>
 	<% end %>
-</p>

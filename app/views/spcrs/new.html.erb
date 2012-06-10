@@ -11,7 +11,15 @@
 
 		<div class="tab-content">
 			<div class="tab-pane active" id="parts">
-				<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
+				<div class="control-group">
+					<label class="control-label" for="all">Select all</label>
+					<div class="controls">
+						<%= check_box_tag :all, :all, false, :class => :checkall %>
+					</div>
+				</div>
+				<div class="checkbox-container">
+					<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
+				</div>
 			</div>
 			<div class="tab-pane" id="device">
 				<%= f.association :device, :collection => @devices %>
