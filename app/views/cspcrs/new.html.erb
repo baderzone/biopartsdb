@@ -4,7 +4,7 @@
 <p>
 	<%= simple_form_for(@cspcr, :html => {:class => 'form-horizontal' }) do |f| %>
 	<ul id="myTab" class="nav nav-tabs">
-		<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+		<li class="active"><a href="#info" data-toggle="tab">Info</a></li>
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Growth Plates<b class="caret"></b></a>
 			<ul class="dropdown-menu">
@@ -15,9 +15,10 @@
 		</li>
 	</ul>
 	<div id="myTabContent" class="tab-content">
-		<div class="tab-pane active" id="home">
+		<div class="tab-pane active" id="info">
 			<p>
 				<%= f.association :device, :collection => @devices %>
+				<%= f.input :note %>
 			</p>
 		</div>
 		<% current_user.clonings.each do |cl| %>

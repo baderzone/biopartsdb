@@ -17,7 +17,7 @@ class PcrGel < ActiveRecord::Base
   
   scope :pendings, where(:status_id => Status.find_by_process_and_name(PcrGel.to_s,:pending))
   
-  attr_accessible :user, :protocol, :status, :pcr_gel_images
+  attr_accessible :user, :protocol, :status, :pcr_gel_images, :note
   attr_accessible :user_id, :protocol_id, :status_id
   
   attr_accessible :spcr_products, :tpcr_products, :fpcr_products

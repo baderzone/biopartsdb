@@ -8,6 +8,7 @@
     <li class="active"><a href="#spcrs" data-toggle="tab">sPCRs</a></li>
     <li><a href="#tpcrs" data-toggle="tab">tPCRs</a></li>
     <li><a href="#fpcrs" data-toggle="tab">fPCRs</a></li>
+    <li><a href="#note" data-toggle="tab">Notes</a></li>
   </ul>
 
   <div class="tab-content">
@@ -38,8 +39,13 @@
 			</div>
 			<%= f.association :fpcr_products, :collection => current_user.fpcr_products.reaction_pass, :as => :check_boxes %>
 		</div>
-  </div>
-	
+		
+		<div class="tab-pane" id="note">
+			<%= f.input :note %>
+		</div>
+		
+	</div>	
+
 	<div class="form-actions">
 		<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
 		<%= link_to 'Cancel', pcr_gels_path, :class => 'btn'%>

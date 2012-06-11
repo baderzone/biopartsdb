@@ -36,15 +36,14 @@
 				</table>
 
 				<dl class="dl-horizontal">
-					<dt>Status</dd>
-					<dd><%= @gel.status %></dt>
-					<dt>Date</dd>
-					<dd><%= @gel.created_at %></dt>		
+					<dt>Status</dt>
+					<dd><%= @gel.status %></dd>
+					<dt>Date</dt>
+					<dd><%= @gel.created_at %></dd>		
+					<dt>Notes</dt>
+					<dd><%= @gel.note %></dd>
 				</dl>
 				
-				<div class="form-actions"> 
-					<%= link_to 'Update', edit_cspcr_gel_path(@gel), :class => 'btn'%>
-				</div>
 			</div>
 			
 			<div class="tab-pane" id="order">
@@ -60,8 +59,10 @@
 			<div class="tab-pane" id="images">
 				<ul class="thumbnails">
 					<% @gel.cspcr_gel_images.each do |img| %>
-					  <li class="span3">
-					    <a href="<%= img.cspcr_gel_image_file.url %>" class="thumbnail"><%= image_tag(img.cspcr_gel_image_file.url) %></a>
+						<li class="span3">
+							<a href="<%= cspcr_gel_cspcr_gel_image_path(img) %>" class="thumbnail">
+								<%= image_tag(img.cspcr_gel_image_file.url) %>
+							</a>
 					  </li>
 					<% end %>
 				</ul>
@@ -85,4 +86,7 @@
 	  </div>
 	</div>
 	
+	<div class="form-actions"> 
+		<%= link_to 'Update', edit_cspcr_gel_path(@gel), :class => 'btn'%>
+	</div>
 </p>

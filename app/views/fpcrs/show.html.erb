@@ -42,17 +42,16 @@
 				</table>
 
 				<dl class="dl-horizontal">
-					<dt>Status</dd>
-					<dd><%= @fpcr.status.name %></dt>
-					<dt>Device</dd>
-					<dd><%= @fpcr.device.name %></dt>
-					<dt>Date</dd>
-					<dd><%= @fpcr.created_at %></dt>		
+					<dt>Status</dt>
+					<dd><%= @fpcr.status.name %></dd>
+					<dt>Device</dt>
+					<dd><%= @fpcr.device.name %></dd>
+					<dt>Date</dt>
+					<dd><%= @fpcr.created_at %></dd>
+					<dt>Note</dt>
+					<dd><%= @fpcr.note %></dd>		
 				</dl>
 				
-				<div class="form-actions"> 
-					<%= link_to 'Update', edit_fpcr_path(@fpcr), :class => 'btn'%>
-				</div>
 			</div>
 			
 			<% @fpcr.fpcr_products.each do |product| %>
@@ -70,5 +69,7 @@
 			</div>
 	  </div>
 	</div>
-	
+	<div class="form-actions"> 
+		<%= link_to 'Update', edit_fpcr_path(@fpcr), :class => 'btn'%>
+	</div>
 </p>

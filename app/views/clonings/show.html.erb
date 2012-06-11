@@ -25,12 +25,12 @@
 					<%= render :partial => "plate_legend", :locals => {:index => @cloning.growth_plate.index_by_part }%>
 				</div>
 			</div>
-			<div class="form-actions"> 
-				<%= link_to 'Update', edit_cloning_path(@cloning), :class => 'btn'%>
-			</div>			
 		</div>
-	
-	<div class="tab-pane" id="protocol">
-		<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @cloning.protocol, :number_reactions => @cloning.clones.size }%>
-	</div>
+		<div class="tab-pane" id="protocol">
+			<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @cloning.protocol, :number_reactions => @cloning.clones.size }%>
+		</div>
+</div>
+
+<div class="form-actions"> 
+	<%= link_to 'Update', edit_cloning_path(@cloning), :class => 'btn'%>
 </div>

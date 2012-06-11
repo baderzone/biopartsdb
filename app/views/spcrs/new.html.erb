@@ -6,7 +6,7 @@
 	
 		<ul class="nav nav-tabs">
 	    <li class="active"><a href="#parts" data-toggle="tab">Parts</a></li>
-	    <li><a href="#device" data-toggle="tab">Info</a></li>
+	    <li><a href="#info" data-toggle="tab">Info</a></li>
 	  </ul>
 
 		<div class="tab-content">
@@ -21,9 +21,10 @@
 					<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
 				</div>
 			</div>
-			<div class="tab-pane" id="device">
+			<div class="tab-pane" id="info">
 				<%= f.association :device, :collection => @devices %>
 				<%= f.association :protocol, :collection => @protocols %>
+				<%= f.input :note %>
 			</div>
 	  </div>
 		

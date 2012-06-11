@@ -16,6 +16,7 @@
 	</ul>
 	<div id="myTabContent" class="tab-content">
 		<div class="tab-pane fade in active" id="home">
+			<%= f.input :note %>
 		</div>
 		<% current_user.cspcrs.each do |cspcr| %>
 			<div class="tab-pane fade" id="<%= cspcr.cspcr_plate.name %>">
@@ -31,10 +32,9 @@
 			</div>
 		<% end %>
 	</div>
-		
-		<div class="form-actions">
-			<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', cspcrs_path, :class => 'btn'%>
-		</div>
+	<div class="form-actions">
+		<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
+		<%= link_to 'Cancel', cspcrs_path, :class => 'btn'%>
+	</div>
 	<% end %>
 </p>

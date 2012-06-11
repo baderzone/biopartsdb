@@ -12,7 +12,7 @@ class CspcrGel < ActiveRecord::Base
     
   accepts_nested_attributes_for :cspcr_gel_lanes, :cspcr_gel_images
   
-  attr_accessible :cspcr_gel_lanes, :cspcr_product_ids, :cspcr_gel_lanes_attributes, :status_id
+  attr_accessible :cspcr_gel_lanes, :cspcr_product_ids, :cspcr_gel_lanes_attributes, :status_id, :note
   
   validates :cspcr_products, :presence => :true
   

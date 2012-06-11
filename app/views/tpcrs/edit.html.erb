@@ -4,13 +4,24 @@
 <p>
 	<%= simple_form_for(@tpcr, :html => {:class => 'form-horizontal' }) do |f| %>
 		
-		<%= f.association :tpcr_products do |p| %>
-			<%= p.association :quality_control, :collection => @quality_controls, :label => p.object.part %>
-		<% end %>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#parts" data-toggle="tab">Parts</a></li>
+			<li><a href="#info" data-toggle="tab">Info</a></li>
+	  </ul>
 		
-		<%= f.association :device %>
-		<%= f.association :status, :collection => @statuses %>
-		
+		<div class="tab-content">
+			<div class="tab-pane active" id="parts">
+				<%= f.association :tpcr_products do |p| %>
+					<%= p.association :quality_control, :collection => @quality_controls, :label => p.object.part %>
+				<% end %>
+			</div>
+			<div class="tab-pane" id="info">
+				<%= f.association :device %>
+				<%= f.association :status, :collection => @statuses %>				
+				<%= f.input :note %>
+			</div>
+	  </div>
+
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
 			<%= link_to 'All Passed', {:action => :update_all_qc_pass, :id => @tpcr.id}, :class => 'btn btn-success'  %>

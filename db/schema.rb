@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605171045) do
+ActiveRecord::Schema.define(:version => 20120611205602) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20120605171045) do
     t.integer  "status_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "note"
   end
 
   add_index "cspcr_gels", ["protocol_id"], :name => "index_cspcr_gels_on_protocol_id"
@@ -122,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20120605171045) do
     t.integer  "device_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "note"
   end
 
   add_index "cspcrs", ["device_id"], :name => "index_cspcrs_on_device_id"
@@ -175,6 +177,7 @@ ActiveRecord::Schema.define(:version => 20120605171045) do
     t.integer  "device_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "note"
   end
 
   add_index "fpcrs", ["device_id"], :name => "index_fpcrs_on_device_id"
@@ -241,6 +244,7 @@ ActiveRecord::Schema.define(:version => 20120605171045) do
     t.integer  "protocol_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "note"
   end
 
   add_index "ligations", ["protocol_id"], :name => "index_ligations_on_protocol_id"
@@ -342,6 +346,7 @@ ActiveRecord::Schema.define(:version => 20120605171045) do
     t.integer  "status_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "note"
   end
 
   add_index "pcr_gels", ["protocol_id"], :name => "index_pcr_gels_on_protocol_id"
@@ -485,6 +490,7 @@ ActiveRecord::Schema.define(:version => 20120605171045) do
     t.integer  "device_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "note"
   end
 
   add_index "spcrs", ["device_id"], :name => "index_spcrs_on_device_id"
@@ -543,6 +549,7 @@ ActiveRecord::Schema.define(:version => 20120605171045) do
     t.integer  "device_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "note"
   end
 
   add_index "tpcrs", ["device_id"], :name => "index_tpcrs_on_device_id"
@@ -562,6 +569,7 @@ ActiveRecord::Schema.define(:version => 20120605171045) do
     t.integer  "light_blue_count"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.text     "note"
   end
 
   add_index "transformations", ["ligation_product_id"], :name => "index_transformations_on_ligation_product_id"

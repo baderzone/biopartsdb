@@ -36,15 +36,14 @@
 				</table>
 
 				<dl class="dl-horizontal">
-					<dt>Status</dd>
-					<dd><%= @pcr_gel.status.name %></dt>
-					<dt>Date</dd>
-					<dd><%= @pcr_gel.created_at %></dt>		
+					<dt>Status</dt>
+					<dd><%= @pcr_gel.status.name %></dd>
+					<dt>Date</dt>
+					<dd><%= @pcr_gel.created_at %></dd>		
+					<dt>Note</dt>
+					<dd><%= @pcr_gel.note %></dd>		
 				</dl>
 				
-				<div class="form-actions"> 
-					<%= link_to 'Update', edit_pcr_gel_path(@pcr_gel), :class => 'btn'%>
-				</div>
 			</div>
 			
 			<div class="tab-pane" id="order">
@@ -83,5 +82,7 @@
 			</div>
 	  </div>
 	</div>
-	
+	<div class="form-actions"> 
+		<%= link_to 'Update', edit_pcr_gel_path(@pcr_gel), :class => 'btn'%>
+	</div>
 </p>

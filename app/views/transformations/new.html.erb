@@ -3,12 +3,30 @@
 </div>
 <p>
 	<%= simple_form_for(@transformation, :html => {:class => 'form-horizontal' }) do |f| %>
-		<%= f.association :ligation_product, :collection => current_user.ligation_products.reaction_pass %>
-		<%= f.association :strain %>
+	<div class="tabbable">
 		
-		<div class="form-actions">
-			<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', transformations_path, :class => 'btn'%>
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#notes" data-toggle="tab">Notes</a></li>
+	  </ul>
+	
+		<div class="tab-content">
+			<div class="tab-pane active" id="info">
+				<%= f.association :ligation_product, :collection => current_user.ligation_products.reaction_pass %>
+				<%= f.association :strain %>
+			</div>
+			
+			<div class="tab-pane" id="notes">
+				<%= f.input :note %>
+			</div>
 		</div>
+		
+	</div>
+	
+	<div class="form-actions">
+		<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
+		<%= link_to 'Cancel', transformations_path, :class => 'btn'%>
+	</div>
+
 	<% end %>
 </p>

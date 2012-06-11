@@ -6,6 +6,7 @@
 		
 		<ul class="nav nav-tabs">
 	    	<li class="active"><a href="#ligation" data-toggle="tab">Ligations</a></li>
+	    	<li><a href="#info" data-toggle="tab">Info</a></li>
 	  	</ul>
 
 	  <div class="tab-content">
@@ -15,9 +16,12 @@
 					<%= p.association :plasmid %>
 				<% end %>
 			</div>
-		
+			
+			<div class="tab-pane active" id="info">
+				<%= f.association :status, :collection => @statuses %>
+				<%= f.input :note %>
+			</div>
 		</div>			
-		<%= f.association :status, :collection => @statuses %>
 		
 		<div class="form-actions">
 			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>

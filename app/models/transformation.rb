@@ -20,7 +20,7 @@ class Transformation < ActiveRecord::Base
   scope :pendings, where(:status_id => Status.find_by_process_and_name(Transformation.to_s,:pending))
   scope :pending_for, lambda {|user| where(:status_id => Status.find_by_process_and_name(Transformation.to_s,:pending), :user_id => user.id)}
   
-  attr_accessible :blue_count, :light_blue_count, :white_count, :strain, :ligation_product
+  attr_accessible :blue_count, :light_blue_count, :white_count, :strain, :ligation_product, :note 
   attr_accessible :ligation_product_id, :strain_id, :status_id, :quality_control_id
   
   validates :ligation_product, :strain, :presence => :true

@@ -2,29 +2,32 @@
 	<h1><i class="icon-repeat"> </i>Update Transformation</h1>
 </div>
 <p>
-	
-	<ul class="nav nav-tabs">
-    <li class="active"><a href="#<%= @transformation.ligation_product %>" data-toggle="tab"><%= @transformation.ligation_product %></a></li>
-  </ul>
-	
-
-	<br/>
-	<div class="tab-content">
-			<div class="tab-pane active" id="info">
 	<%= simple_form_for(@transformation, :html => {:class => 'form-horizontal' }) do |f| %>
-		
-		<%= f.input :white_count %>
-		<%= f.input :blue_count %>
-		<%= f.input :light_blue_count %>
-		<%= f.association :strain %>
-		<%= f.association :status, :collection => @statuses %>
-		<%= f.association :quality_control, :collection => @quality_controls %>
-		
-		<div class="form-actions">
-			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', transformation_path(@transformation), :class => 'btn'%>
+	<div class="tabbable">
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#notes" data-toggle="tab">Notes</a></li>
+	  </ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="info">
+				<%= f.input :white_count %>
+				<%= f.input :blue_count %>
+				<%= f.input :light_blue_count %>
+				<%= f.association :strain %>
+				<%= f.association :status, :collection => @statuses %>
+				<%= f.association :quality_control, :collection => @quality_controls %>
+			</div>
+			
+			<div class="tab-pane" id="notes">
+				<%= f.input :note %>
+			</div>
 		</div>
+	</div>
+	<div class="form-actions">
+		<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+		<%= link_to 'Cancel', transformation_path(@transformation), :class => 'btn'%>
+	</div>
+	
 	<% end %>
-	</div>
-	</div>
 </p>

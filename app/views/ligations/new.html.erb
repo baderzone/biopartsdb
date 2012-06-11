@@ -6,6 +6,7 @@
 		<ul class="nav nav-tabs">
 	    <li class="active"><a href="#spcrs" data-toggle="tab">sPCRs</a></li>
 	    <li><a href="#fpcrs" data-toggle="tab">fPCRs</a></li>
+	    <li><a href="#note" data-toggle="tab">Notes</a></li>
 	  </ul>
 
 		<div class="tab-content">
@@ -15,9 +16,16 @@
 			<div class="tab-pane" id="fpcrs">
 				<%= f.association :fpcr_products, :collection => current_user.fpcr_products.qc_pass, :as => :check_boxes %>
 			</div>
+			<div class="tab-pane" id="note">
+				<%= f.input :note %>
+				<div class="control-group">
+					<label class="control-label" for="all">Plasmid</label>
+					<div class="controls">
+						<%= collection_select(:plasmid, :id, Plasmid.all, :id, :name) %>
+					</div>
+				</div>
+			</div>
 	  </div>
-		<%= label_tag :Plasmid %>
-		<%= collection_select(:plasmid, :id, Plasmid.all, :id, :name) %>
 		
 		<div class="form-actions">
 			<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>

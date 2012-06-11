@@ -9,41 +9,43 @@
 
   <div class="tab-content">
 		<div class="tab-pane active" id="info">
-			<p>
 				<dl class="dl-horizontal">
+					
+					<dt>White</dt>
+					<dd><%= @transformation.white_count %></dd>
+
+					<dt>Blue</dt>
+					<dd><%= @transformation.blue_count %></dd>
+
+					<dt>Light Blue</dt>
+					<dd><%= @transformation.light_blue_count %></dd>
 		
-				<dt>White</dd>
-				<dd><%= @transformation.white_count %></dd>
+					<dt>Strain</dt>
+					<dd><%= @transformation.strain %></dd>
 
-				<dt>Blue</dd>
-				<dd><%= @transformation.blue_count %></dd>
+					<dt>Status</dt>
+					<dd><%= @transformation.status %></dd>
 
-				<dt>Light Blue</dd>
-				<dd><%= @transformation.light_blue_count %></dd>
-		
-				<dl class="dl-horizontal">
-				<dt>Strain</dd>
-				<dd><%= @transformation.strain %></dt>
-
-				<dt>Status</dd>
-				<dd><%= @transformation.status %></dt>
-
-				<dt>Quality Control</dd>
-				<dd><%= @transformation.quality_control %></dt>
-
-				<dt>Date</dd>
-				<dd><%= @transformation.created_at %></dt>		
+					<dt>Quality Control</dt>
+					<dd><%= @transformation.quality_control %></dd>
+					
+					<dt>Date</dt>
+					<dd><%= @transformation.created_at %></dd>
+					
+					<dt>Notes</dt>
+					<dd><%= @transformation.note %></dd>
+							
 				</dl>
-	
-				<div class="form-actions"> 
-					<%= link_to 'Update', edit_transformation_path(@transformation), :class => 'btn'%>
-				</div>
-			</p>
 			
 		</div>
 
-	
-	<div class="tab-pane" id="protocol">
-		<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @transformation.protocol, :number_reactions => 1 }%>
+		<div class="tab-pane" id="protocol">
+			<%= render :partial => "protocols/protocol_index", :locals => {:protocol => @transformation.protocol, :number_reactions => 1 }%>
+		</div>
+
 	</div>
+</div>
+
+<div class="form-actions"> 
+	<%= link_to 'Update', edit_transformation_path(@transformation), :class => 'btn'%>
 </div>

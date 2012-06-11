@@ -11,17 +11,15 @@
 	  <div class="tab-content">
 			<div class="tab-pane active" id="info">
 					<dl class="dl-horizontal">
-						<dt>Status</dd>
-						<dd><%= @cspcr.status %></dt>
-						<dt>Device</dd>
-						<dd><%= @cspcr.device %></dt>
-						<dt>Date</dd>
-						<dd><%= @cspcr.created_at %></dt>		
+						<dt>Status</dt>
+						<dd><%= @cspcr.status %></dd>
+						<dt>Device</dt>
+						<dd><%= @cspcr.device %></dd>
+						<dt>Date</dt>
+						<dd><%= @cspcr.created_at %></dd>
+						<dt>Note</dt>
+						<dd><%= @cspcr.note %></dd>
 					</dl>
-				
-					<div class="form-actions"> 
-						<%= link_to 'Update', edit_cspcr_path(@cspcr), :class => 'btn'%>
-					</div>
 			</div>
 			
 			<div class="tab-pane" id="plate">
@@ -40,5 +38,7 @@
 			</div>
 	  </div>
 	</div>
-	
+	<div class="form-actions"> 
+		<%= link_to 'Update', edit_cspcr_path(@cspcr), :class => 'btn'%>
+	</div>
 </p>

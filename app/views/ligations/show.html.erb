@@ -36,15 +36,14 @@
 			</table>
 
 			<dl class="dl-horizontal">
-				<dt>Status</dd>
-				<dd><%= @ligation.status.name %></dt>
-				<dt>Ligation</dd>
-				<dd><%= @ligation.created_at %></dt>		
+				<dt>Status</dt>
+				<dd><%= @ligation.status.name %></dd>
+				<dt>Ligation</dt>
+				<dd><%= @ligation.created_at %></dd>
+				<dt>Note</dt>
+				<dd><%= @ligation.note %></dd>
 			</dl>
 			
-			<div class="form-actions"> 
-				<%= link_to 'Update', edit_ligation_path(@ligation), :class => 'btn'%>
-			</div>
 		</div>
 		
 		<div class="tab-pane" id="protocol">
@@ -52,4 +51,7 @@
 		</div>
   </div>
 </div>	
+<div class="form-actions"> 
+	<%= link_to 'Update', edit_ligation_path(@ligation), :class => 'btn'%>
+</div>
 </p>

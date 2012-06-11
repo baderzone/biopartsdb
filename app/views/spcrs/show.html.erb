@@ -46,17 +46,16 @@
 				</table>
 
 				<dl class="dl-horizontal">
-					<dt>Status</dd>
-					<dd><%= @spcr.status.name %></dt>
-					<dt>Device</dd>
-					<dd><%= @spcr.device.name %></dt>
-					<dt>Date</dd>
-					<dd><%= @spcr.created_at %></dt>		
+					<dt>Status</dt>
+					<dd><%= @spcr.status.name %></dd>
+					<dt>Device</dt>
+					<dd><%= @spcr.device.name %></dd>
+					<dt>Date</dt>
+					<dd><%= @spcr.created_at %></dd>
+					<dt>Note</dt>
+					<dd><%= @spcr.note %></dd>					
 				</dl>
 				
-				<div class="form-actions"> 
-					<%= link_to 'Update', edit_spcr_path(@spcr), :class => 'btn'%>
-				</div>
 			</div>
 			
 			
@@ -76,5 +75,7 @@
 			</div>
 	  </div>
 	</div>
-	
+	<div class="form-actions"> 
+		<%= link_to 'Update', edit_spcr_path(@spcr), :class => 'btn'%>
+	</div>
 </p>

@@ -2,29 +2,28 @@
 	<h1><i class="icon-repeat"> </i>Update Cloning <%= @cloning.id %></h1>
 </div>
 <p>
-	
-	<ul class="nav nav-tabs">
-    <li class="active"><a href="#<%= @cloning.growth_plate %>" data-toggle="tab"><%= @cloning.growth_plate %></a></li>
-  </ul>
+<%= simple_form_for(@cloning, :html => {:class => 'form-horizontal' }) do |f| %>
+	<div class="tabbable">
+			
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#<%= @cloning.growth_plate %>" data-toggle="tab"><%= @cloning.growth_plate %></a></li>
+	  </ul>
 
-
-
-	<div class="tab-content">
+		<div class="tab-content">
 			<div class="tab-pane active" id="info">
-				
-	<%= simple_form_for(@cloning, :html => {:class => 'form-horizontal' }) do |f| %>
-		<%= f.association :clones do |p| %>
-			<%= p.association :status, :collection => @statuses, :label => p.object.name %>
-				
-		<% end %>
-	</div>
-	</div>
-		
-		<div class="form-actions">
-			<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
-			<%= link_to 'All Picked', {:action => :update_picked_all, :id => @cloning.id}, :class => 'btn btn-success'  %>
-			<%= link_to 'Cancel', cloning_path(@cloning), :class => 'btn'%>
-
+				<%= f.association :clones do |p| %>
+					<%= p.association :status, :collection => @statuses, :label => p.object.name %>
+				<% end %>
+			</div>
 		</div>
-	<% end %>
+		
+	</div>
+	
+	<div class="form-actions">
+		<%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+		<%= link_to 'All Picked', {:action => :update_picked_all, :id => @cloning.id}, :class => 'btn btn-success'  %>
+		<%= link_to 'Cancel', cloning_path(@cloning), :class => 'btn'%>
+	</div>
+	
+<% end %>
 </p>

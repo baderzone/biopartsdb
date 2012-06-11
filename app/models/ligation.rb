@@ -15,7 +15,7 @@ class Ligation < ActiveRecord::Base
     
   accepts_nested_attributes_for :spcr_products, :fpcr_products, :ligation_products
 
-  attr_accessible :user, :plasmid, :protocol, :status
+  attr_accessible :user, :plasmid, :protocol, :status, :note
   attr_accessible :user_id, :plasmid_id, :protocol_id, :status_id
   
   attr_accessible :spcr_products, :fpcr_products
