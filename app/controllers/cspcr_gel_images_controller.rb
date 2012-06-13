@@ -1,7 +1,7 @@
 class CspcrGelImagesController < ApplicationController
 
   def show
-    @img = CspcrGelImage.find(params[:id])
+    @img = CspcrGelImage.find(params[:cspcr_gel_id])
   end
 
   def create

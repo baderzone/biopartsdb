@@ -1,6 +1,6 @@
 class PcrGelsController < ApplicationController
   def index
-    @pcr_gels = current_user.pcr_gels
+    @pcr_gels = current_user.pcr_gels.order("id DESC")
   end
 
   def show

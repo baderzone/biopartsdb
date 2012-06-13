@@ -1,7 +1,7 @@
 class PcrGelImagesController < ApplicationController
   
   def show
-    @img = PcrGelImage.find(params[:id])
+    @img = PcrGelImage.find(params[:pcr_gel_id])
   end
   
   def create
