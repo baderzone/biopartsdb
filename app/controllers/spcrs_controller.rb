@@ -46,11 +46,11 @@ class SpcrsController < ApplicationController
   
   def update_all_qc_pass
     SpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Spcr.to_s,:pass).id}, {:spcr_id => params[:id]})
-    redirect_to edit_spcr_path(@spcr), :notice => "All sPCR products marked as passed."
+    redirect_to edit_spcr_path(params[:id]), :notice => "All sPCR products marked as passed."
   end
   
   def update_all_qc_fail
     SpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Spcr.to_s,:fail).id}, {:spcr_id => params[:id]})
-    redirect_to edit_spcr_path(@spcr), :notice => "All sPCR products marked as failed."
+    redirect_to edit_spcr_path(params[:id]), :notice => "All sPCR products marked as failed."
   end
 end

@@ -43,11 +43,11 @@ class TpcrsController < ApplicationController
   
   def update_all_qc_pass
     TpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Tpcr.to_s,:pass).id}, {:tpcr_id => params[:id]})
-    redirect_to edit_tpcr_path(@tpcr), :notice => "All tPCR products marked as passed."
+    redirect_to edit_tpcr_path(params[:id]), :notice => "All tPCR products marked as passed."
   end
   
   def update_all_qc_fail
     TpcrProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Tpcr.to_s,:fail).id}, {:tpcr_id => params[:id]})
-    redirect_to edit_tpcr_path(@tpcr), :notice => "All tPCR products marked as failed."
+    redirect_to edit_tpcr_path(params[:id]), :notice => "All tPCR products marked as failed."
   end
 end

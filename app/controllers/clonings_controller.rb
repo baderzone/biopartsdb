@@ -88,7 +88,7 @@ class CloningsController < ApplicationController
   
   def update_picked_all
     Clone.update_all({:status_id => Status.find_by_process_and_name(Clone.to_s,:picked).id}, {:cloning_id => params[:id]})
-    redirect_to cloning_path(@cloning), :notice => "All clones marked as picked."
+    redirect_to edit_cloning_path(params[:id]), :notice => "All clones marked as picked."
   end
   
   private

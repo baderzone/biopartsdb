@@ -51,12 +51,12 @@ class CspcrGelsController < ApplicationController
   
   def update_all_qc_pass
     CspcrGelLane.update_all({:quality_control_id => QualityControl.find_by_process_and_name(CspcrGelLane.to_s,:pass).id}, {:cspcr_gel_id => params[:id]})
-    redirect_to edit_cspcr_gel_path(@gel), :notice => "All lanes marked as passed."
+    redirect_to edit_cspcr_gel_path(params[:id]), :notice => "All lanes marked as passed."
   end
   
   def update_all_qc_fail
     CspcrGelLane.update_all({:quality_control_id => QualityControl.find_by_process_and_name(CspcrGelLane.to_s,:fail).id}, {:cspcr_gel_id => params[:id]})
-    redirect_to edit_cspcr_gel_path(@gel), :notice => "All lanes marked as failed."
+    redirect_to edit_cspcr_gel_path(params[:id]), :notice => "All lanes marked as failed."
   end
   
   
