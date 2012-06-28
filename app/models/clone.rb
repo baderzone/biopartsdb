@@ -5,10 +5,15 @@ class Clone < ActiveRecord::Base
   belongs_to :quality_control
   belongs_to :protocol
   belongs_to :cloning
+  
+  has_one :ligation_product, :through => :transformation
+  has_one :part, :through => :ligation_product
+  
   has_one :growth_plate_well
   
   has_many :cspcr_products
   has_many :cspcr_gel_lanes, :through => :cspcr_products
+  
 
   scope :for_user, lambda {|user| where(:user_id => user.id)}
 

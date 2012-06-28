@@ -7,6 +7,7 @@
 			<tr>
 				<th>id</th>
 				<th>Name</th>
+				<th>Type</th>
 				<th>Status</th>
 				<th>Date</th>
 			</tr>
@@ -16,6 +17,13 @@
 				<tr>
 					<td><%= link_to plate.id, admin_sequencing_plate_path(plate) %></td>
 					<td><%= plate.name %></td>
+					<td>
+						<% if plate.master_plate.nil? %>
+							<span class="label label-info">Master</span>
+						<% else %>
+							<span class="label">Replica</span>
+						<% end %>
+					</td>
 					<td><%= plate.status %></td>
 					<td><%= plate.created_at %></td>
 				</tr>

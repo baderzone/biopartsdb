@@ -9,4 +9,6 @@ class SequencingProduct < ActiveRecord::Base
   
   attr_accessible :user, :sequencing, :part, :clone, :quality_control
   attr_accessible :user_id, :sequencing_id, :part_id, :clone_id, :quality_control_id
+  
+  
 end

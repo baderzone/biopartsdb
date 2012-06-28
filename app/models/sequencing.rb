@@ -13,4 +13,14 @@ class Sequencing < ActiveRecord::Base
   attr_accessible :sequencing_product_ids,:clone_ids, :status_id, :sequencing_growth_plate_id
   attr_accessible :sequencing_products_attributes
   
+  
+  def index_by_part
+    parts = Hash.new
+    sequencing_products.each do |rxn|
+      (parts[rxn.part] ||= []) << rxn
+    end
+    return parts
+  end
+  
+  
 end
