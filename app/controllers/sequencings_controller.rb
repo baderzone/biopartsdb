@@ -12,7 +12,7 @@ class SequencingsController < ApplicationController
   end
 
   def create
-    begin
+    #begin
       
       ActiveRecord::Base.transaction do
         @seq = Sequencing.new(params[:sequencing])
@@ -36,8 +36,8 @@ class SequencingsController < ApplicationController
         
         #plating parts
         parts.keys.each do |kp|
-            
-          if available_wells?(curr_seq_wells)
+          
+          if !available_wells?(curr_seq_wells)
             curr_seq_plates = Hash.new
             curr_seq_wells = Hash.new
             seq_plate = seq_plates.pop()
@@ -58,6 +58,7 @@ class SequencingsController < ApplicationController
             curr_seq_plates.keys.each do |p|
               curr_seq_wells[p] = p.sequencing_plate_wells.available.lock(:true).reverse
             end
+            
           end
           
           #one clone per well
@@ -85,7 +86,7 @@ class SequencingsController < ApplicationController
 
     def available_wells?(wells)      
       wells.keys.each do |k|
-        return false if wells[k].nil?
+        return false if wells[k].empty?
       end
       return true
     end
