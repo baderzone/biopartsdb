@@ -83,7 +83,9 @@ class SequencingsController < ApplicationController
   
   private
 
-    def available_wells?(wells)      
+    def available_wells?(wells)   
+      return false if wells.keys.length == 0
+          
       wells.keys.each do |k|
         return false if wells[k].empty?
       end
