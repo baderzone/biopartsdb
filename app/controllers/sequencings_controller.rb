@@ -12,8 +12,7 @@ class SequencingsController < ApplicationController
   end
 
   def create
-    #begin
-      
+    begin  
       ActiveRecord::Base.transaction do
         @seq = Sequencing.new(params[:sequencing])
         @seq.user = current_user
