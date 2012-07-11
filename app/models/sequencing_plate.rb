@@ -9,7 +9,7 @@ class SequencingPlate < ActiveRecord::Base
   has_many :sequencing_products, :through => :sequencing_growth_plate_wells
   has_many :parts, :through => :sequencing_products
   
-  scope :available, joins(:sequencing_plate_wells).where(:sequencing_plate_wells => {:sequencing_growth_plate_well_id => nil}).uniq
+  scope :available, joins(:sequencing_plate_wells).where(:status_id => 19, :sequencing_plate_wells => {:sequencing_growth_plate_well_id => nil}).uniq
   scope :master, where(:master_plate_id => nil)
   
   attr_accessible :name
