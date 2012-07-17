@@ -33,7 +33,7 @@ class SequencingPlate < ActiveRecord::Base
     index = Hash.new
     
     sequencing_plate_wells.each do |w|
-      if !w.sequencing_growth_plate_well.nil?
+      if !w.sequencing_growth_plate_well.nil? and !w.sequencing_growth_plate_well.sequencing_product_id.nil?
         part = w.sequencing_growth_plate_well.sequencing_product.clone.transformation.ligation_product.to_s
         plate = w.sequencing_growth_plate_well.sequencing_growth_plate
         
