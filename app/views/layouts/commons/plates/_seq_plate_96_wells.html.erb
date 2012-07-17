@@ -21,7 +21,7 @@
 						 if product.nil? 
 							product = plate[row+col].sequencing_growth_plate_well.sequencing_product.clone.transformation.ligation_product.to_s
 						 else
-							if !plate[row+col].sequencing_growth_plate_well.sequencing_product.nil? and plate[row+col].sequencing_growth_plate_well.sequencing_product.clone.transformation.ligation_product.to_s != product
+							if !plate[row+col].sequencing_growth_plate_well.sequencing_product_id.nil? and plate[row+col].sequencing_growth_plate_well.sequencing_product.clone.transformation.ligation_product.to_s != product
 								product = plate[row+col].sequencing_growth_plate_well.sequencing_product.clone.transformation.ligation_product.to_s
 								well_class = well_class == "well_in_use_1" ? "well_in_use_2" : "well_in_use_1"
 							end

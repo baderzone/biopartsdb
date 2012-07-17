@@ -8,7 +8,9 @@ class SequencingGrowthPlateWell < ActiveRecord::Base
   end
   
   def to_s
-    sequencing_product.clone.name[-2..-1]
+    if !sequencing_product.nil?
+      sequencing_product.clone.name[-2..-1]
+    end
   end
   
 end
