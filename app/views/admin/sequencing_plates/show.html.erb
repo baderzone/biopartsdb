@@ -18,7 +18,8 @@
 						<dd><%= @sequencing_plate.created_at %></dd>
 						<dt>Status</dt>
 						<dd><%= @sequencing_plate.status %></dd>		
-					</dl>
+          </dl>
+          <i class="icon-download-alt"> </i><%= link_to 'Download FASTA file', :action => :fasta, :id => @sequencing_plate.id     %>
 				</div>
 				<div class="span6">
 					<%= render :partial => "admin/sequencing_plates/plate_legend", :locals => {:index => @sequencing_plate.index_by_part }%>
