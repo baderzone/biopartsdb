@@ -13,9 +13,9 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 #repository information
-set :repository, "https://giapeto@bitbucket.org/giapeto/biopartsdb.git"
+set :repository, "https://jhudeployer@bitbucket.org/giapeto/biopartsdb.git"
 set :scm, :git
-set :scm_username, "giapeto"
+set :scm_username, "jhudeployer"
 
 #deploy information
 role :web, "128.220.138.86"                          # Your HTTP server, Apache/etc

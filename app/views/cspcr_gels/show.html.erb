@@ -60,7 +60,7 @@
 				<ul class="thumbnails">
 					<% @gel.cspcr_gel_images.each do |img| %>
 						<li class="span3">
-							<a href="<%= cspcr_gel_cspcr_gel_image_path(img) %>" class="thumbnail">
+							<a href="<%= cspcr_gel_cspcr_gel_image_path(@gel, img) %>" class="thumbnail">
 								<%= image_tag(img.cspcr_gel_image_file.url) %>
 							</a>
 					  </li>
