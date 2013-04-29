@@ -8,8 +8,15 @@ class OligoPlate < ActiveRecord::Base
   
   attr_accessible :name, :user, :vendor
   
-  
   ### utiling methods
+  def index_by_well
+    plate = Hash.new
+    oligo_plate_wells.each do |w|
+      plate[w.well] = w
+    end
+    return plate
+  end
+  
   def index_wells_for_part(part)
     part_wells = OligoPlateWell.joins(:oligo => :part).where(:oligos => {:part_id => part.id }, :oligo_plate_id => id)
     
@@ -21,5 +28,21 @@ class OligoPlate < ActiveRecord::Base
 
   end
   
-  
+  def index_by_oligo
+    index = Hash.new
+    
+    oligo_plate_wells.each do |w|
+      if !w.oligo_id.nil?
+        oligo = w.oligo.name
+        
+        if !index.key?(oligo)
+          index[oligo] = []
+        end
+        
+        index[oligo] << w.well
+      end
+    end
+    
+    return index
+  end
 end

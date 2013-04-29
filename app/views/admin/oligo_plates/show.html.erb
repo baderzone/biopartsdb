@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1><i class="icon-resize-small"> </i>Oligo Plate <%= @plate.name %></h1>
+</div>
+<div class="tabbable">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#info" data-toggle="tab">info</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="info">
+      <div class="row-fluid">
+        <div class="span5">
+          <%= render :partial => "layouts/commons/plates/oligo_plate_96_wells", :locals => {:plate => @plate.index_by_well }%>
+
+          <dl class="dl-horizontal">
+            <dt>Date</dt>
+            <dd><%= @plate.created_at %></dd>
+          </dl>
+        </div>
+        <div class="span5">
+          <%= render :partial => "admin/oligo_plates/plate_legend", :locals => {:index => @plate.index_by_oligo }%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

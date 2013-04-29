@@ -1,2 +1,32 @@
-<h1>Sequencings#edit</h1>
-<p>Find me in app/views/sequencings/edit.html.erb</p>
+<div class="page-header">
+  <h1><i class="icon-reload"> </i>Update Sequencing <%= @sequencing.id %></h1>
+</div>
+<p>
+<%= simple_form_for(@sequencing, :html => {:class => 'form-horizontal' }) do |f| %>
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="info">
+        <div class='container'>
+          <%= f.association :status, :collection => @statuses %>
+          <%= f.association :sequencing_products do |p| %>
+            <%= p.association :quality_control, :collection => @quality_controls, :label => p.object.clone.name %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, 'Update', :class => 'btn btn-primary'%>
+    <%= link_to 'All Passed', {:action => :update_all_qc_pass, :id => @sequencing.id}, :class => 'btn btn-success'  %>
+    <%= link_to 'All Failed', {:action => :update_all_qc_fail, :id => @sequencing.id}, :class => 'btn btn-danger'  %>
+    <%= link_to 'Cancel', sequencing_path(@sequencing), :class => 'btn'%>
+  </div>
+
+<% end %>
+</p>
+

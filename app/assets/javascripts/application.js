@@ -13,10 +13,30 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require jquery.imgareaselect
+//= require jquery.maphilight
 //= require twitter/bootstrap
 //= require_tree .
 
 /* select all for checkboxes */
 $('.checkall').click(function () {
-  $(this).parent().parent().parent().find(':checkbox').prop('checked', this.checked);
+    $(this).parent().parent().parent().find(':checkbox').prop('checked', this.checked);
+    });
+/* create image annotation */
+$(document).ready(function(){
+    $("#toAnnotate").imgAreaSelect({
+onSelectEnd: function (img, selection) {
+var coords = "";
+coords = selection.x1 + "," + selection.y1 + "," + selection.x2 + "," + selection.y2;
+if (!(selection.x1==selection.x2 && selection.y1 == selection.y2)){
+$("#position").val(coords);
+}else{
+$("#position").val("");
+}
+}
 });
+    });
+/* highlight image area */
+$(document).ready(function(){
+    $('#gel_image').maphilight({fillColor: 'ffffff', fillOpacity: 0.1, strokeColor: 'ffffff'});
+    });

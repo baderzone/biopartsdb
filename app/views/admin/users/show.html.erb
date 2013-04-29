@@ -5,8 +5,8 @@
 			<ul class="nav nav-tabs">
 	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
 	    <li><a href="#groups" data-toggle="tab">Groups</a></li>
-			<li><a href="#parts" data-toggle="tab">Parts</a></li>
-	  </ul>
+      <li><a href="#assignments" data-toggle="tab">Assignments</a></li>
+    </ul>
 
 		<div class="tab-content">
 			<div class="tab-pane active" id="info">
@@ -24,13 +24,14 @@
 					<% end %>
 				</ul>
 			</div>
-			<div class="tab-pane" id="parts">
+			<div class="tab-pane" id="assignments">
 				<ul>
 					<% @user.parts.each do |p| %>
 						<li><%= p.name %></li>
 					<% end %>
 				</ul>
-			</div>	
+      </div>	
+
 	  </div>
 
 		<div class="form-actions">

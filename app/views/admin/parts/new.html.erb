@@ -1,0 +1,32 @@
+<div class="page-header">
+	<h1><i class="icon-folder-open"> </i>Import Parts</h1>
+</div>
+<p>
+	<%= simple_form_for([:admin,@part], :html => {:class => 'form-horizontal' }) do |f| %>
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	  </ul>
+
+		<div class="tab-content">
+      <div class="tab-pane active" id="info">
+        <p><i class='icon-info-sign'> </i>Note: only csv file accepted. The uploaded file should have the following columns (header should not be included):</p>
+        <ol>
+          <li>Part Name</li>
+          <li>Feature (e.g. promoter, CDS, rRNA)</li>
+          <li>Organism (latin name. e.g. Saccharomyces cerevisiae)</li>
+          <li>Chromosome</li>
+          <li>Start (start position on chromosome)</li>
+          <li>Stop (stop position on chromosome)</li>
+          <li>Strand (1 or -1)</li>
+          <li>Sequence</li>
+        </ol>
+        <b>Upload a csv file</b> <%= f.file_field :parts_file %>
+			</div>
+	  </div>
+
+		<div class="form-actions">
+			<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
+			<%= link_to 'Cancel', admin_parts_path, :class => 'btn'%>
+		</div>
+	<% end %>
+</p>

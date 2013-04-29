@@ -34,6 +34,8 @@ gem 'carrierwave'
 gem 'redcarpet'
 gem 'ruby-units'
 gem 'acts_as_list'
+gem 'will_paginate', '~> 3.0.0'
+gem 'imgareaselect-rails', '~> 1.0'
 
 #bio gems
 gem 'bio'

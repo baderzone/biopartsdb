@@ -83,7 +83,7 @@ Biopartsdb::Application.routes.draw do
   get "clonings/new"
 
   get "clonings/edit"
-  
+
   get "clonings/mass_update"
 
   get "clones/index"
@@ -155,28 +155,31 @@ Biopartsdb::Application.routes.draw do
   match "/admin/sequencing_plates/:id/fasta", :to => "admin/sequencing_plates#fasta"
 
   match "/clonings/:id/update_picked_all", :to => "clonings#update_picked_all"
-  
+
   match "/cspcrs/:id/update_all_qc_pass", :to => "cspcrs#update_all_qc_pass"
   match "/cspcrs/:id/update_all_qc_fail", :to => "cspcrs#update_all_qc_fail"
-  
+
   match "/cspcr_gels/:id/update_all_qc_pass", :to => "cspcr_gels#update_all_qc_pass"
   match "/cspcr_gels/:id/update_all_qc_fail", :to => "cspcr_gels#update_all_qc_fail"
-  
+
   match "/fpcrs/:id/update_all_qc_pass", :to => "fpcrs#update_all_qc_pass"
   match "/fpcrs/:id/update_all_qc_fail", :to => "fpcrs#update_all_qc_fail"
-  
+
   match "/tpcrs/:id/update_all_qc_pass", :to => "tpcrs#update_all_qc_pass"
   match "/tpcrs/:id/update_all_qc_fail", :to => "tpcrs#update_all_qc_fail"
-  
+
   match "/spcrs/:id/update_all_qc_pass", :to => "spcrs#update_all_qc_pass"
   match "/spcrs/:id/update_all_qc_fail", :to => "spcrs#update_all_qc_fail"
-  
+
   match "/pcr_gels/:id/update_all_qc_pass", :to => "pcr_gels#update_all_qc_pass"
   match "/pcr_gels/:id/update_all_qc_fail", :to => "pcr_gels#update_all_qc_fail"
 
+  match "/sequencings/:id/update_all_qc_pass", :to => "sequencings#update_all_qc_pass"
+  match "/sequencings/:id/update_all_qc_fail", :to => "sequencings#update_all_qc_fail"
+
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
-  
+
   resources :home
   resources :users
   resources :protocols
@@ -187,7 +190,10 @@ Biopartsdb::Application.routes.draw do
   resources :pcr_gels do
     resources :pcr_gel_images
   end
-  
+  resources :pcr_gel_images do
+    resources :pcr_gel_image_annotations
+  end 
+
   resources :ligations
   resources :transformations
   resources :clonings
@@ -195,14 +201,17 @@ Biopartsdb::Application.routes.draw do
   resources :cspcr_gels do 
     resources :cspcr_gel_images
   end
-  
+  resources :cspcr_gel_images do
+    resources :cspcr_gel_image_annotations
+  end 
+
   resources :sequencings
-  
+
   namespace :admin do
     root :to => "home#index"
-    resources :home, :users, :groups, :plasmids, :strains, :sequencing_plates, :vendors, :devices, :protocols, :organisms
+    resources :home, :users, :parts, :groups, :plasmids, :strains, :sequencing_plates, :vendors, :devices, :protocols, :organisms, :oligo_plates
   end
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

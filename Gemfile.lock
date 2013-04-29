@@ -58,6 +58,8 @@ GEM
     highline (1.6.13)
     hike (1.2.1)
     i18n (0.6.0)
+    imgareaselect-rails (1.0.2)
+      rails (>= 3.1)
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -159,6 +161,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    will_paginate (3.0.4)
 
 PLATFORMS
   ruby
@@ -171,6 +174,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   gene_ontology
+  imgareaselect-rails (~> 1.0)
   jquery-rails
   jquery-ui-rails
   mysql2
@@ -185,3 +189,4 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
+  will_paginate (~> 3.0.0)

@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1><i class="icon-user"> </i>Oligo Plates</h1>
+</div>
+<%= will_paginate @plates %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Plate Name</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+  <tbody>		
+    <% @plates.each do |p| %>
+      <tr>
+        <td><%= p.id %></td>
+        <td><%= link_to p.name, admin_oligo_plate_path(p) %></td>
+        <td><%= p.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

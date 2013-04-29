@@ -14,7 +14,7 @@
 			<% ('01'..'12').each do |col| %>
 				
 				<% if plate.key?(row+col) %>
-					<td class="well_in_use_1"><%= plate[row+col] %></td>
+					<td class="well_in_use_1"><%= plate[row+col].oligo.name[-1] %></td>
 				<% else %>
 					<td class="well_is_empty"/>
 				<% end %>

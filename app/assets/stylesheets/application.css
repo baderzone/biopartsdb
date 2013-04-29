@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require jquery.ui.all
+ *= require imgareaselect-default
  *= require_plate_96_wells
  *= require_tree .
 */

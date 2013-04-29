@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cspcr_gel_image_id: 1
+  label: MyString
+  position: MyString
+
+two:
+  cspcr_gel_image_id: 1
+  label: MyString
+  position: MyString

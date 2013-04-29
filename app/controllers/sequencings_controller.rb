@@ -24,42 +24,42 @@ class SequencingsController < ApplicationController
           rxn.part = rxn.clone.transformation.ligation_product.part
           rxn.save
         end
-        
+
         #create an hash of |part| => sequencing_reaction to be split on different plates
         parts = @seq.index_by_part()
-        
+
         #retrieving the list of empty plates        
         seq_plates = SequencingPlate.master.available.reverse
         curr_seq_plates = Hash.new
         curr_seq_wells  = Hash.new
-        
+
         #plating parts
         parts.keys.each do |kp|
-          
+
           if !available_wells?(curr_seq_wells)
             curr_seq_plates = Hash.new
             curr_seq_wells = Hash.new
             seq_plate = seq_plates.pop()
-            
+
             #creating a new growth plate
             seqgrowthplate = SequencingGrowthPlate.create_for_sequencing_plate(current_user, @seq, seq_plate)
             curr_seq_plates[seq_plate] = seqgrowthplate
-            
+
             #creating new growth plates for replica plates
             seq_plate.replica_plates.each do |p|
               seqgrowthplate = SequencingGrowthPlate.create_for_sequencing_plate(current_user, @seq, p)
               curr_seq_plates[p] = seqgrowthplate              
             end
-                        
+
             #getting the list of databases and locking the objects so that nobody can put
             #anything on the plate until the operation is completed. 
             #Pessimistic locking is enforced to avoid all the mess 
             curr_seq_plates.keys.each do |p|
               curr_seq_wells[p] = p.sequencing_plate_wells.available.lock(:true).reverse
             end
-            
+
           end
-          
+
           #one clone per well
           curr_seq_plates.keys.each do |sp|
             sp_well = curr_seq_wells[sp].pop()
@@ -67,10 +67,10 @@ class SequencingsController < ApplicationController
             sp_well.sequencing_growth_plate_well = sgp_well
             sp_well.save
           end
-          
+
         end        
       end
-      
+
       # everything fine
       redirect_to sequencing_path(@seq), :notice => "Clones submitted for sequencing."
     rescue => ex
@@ -79,17 +79,39 @@ class SequencingsController < ApplicationController
   end
 
   def edit
+    @sequencing = Sequencing.find(params[:id])
+    @quality_controls = QualityControl.find_all_by_process(Sequencing.to_s)
+    @statuses = Status.find_all_by_process(Sequencing.to_s) 
   end
-  
+
+  def update
+    @sequencing = Sequencing.find(params[:id])
+    if @sequencing.update_attributes(params[:sequencing])
+      redirect_to sequencing_path(@sequencing), :notice => "Sequencing updated correctly."
+    else
+      render :edit, :id => @sequencing, :flash => {:error => "Sequencing update error."} 
+    end 
+  end
+
+  def update_all_qc_pass
+    SequencingProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Sequencing.to_s,:pass).id}, {:sequencing_id => params[:id]})
+    redirect_to edit_sequencing_path(params[:id]), :notice => "All Sequencing products marked as passed."
+  end 
+
+  def update_all_qc_fail
+    SequencingProduct.update_all({:quality_control_id => QualityControl.find_by_process_and_name(Sequencing.to_s,:fail).id}, {:sequencing_id => params[:id]})
+    redirect_to edit_sequencing_path(params[:id]), :notice => "All Sequencing products marked as failed."
+  end 
+
   private
 
-    def available_wells?(wells)   
-      return false if wells.keys.length == 0
-          
-      wells.keys.each do |k|
-        return false if wells[k].empty?
-      end
-      return true
+  def available_wells?(wells)   
+    return false if wells.keys.length == 0
+
+    wells.keys.each do |k|
+      return false if wells[k].empty?
     end
-  
+    return true
+  end
+
 end

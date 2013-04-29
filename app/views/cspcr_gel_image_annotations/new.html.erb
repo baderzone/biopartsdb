@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1><i class="icon-picture"> </i>Add Annotation</h1>
+</div>
+<p>
+<%= simple_form_for([@img,@annotation]) do |f| %>
+  <%= hidden_field_tag :position %>
+  <table>
+    <tr>
+      <td><%= f.input :label, :collection => @labels %></td>
+      <td><%= f.submit 'Save' %></td>
+    </tr>
+  </table>
+  <div class="thumbnail">
+    <img src="<%=@img.cspcr_gel_image_file.url %>" id="toAnnotate" />
+  </div>
+<% end %>
+</p>

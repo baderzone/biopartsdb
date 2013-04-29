@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1><i class="icon-file"> </i>Image Annotations</h1>
+</div>
+<p>
+<table class="table table-bordered table-stripped">
+  <tr>
+    <th>#</th>
+    <th>Label</th>
+    <th></th>
+  </tr>
+<% @annotations.each do |entry| %>
+  <tr>
+    <td><%= entry.id %></td>
+    <td><%= entry.label %></td>  
+    <td><%= link_to 'delete', pcr_gel_image_pcr_gel_image_annotation_path(entry.pcr_gel_image_id, entry.id), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</p>

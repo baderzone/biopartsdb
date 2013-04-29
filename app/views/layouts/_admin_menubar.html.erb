@@ -1,83 +1,106 @@
 <ul class="nav nav-pills">
 
-	<!-- Workspace menu -->
+  <!-- Workspace menu -->
   <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-      Accounts
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-      <li><%= link_to 'Users', admin_users_path %></li>
-			<li class="divider"></li>
-	    <li class="nav-header">Groups</li>
-			<li><%= link_to 'List', admin_groups_path %></li>
-			<li><%= link_to 'Add new group', new_admin_group_path %></li>
-    </ul>
+  <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+    Parts
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu"> 
+    <li><%= link_to 'List', admin_parts_path %></li>
+    <li><%= link_to 'Add New', new_admin_part_path %></li>
+  </ul>
   </li>
-	
-	<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-      Vendors
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-      <li><%= link_to 'List', admin_vendors_path %></li>
-			<li><%= link_to 'Add Vendor', new_admin_vendor_path %></li>
-    </ul>
+  
+  <li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+    Oligo Plates
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu"> 
+    <li><%= link_to 'List', admin_oligo_plates_path %></li>
+    <li><%= link_to 'Add New', new_admin_oligo_plate_path %></li>
+  </ul>
   </li>
-	<li class="divider-vertical"/>
-	
-	<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-      Materials
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-	    <li class="nav-header">Plasmids</li>
-			<li><%= link_to 'List', admin_plasmids_path %></li>
-			<li><%= link_to 'Add new plasmid', new_admin_plasmid_path %></li>
-			<li class="divider"/>
-			<li class="nav-header">Strains</li>
-			<li><%= link_to 'List', admin_strains_path %></li>
-			<li><%= link_to 'Add new strain', new_admin_strain_path %></li>
-			<li class="divider"/>
-			<li class="nav-header">Organisms</li>
-			<li><%= link_to 'List', admin_organisms_path %></li>
-			<li><%= link_to 'Add new organism', new_admin_organism_path %></li>
-			<li class="divider"/>
-			<li class="nav-header">Devices</li>
-			<li><%= link_to 'List', admin_devices_path %></li>
-			<li><%= link_to 'Add new device', new_admin_device_path %></li>
-    </ul>
-  </li>
-		
-	<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-      Sequencing
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-      <li><%= link_to 'Status', admin_sequencing_plates_path %></li>
-			<li><%= link_to 'Add Plate', new_admin_sequencing_plate_path %></li>
-    </ul>
-  </li>
-	<li class="divider-vertical"/>
+  <li class="divider-vertical"/>
 
-	<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-      Protocols
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-      <li><%= link_to 'List', admin_protocols_path %></li>
-	</ul>
+  <li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+    Accounts
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li><%= link_to 'Users', admin_users_path %></li>
+    <li class="divider"></li>
+    <li class="nav-header">Groups</li>
+    <li><%= link_to 'List', admin_groups_path %></li>
+    <li><%= link_to 'Add new group', new_admin_group_path %></li>
+  </ul>
   </li>
-	<li class="divider-vertical"/>
-	
+
+  <li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+    Vendors
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li><%= link_to 'List', admin_vendors_path %></li>
+    <li><%= link_to 'Add Vendor', new_admin_vendor_path %></li>
+  </ul>
+  </li>
+  <li class="divider-vertical"/>
+
+  <li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+    Materials
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li class="nav-header">Plasmids</li>
+    <li><%= link_to 'List', admin_plasmids_path %></li>
+    <li><%= link_to 'Add new plasmid', new_admin_plasmid_path %></li>
+    <li class="divider"/>
+    <li class="nav-header">Strains</li>
+    <li><%= link_to 'List', admin_strains_path %></li>
+    <li><%= link_to 'Add new strain', new_admin_strain_path %></li>
+    <li class="divider"/>
+    <li class="nav-header">Organisms</li>
+    <li><%= link_to 'List', admin_organisms_path %></li>
+    <li><%= link_to 'Add new organism', new_admin_organism_path %></li>
+    <li class="divider"/>
+    <li class="nav-header">Devices</li>
+    <li><%= link_to 'List', admin_devices_path %></li>
+    <li><%= link_to 'Add new device', new_admin_device_path %></li>
+  </ul>
+  </li>
+
+  <li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+    Sequencing
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li><%= link_to 'Status', admin_sequencing_plates_path %></li>
+    <li><%= link_to 'Add Plate', new_admin_sequencing_plate_path %></li>
+  </ul>
+  </li>
+  <li class="divider-vertical"/>
+
+  <li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+    Protocols
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li><%= link_to 'List', admin_protocols_path %></li>
+  </ul>
+  </li>
+  <li class="divider-vertical"/>
+
 </ul>
 
 <ul class="nav pull-right">
-	<li>
-		<%= link_to 'Home', root_path %>
-	</li>
+  <li>
+  <%= link_to 'Home', root_path %>
+  </li>
 </ul>

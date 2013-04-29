@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Pcr gel image:</b>
+  <%= @pcr_gel_image_annotation.pcr_gel_image_id %>
+</p>
+
+<p>
+  <b>Label:</b>
+  <%= @pcr_gel_image_annotation.label %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @pcr_gel_image_annotation.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_pcr_gel_image_annotation_path(@pcr_gel_image_annotation) %> |
+<%= link_to 'Back', pcr_gel_image_annotations_path %>

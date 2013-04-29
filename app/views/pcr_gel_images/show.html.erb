@@ -1,8 +1,14 @@
 <div class="page-header">
-	<h1><i class="icon-picture"> </i>PCR Gel</h1>
+  <h1><i class="icon-picture"> </i>PCR Gel</h1>
 </div>
 <p>
-  <div class="thumbnail">
-		<img src="<%=@img.pcr_gel_image_file.url %>" id="pcr_gel"/>
-	</div>
+<p><%= link_to 'Add Annotation', new_pcr_gel_image_pcr_gel_image_annotation_path(@img), :class => 'btn' %> <%= link_to 'Delete Annotation', pcr_gel_image_pcr_gel_image_annotations_path(@img), :class => 'btn' %> </p>
+<div class="thumbnail">
+  <img src="<%=@img.pcr_gel_image_file.url %>" id="gel_image" usemap="#gel_map"/>
+  <map name="gel_map">
+    <% @img.pcr_gel_image_annotations.each do |entry| %>
+      <area shape="rect" coords="<%= entry.position %>" title="<%= entry.label %>" href="#" class="gel_annotation" alt="test">
+    <% end %>
+  </map> 
+</div>
 </p>

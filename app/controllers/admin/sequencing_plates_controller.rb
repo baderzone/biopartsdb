@@ -4,7 +4,7 @@ class Admin::SequencingPlatesController < ApplicationController
   layout 'admin'
 
   def index
-    @sequencing_plates = SequencingPlate.find(:all, :order => "id DESC")
+    @sequencing_plates = SequencingPlate.paginate(:page => params[:page], :per_page => 10).order('id DESC')
   end
 
   def show

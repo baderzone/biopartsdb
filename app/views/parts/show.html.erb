@@ -92,7 +92,10 @@
 								<%= @part.clones.qc_pass.size %>
 							</span>
 						</td>
-						<td></td>
+            <td>
+							<span class="<%= @part.sequencing_products.qc_pass.size > 0 ? "badge badge-success" : "badge badge-important"%>">
+								<%= @part.sequencing_products.qc_pass.size %>
+            </td>
 					</tr>
 				</tbody>
 			</table>			

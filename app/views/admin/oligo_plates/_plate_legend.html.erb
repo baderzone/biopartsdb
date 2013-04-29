@@ -1,0 +1,18 @@
+<h3>Legend</h3>
+<br/>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Part</th>
+      <th>Wells</th>
+    </tr>
+  </thead>
+  <tbody>		
+    <% index.each do |part, well| %>
+      <tr>
+        <td><%= part %></td>
+        <td><%= well.join(', ') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

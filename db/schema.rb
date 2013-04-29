@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624151756) do
+ActiveRecord::Schema.define(:version => 20130426195226) do
 
   create_table "clones", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(:version => 20120624151756) do
 
   add_index "clonings", ["growth_plate_id"], :name => "index_clonings_on_growth_plate_id"
   add_index "clonings", ["user_id"], :name => "index_clonings_on_user_id"
+
+  create_table "cspcr_gel_image_annotations", :force => true do |t|
+    t.integer  "cspcr_gel_image_id"
+    t.string   "label"
+    t.string   "position"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "cspcr_gel_images", :force => true do |t|
     t.integer  "cspcr_gel_id"
@@ -317,6 +325,14 @@ ActiveRecord::Schema.define(:version => 20120624151756) do
   add_index "parts", ["feature_id"], :name => "index_parts_on_feature_id"
   add_index "parts", ["location_id"], :name => "index_parts_on_location_id"
   add_index "parts", ["sequence_id"], :name => "index_parts_on_sequence_id"
+
+  create_table "pcr_gel_image_annotations", :force => true do |t|
+    t.integer  "pcr_gel_image_id"
+    t.string   "label"
+    t.string   "position"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "pcr_gel_images", :force => true do |t|
     t.integer  "pcr_gel_id"

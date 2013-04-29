@@ -24,8 +24,8 @@
 
 			<div class="tab-pane" id="groups">
 				<%= f.association :groups, :as => :check_boxes %>
-			</div>
-			
+      </div>
+
 			<% @plates.each do |plate| %>
 				<div class="tab-pane" id="<%= plate.name %>">
 					<div class="control-group">
