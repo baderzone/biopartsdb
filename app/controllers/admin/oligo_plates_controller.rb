@@ -11,6 +11,7 @@ class Admin::OligoPlatesController < ApplicationController
   def show
     @plate = OligoPlate.find(params[:id])
   end
+
   def new 
     @plate = OligoPlate.new
   end
@@ -55,4 +56,4 @@ class Admin::OligoPlatesController < ApplicationController
     end
   end
 
-  end
+end
