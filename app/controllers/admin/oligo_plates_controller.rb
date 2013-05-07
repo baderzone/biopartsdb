@@ -23,7 +23,6 @@ class Admin::OligoPlatesController < ApplicationController
     filename = uploader.current_path
 
     begin
-      @plate = OligoPlate.new
 
       CSV.foreach(filename) do |row|
         if Part.find_by_name(row[2]).nil?

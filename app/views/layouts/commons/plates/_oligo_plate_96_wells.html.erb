@@ -7,15 +7,20 @@
 	<% end %>
 	</tr>
 	
-	<% ('A'..'H').each do |row| %>
+  <% old_oligo = ''; well_class = "well_in_use_1" %>
+  <% ('A'..'H').each do |row| %>
 		<tr>
 			<td class="well_label"><%= row %></td>
 
 			<% ('01'..'12').each do |col| %>
 				
 				<% if plate.key?(row+col) %>
-					<td class="well_in_use_1"><%= plate[row+col].oligo.name[-1] %></td>
-				<% else %>
+          <% if plate[row+col].oligo.name != old_oligo %>
+            <% well_class = well_class == "well_in_use_1" ? "well_in_use_2" : "well_in_use_1" %>
+            <% old_oligo = plate[row+col].oligo.name %>
+          <% end %>
+          <td class=<%= well_class %>><%= plate[row+col].oligo.name[-1] %></td>
+        <% else %>
 					<td class="well_is_empty"/>
 				<% end %>
 				

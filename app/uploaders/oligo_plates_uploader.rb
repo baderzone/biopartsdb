@@ -52,7 +52,4 @@ class OligoPlatesUploader < CarrierWave::Uploader::Base
     "oligo_plates_#{Time.now.to_i}.csv"
   end
 
-  def cache_dir
-    "/tmp/uploads"
-  end 
 end

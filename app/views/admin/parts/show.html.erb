@@ -1,0 +1,106 @@
+<div class="page-header">
+	<h1><i class="icon-cog"> </i><%= @part.name %></h1>
+</div>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+    <li><a href="#sequence" data-toggle="tab">Sequence</a></li>
+    <li><a href="#plate" data-toggle="tab">Oligo Plates</a></li>
+    <li><a href="#history" data-toggle="tab">History</a></li>
+  </ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="info">
+			<p>
+				<dl class="dl-horizontal">
+					<dt>Name</dt>
+					<dd><%= @part.name %></dd>
+					<dt>Feature</dt>
+					<dd><%= @part.feature.name %></dd>
+					<dt>Organism</dt>
+					<dd><%= @part.location.organism.name %> (<%= @part.location.organism.latin %>)</dd>
+					<dt>Start</dt>
+					<dd><%= @part.location.start %></dd>	
+					<dt>Start</dt>
+					<dd><%= @part.location.stop %></dd>	
+					<dt>Strand</dt>
+					<dd><%= @part.location.strand %></dd>	
+				</dl>
+			</p>
+		</div>
+		
+		<div class="tab-pane" id="sequence">
+			<dl class="dl-horizontal">
+				<dt>Length</dt>
+				<dd><%= @sequence.size %></dd>
+				<dt>GC content</dt>
+				<dd><%= @sequence.gc_percent().to_f %></dd>
+				<dt>GC skew</dt>
+				<dd><%= @sequence.gc_skew().to_f %></dd>
+			</dl>
+			<pre class="prettyprint linenums"><%= @sequence.to_fasta(@part.name,80) %></pre>
+			<i class="icon-download-alt"> </i><%= link_to 'Download FASTA file', :action => :fasta, :id => @part.id %>
+		</div>
+		
+		<div class="tab-pane" id="plate">
+			<% @part.oligo_plates.each do |p| %>
+				<%= render :partial => "layouts/commons/plates/oligo_plate_96_wells.html.erb", :locals => {:plate => p.index_wells_for_part(@part) }%>
+			<% end %>
+		</div>
+		
+		<div class="tab-pane" id="history">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>sPCR</th>
+						<th>fPCR</th>
+						<th>Pass PCR</th>
+						<th>Transformations</th>
+						<th>Clones</th>
+						<th>Pass csPCR</th>
+						<th>Pass Sequencing</th>
+					</tr>
+				</thead>
+				<tbody>		
+					<tr>
+						<td>
+							<span class="<%= @part.spcr_products.size > 0 ? "badge badge-success" : "badge badge-important"%>">
+								<%= @part.spcr_products.size %>
+							</span>
+						</td>
+						<td>
+							<span class="<%= @part.fpcr_products.size > 0 ? "badge badge-success" : "badge badge-important"%>">
+								<%= @part.fpcr_products.size %>
+							</span>
+						</td>
+						<td>
+							<span class="<%= @part.fpcr_products.qc_pass.size > 0 ? "badge badge-success" : "badge badge-important"%>">
+								<%= @part.fpcr_products.qc_pass.size %>
+							</span>
+						</td>
+						<td>
+							<span class="<%= @part.transformations.size > 0 ? "badge badge-success" : "badge badge-important"%>">
+								<%= @part.transformations.size %>
+							</span>
+						</td>
+						<td>
+							<span class="<%= @part.clones.size > 0 ? "badge badge-success" : "badge badge-important"%>">
+								<%= @part.clones.size %>
+							</span>
+						</td>
+						<td>
+							<span class="<%= @part.clones.qc_pass.size > 0 ? "badge badge-success" : "badge badge-important"%>">
+								<%= @part.clones.qc_pass.size %>
+							</span>
+						</td>
+            <td>
+							<span class="<%= @part.sequencing_products.qc_pass.size > 0 ? "badge badge-success" : "badge badge-important"%>">
+								<%= @part.sequencing_products.qc_pass.size %>
+            </td>
+					</tr>
+				</tbody>
+			</table>			
+		</div>
+		
+	</div>
+</div>
+		

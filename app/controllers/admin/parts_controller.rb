@@ -8,6 +8,11 @@ class Admin::PartsController < ApplicationController
     @parts = Part.paginate(:page => params[:page], :per_page => 10).order('name')
   end
 
+  def show
+    @part = Part.find(params[:id])
+    @sequence = Bio::Sequence::NA.new(@part.sequence.data)
+  end
+  
   def new 
     @part = Part.new
   end
@@ -46,4 +51,13 @@ class Admin::PartsController < ApplicationController
     end
 
   end
+  
+  def fasta
+    part = Part.find(params[:id])
+    sequence = Bio::Sequence::NA.new(part.sequence.data)
+    seqid = "#{part.name} #{sequence.size}"
+    filename = "#{part.name}.fasta"
+    send_data sequence.to_fasta(seqid,80), :filename => filename, :type => 'chemical/seq-na-fasta FASTA', :disposition => 'attachment'
+  end
+  
 end

@@ -152,6 +152,7 @@ Biopartsdb::Application.routes.draw do
   post "cspcr_gels/:id/sort", :to => "cspcr_gels#sort"
 
   match "/parts/:id/fasta", :to => "parts#fasta"
+  match "admin/parts/:id/fasta", :to => "admin/parts#fasta"
   match "/admin/sequencing_plates/:id/fasta", :to => "admin/sequencing_plates#fasta"
 
   match "/clonings/:id/update_picked_all", :to => "clonings#update_picked_all"
