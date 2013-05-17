@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,7 +11,9 @@ gem 'mysql2'
 gem 'omniauth'
 gem 'omniauth-openid'
 gem 'cancan'
-gem 'newrelic_rpm'
+
+gem "therubyracer"
+gem "less-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -49,6 +51,7 @@ gem 'gene_ontology'
 
 # Use unicorn as the app server
 gem 'unicorn'
+gem 'puma'
 
 # Deploy with Capistrano
 gem 'capistrano'
