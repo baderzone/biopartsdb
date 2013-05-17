@@ -1,5 +1,4 @@
 require "bundler/capistrano"
-require 'puma/capistrano'
 
 #set :bundle_flags, "--deployment --quiet --binstubs --shebang ruby-local-exec"
 #set (:bundle_cmd) { "/home/deployer/.rbenv/shims/bundle" }
@@ -38,12 +37,12 @@ set :puma_config, "#{current_path}/config/puma.rb"
 namespace :deploy do
   #start task
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{try_sudo} bundle exec #{puma_binary} -C #{puma_config}"
+    run "cd #{current_path}; bundle exec #{puma_binary} -C #{puma_config}"
   end
   
   #stop task
   task :stop, :roles => :app, :except => { :no_release => true } do
-    run "bundle exec pumactl -S #{current_path}/tmp/pids/puma.state"
+    run "cd #{current_path}; bundle exec pumactl -S #{current_path}/tmp/pids/puma.state stop"
   end
   
   #restart task
