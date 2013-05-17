@@ -36,7 +36,7 @@ threads 0, 16
 # Bind the server to “url”. “tcp://”, “unix://” and “ssl://” are the only
 # accepted protocols.
 #
-# The default is “tcp://0.0.0.0:9292”.
+#The default is “tcp://0.0.0.0:9292”.
 #
-# bind 'tcp://0.0.0.0:9292'
+bind 'tcp://0.0.0.0:8080'
 # bind 'unix:///var/run/puma.sock'
