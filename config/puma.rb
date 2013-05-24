@@ -38,5 +38,5 @@ threads 0, 8
 #
 #The default is “tcp://0.0.0.0:9292”.
 #
-bind 'tcp://0.0.0.0:80'
+bind 'tcp://0.0.0.0:8080'
 # bind 'unix:///var/run/puma.sock'
