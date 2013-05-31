@@ -11,13 +11,13 @@ daemonize true
 # Use “path” as the file to store the server info state. This is
 # used by “pumactl” to query and control the server.
 #
-state_path 'tmp/pids/puma.state'
+state_path 'tmp/pids/biopartsdb.state'
 
 # Redirect STDOUT and STDERR to files specified. The 3rd parameter
 # (“append”) specifies whether the output is appended, the default is
 # “false”.
 #
-stdout_redirect 'log/puma.stdout', 'log/puma.stderr', true
+stdout_redirect 'log/biopartsdb.stdout', 'log/biopartsdb.stderr', true
 #stdout_redirect 'log/stdout', '/u/apps/lolcat/log/stderr', true
 
 # Disable request logging.
@@ -38,5 +38,5 @@ threads 0, 8
 #
 #The default is “tcp://0.0.0.0:9292”.
 #
-bind 'tcp://0.0.0.0:8080'
-# bind 'unix:///var/run/puma.sock'
+# bind 'tcp://0.0.0.0:8080'
+bind 'unix:///var/run/biopartsdb.sock'
