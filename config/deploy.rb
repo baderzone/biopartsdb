@@ -42,7 +42,7 @@ namespace :deploy do
   
   #stop task
   task :stop, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path}; bundle exec pumactl -S #{current_path}/tmp/pids/puma.state stop"
+    run "cd #{current_path}; bundle exec pumactl -S #{current_path}/tmp/pids/biopartsdb.state stop"
   end
   
   #restart task
