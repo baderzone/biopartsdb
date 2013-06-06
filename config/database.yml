@@ -5,7 +5,7 @@ development:
   database: biopartsdb_development
   pool: 5
   username: root
-  hostname: localhost
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,7 +17,7 @@ test:
   database: biopartsdb_test
   pool: 5
   username: root
-  hostname: localhost
+  host: localhost
 
 production:
   adapter: mysql2
@@ -26,4 +26,4 @@ production:
   database: biopartsdb_production
   pool: 5
   username: root
-  hostname: localhost
+  host: 10.0.1.110
