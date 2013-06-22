@@ -1,24 +1,3 @@
-development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: biopartsdb_development
-  pool: 5
-  username: root
-  host: localhost
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: biopartsdb_test
-  pool: 5
-  username: root
-  host: localhost
-
 production:
   adapter: mysql2
   encoding: utf8
@@ -26,4 +5,5 @@ production:
   database: biopartsdb_production
   pool: 5
   username: root
-  host: 10.0.1.110
+  password: d.748563*p
+  host: db1.c1gnp09t5eej.us-east-1.rds.amazonaws.com
