@@ -11,6 +11,7 @@
 /db/*.sqlite3
 /dumps/*
 /config/database.yml
+/config/deploy.rb
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
