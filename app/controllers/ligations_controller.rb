@@ -27,8 +27,7 @@ class LigationsController < ApplicationController
       @ligation.save
       redirect_to ligation_path(@ligation), :notice => "Ligations created correctly."
     else
-      flash[:error] = "Error while creating a Ligation: " + get_model_error_message(@ligation)
-      render :new
+      redirect_to new_ligation_path, :flash => {:error => "Error while creating a Ligation: " + get_model_error_message(@ligation)}
     end
   end
 

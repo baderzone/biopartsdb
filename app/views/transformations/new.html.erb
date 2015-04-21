@@ -12,7 +12,9 @@
 	
 		<div class="tab-content">
 			<div class="tab-pane active" id="info">
-				<%= f.association :ligation_product, :collection => current_user.ligation_products.reaction_pass %>
+        <div class="container"><li class="icon-info-sign" style="color:blue"> If you can't see your ligation products, please check if their status is PASS</li></div>
+        <br />
+        <%= f.association :ligation_product, :collection => current_user.ligation_products.reaction_pass %>
 				<%= f.association :strain %>
 			</div>
 			

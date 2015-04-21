@@ -1,38 +1,38 @@
 <div class="page-header">
-	<h1><i class="icon-random"> </i>New sPCR</h1>
+  <h1><i class="icon-random"> </i>New sPCR</h1>
 </div>
 <p>
-	<%= simple_form_for(@spcr, :html => {:class => 'form-horizontal' }) do |f| %>
-	
-		<ul class="nav nav-tabs">
-	    <li class="active"><a href="#parts" data-toggle="tab">Parts</a></li>
-	    <li><a href="#info" data-toggle="tab">Info</a></li>
-	  </ul>
+<%= simple_form_for(@spcr, :html => {:class => 'form-horizontal' }) do |f| %>
 
-		<div class="tab-content">
-			<div class="tab-pane active" id="parts">
-				<div class="control-group">
-					<label class="control-label" for="all">Select all</label>
-					<div class="controls">
-						<%= check_box_tag :all, :all, false, :class => :checkall %>
-					</div>
-				</div>
-				<div class="checkbox-container">
-					<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
-				</div>
-			</div>
-			<div class="tab-pane" id="info">
-				<%= f.association :device, :collection => @devices %>
-				<%= f.association :protocol, :collection => @protocols %>
-				<%= f.input :note %>
-			</div>
-	  </div>
-		
-		
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#parts" data-toggle="tab">Parts</a></li>
+    <li><a href="#info" data-toggle="tab">Comments</a></li>
+  </ul>
 
-		<div class="form-actions"> 
-			<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', spcrs_path, :class => 'btn'%>
-		</div>
-	<% end %>
+  <div class="tab-content">
+    <div class="tab-pane active" id="parts">
+      <%= f.association :device, :collection => @devices %>
+      <%= f.association :protocol, :collection => @protocols %>
+      <div class="control-group">
+        <label class="control-label" for="all">Select all the parts</label>
+        <div class="controls">
+          <%= check_box_tag :all, :all, false, :class => :checkall %>
+        </div>
+      </div>
+      <div class="checkbox-container">
+        <%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
+      </div>
+    </div>
+    <div class="tab-pane" id="info">
+      <%= f.input :note %>
+    </div>
+  </div>
+
+
+
+  <div class="form-actions"> 
+    <%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
+    <%= link_to 'Cancel', spcrs_path, :class => 'btn'%>
+  </div>
+<% end %>
 </p>

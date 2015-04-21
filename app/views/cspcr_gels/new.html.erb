@@ -20,6 +20,8 @@
 		</div>
 		<% current_user.cspcrs.each do |cspcr| %>
 			<div class="tab-pane fade" id="<%= cspcr.cspcr_plate.name %>">
+        <div class="container"><li class="icon-info-sign" style="color:blue"> If you can't see your csPCR products, please check if their status is PASS</li></div>
+        <br />
 				<p>
 					<div class="control-group">
 						<label class="control-label" for="all">Select all</label>
@@ -27,7 +29,7 @@
 							<%= check_box_tag :all, :all, false, :class => :checkall %>
 						</div>
 					</div>
-					<%= f.association :cspcr_products, :collection => cspcr.cspcr_products.reaction_pass, :as => :check_boxes %>
+          <%= f.association :cspcr_products, :collection => cspcr.cspcr_products.reaction_pass, :as => :check_boxes, :label => 'csPCR Products' %>
 				</p>
 			</div>
 		<% end %>

@@ -11,10 +11,14 @@
 
 		<div class="tab-content">
 			<div class="tab-pane active" id="spcrs">
-				<%= f.association :spcr_products, :collection => current_user.spcr_products.qc_pass, :as => :check_boxes %> 
+        <div class="container"><li class="icon-info-sign" style="color:blue"> If you can't see your sPCR products, please check if their gel status is PASS</li></div>
+        <br />
+        <%= f.association :spcr_products, :collection => current_user.spcr_products.qc_pass, :as => :check_boxes, :label => 'sPCR Products' %> 
 			</div>
 			<div class="tab-pane" id="fpcrs">
-				<%= f.association :fpcr_products, :collection => current_user.fpcr_products.qc_pass, :as => :check_boxes %>
+        <div class="container"><li class="icon-info-sign" style="color:blue"> If you can't see your fPCR products, please check if their gel status is PASS</li></div>
+        <br />
+        <%= f.association :fpcr_products, :collection => current_user.fpcr_products.qc_pass, :as => :check_boxes, :label => 'fPCR Products' %>
 			</div>
 			<div class="tab-pane" id="note">
 				<%= f.input :note %>

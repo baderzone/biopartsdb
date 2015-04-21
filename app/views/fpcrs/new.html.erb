@@ -6,15 +6,17 @@
 		
 		<ul class="nav nav-tabs">
 	    <li class="active"><a href="#tpcrs" data-toggle="tab">tPCRs</a></li>
-	    <li><a href="#info" data-toggle="tab">Info</a></li>
+	    <li><a href="#info" data-toggle="tab">Comment</a></li>
 	  </ul>
 
 		<div class="tab-content">
-			<div class="tab-pane active" id="tpcrs">
-				<%= f.association :tpcr_products, :collection => current_user.tpcr_products.reaction_pass, :as => :check_boxes %>
+      <div class="tab-pane active" id="tpcrs">
+        <div class="container"><li class="icon-info-sign" style="color:blue"> If you can't see your tPCR products, please check if their status is PASS</li></div>
+        <br />
+				<%= f.association :device, :collection => @devices %>
+        <%= f.association :tpcr_products, :collection => current_user.tpcr_products.reaction_pass, :as => :check_boxes, :label => 'tPCR Products' %>
 			</div>
 			<div class="tab-pane" id="info">
-				<%= f.association :device, :collection => @devices %>
 				<%= f.input :note %>
 			</div>
 	  </div>

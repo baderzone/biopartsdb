@@ -36,8 +36,7 @@ class CspcrsController < ApplicationController
       redirect_to cspcr_path(@cspcr), :notice => "csPCR created correctly."
       
     rescue => ex
-      flash[:error] = "Error you forget something: #{ex.message}"
-      render :new
+      redirect_to new_cspcr_path, :flash => {:error => "Error you forget something: #{ex.message}"}
       return
     end
     

@@ -1,33 +1,33 @@
 <div class="page-header">
-	<h1><i class="icon-random"> </i>New tPCR</h1>
+  <h1><i class="icon-random"> </i>New tPCR</h1>
 </div>
 <p>
-	<%= simple_form_for(@tpcr, :html => {:class => 'form-horizontal' }) do |f| %>
-		
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#parts" data-toggle="tab">Parts</a></li>
-			<li><a href="#device" data-toggle="tab">Info</a></li>
-		</ul>
-		
-		<div class="tab-content">
-			<div class="tab-pane active" id="parts">
-				<div class="control-group">
-					<label class="control-label" for="all">Select all</label>
-					<div class="controls">
-						<%= check_box_tag :all, :all, false, :class => :checkall %>
-					</div>
-				</div>
-				<%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
-			</div>
-			<div class="tab-pane" id="device">
-				<%= f.association :device, :collection => @devices %>
-				<%= f.input :note %>
-			</div>
-	  </div>
-	
-		<div class="form-actions">
-			<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', tpcrs_path, :class => 'btn'%>
-		</div>
-	<% end %>
+<%= simple_form_for(@tpcr, :html => {:class => 'form-horizontal' }) do |f| %>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#parts" data-toggle="tab">Parts</a></li>
+    <li><a href="#device" data-toggle="tab">Comment</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="parts">
+      <%= f.association :device, :collection => @devices %>
+      <div class="control-group">
+        <label class="control-label" for="all">Select all</label>
+        <div class="controls">
+          <%= check_box_tag :all, :all, false, :class => :checkall %>
+        </div>
+      </div>
+      <%= f.association :parts, :collection => current_user.parts, :as => :check_boxes %>
+    </div>
+    <div class="tab-pane" id="device">
+      <%= f.input :note %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
+    <%= link_to 'Cancel', tpcrs_path, :class => 'btn'%>
+  </div>
+<% end %>
 </p>

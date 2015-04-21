@@ -20,9 +20,7 @@ class CspcrGelsController < ApplicationController
     if @gel.save
       redirect_to cspcr_gel_path(@gel), :notice => "csPCR Gel created correctly."
     else
-      flash[:error] = "csPCR Gel error."
-      flash[:error] = "Error you forget something: " + get_model_error_message(@gel)
-      render :new
+      redirect_to new_cspcr_gel_path, :flash => {:error => "Error you forget something: " + get_model_error_message(@gel)}
     end
   end
 

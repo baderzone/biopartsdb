@@ -23,6 +23,8 @@
 		</div>
 		<% current_user.clonings.each do |cl| %>
 			<div class="tab-pane fade" id="<%= cl.growth_plate.name %>">
+        <div class="container"><li class="icon-info-sign" style="color:blue"> If you can't see your clones, please check if their status is Picked</li></div>
+        <br />
 				<p>
 					<div class="control-group">
 						<label class="control-label" for="all">Select all</label>

@@ -1,38 +1,45 @@
 <div class="page-header">
-	<h1><i class="icon-resize-small"> </i>Submit for Sequencing</h1>
+  <h1><i class="icon-resize-small"> </i>Submit for Sequencing</h1>
 </div>
 <p>
-	<%= simple_form_for(@sequencing, :html => {:class => 'form-horizontal' }) do |f| %>
-	<ul id="myTab" class="nav nav-tabs">
-		<li class="dropdown active">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Growth Plates<b class="caret"></b></a>
-			<ul class="dropdown-menu">
-				<% current_user.clonings.each do |cl| %>
-				<li><a href="#<%= cl.growth_plate.name %>" data-toggle="tab"><%= cl.growth_plate.name %></a></li>
-				<% end %>
-			</ul>
-		</li>
-	</ul>
-	<div id="myTabContent" class="tab-content">
+<%= simple_form_for(@sequencing, :html => {:class => 'form-horizontal' }) do |f| %>
+  <ul id="myTab" class="nav nav-tabs">
+    <li class="dropdown active">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Growth Plates<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <% current_user.clonings.each do |cl| %>
+        <li><a href="#<%= cl.growth_plate.name %>" data-toggle="tab"><%= cl.growth_plate.name %></a></li>
+      <% end %>
+    </ul>
+    </li>
+  </ul>
+  <div id="myTabContent" class="tab-content">
 
-		<% current_user.clonings.each do |cl| %>
-			<div class="tab-pane fade" id="<%= cl.growth_plate.name %>">
-				<p>
-					<div class="control-group">
-						<label class="control-label" for="all">Select all</label>
-						<div class="controls">
-							<%= check_box_tag :all, :all, false, :class => :checkall %>
-						</div>
-					</div>
-					<%= f.association :clones, :collection => cl.clones.qc_pass, :as => :check_boxes %>
-				</p>
-			</div>
-		<% end %>
-	</div>
-		
-		<div class="form-actions">
-			<%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
-			<%= link_to 'Cancel', sequencings_path, :class => 'btn'%>
-		</div>
-	<% end %>
+    <% current_user.clonings.each do |cl| %>
+      <div class="tab-pane fade" id="<%= cl.growth_plate.name %>">
+        <div class="container">
+          <li class="icon-info-sign" style="color:blue"> Please make sure there are enough empty wells before submitting</li><br />
+          <li class="icon-info-sign" style="color:blue"> Select two clones for each part, one clone will be assigned to the master plate while the other will be assigned to the repeating plate in the same location</li><br />
+          <li class="icon-info-sign" style="color:blue"> If you can't see your clones, please check if their csPCR gel is PASS</li><br />
+
+        </div>
+        <br />
+        <p>
+        <div class="control-group">
+          <label class="control-label" for="all">Select all</label>
+          <div class="controls">
+            <%= check_box_tag :all, :all, false, :class => :checkall %>
+          </div>
+        </div>
+        <%= f.association :clones, :collection => cl.clones.qc_pass, :as => :check_boxes %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Save', :class => 'btn btn-primary'%>
+    <%= link_to 'Cancel', sequencings_path, :class => 'btn'%>
+  </div>
+<% end %>
 </p>
