@@ -8,8 +8,7 @@ gem 'rails', '3.2.13'
 gem 'mysql2'
 
 # gemfile for authentications and authorization
-gem 'omniauth'
-gem 'omniauth-openid'
+gem 'omniauth-google-oauth2'
 gem 'cancan'
 
 gem "therubyracer"

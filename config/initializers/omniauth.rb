@@ -1,7 +1,3 @@
-require 'openid/store/filesystem'
-  Rails.application.config.middleware.use OmniAuth::Strategies::OpenID, :store => OpenID::Store::Filesystem.new('/tmp')
-
-Rails.application.config.middleware.use OmniAuth::Builder do
-  #provider :openid, :name => 'myopenid', :identifier => 'myopenid.com'
-  provider :openid, :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id', :store => OpenID::Store::Filesystem.new('/tmp')
-end
+Rails.application.config.middleware.use OmniAuth::Builder do 
+  provider :google_oauth2, "978320671003-fd3iv2rm2bb9b71igesn11kik5h99r9q.apps.googleusercontent.com", "gHagS1-2GwlQfqery91N5Qwp"
+end 
