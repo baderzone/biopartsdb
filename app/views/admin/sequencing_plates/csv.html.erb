@@ -1,0 +1,16 @@
+<h2><i class="icon-play-circle"> </i>Upload Sequencing QC</h2>
+<%= form_tag({:controller => "admin/sequencing_plates", :action => "csv_create"}, :method => "post", :multipart => true) do %>
+  <div id='container'>
+    <p><i class='icon-info-sign'> </i>Note: only csv file accepted. The uploaded file should have the following columns (header should not be included):</p>
+    <ol>
+      <li>Plate Name (should use the same name that BioPartsDB assgined, check administration ---> sequencing ---> status)</li>
+      <li>Well (e.g. A01; A1 and A_01 are not invalid)</li>
+      <li>Sequencing QC (e.g. PASS, FAIL, CHECK, FIXABLE, MISLABELLED)</li>
+    </ol>
+    <b>Upload a csv file</b> <%= file_field_tag :file %>
+  </div>
+  <div class="form-actions">
+    <%= submit_tag 'Save', :class => 'btn btn-primary'%>
+    <%= link_to 'Cancel', admin_sequencing_plates_path, :class => 'btn'%>
+  </div>
+<% end %>

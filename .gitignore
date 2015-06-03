@@ -20,3 +20,4 @@
 /public/uploads
 *~
 .ruby-version
+.DS_Store
