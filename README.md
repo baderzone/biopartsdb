@@ -39,7 +39,7 @@ Installation
 License
 ---
 
-The source code is released under the [Creative Commons Attribution-NonCommercial-ShareAlike](http://creativecommons.org/licenses/by-nc-sa/3.0/us/) license.
+The source code is released under the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
 
 Cite us
 ---
