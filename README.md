@@ -1,7 +1,7 @@
 BioPartsDB
 ===============
 
-BIOPARTSDB is an open-source, modular tool for DNA synthesis workflow and parts registration, ready to be used
+BioPartsDB is an open-source, modular tool for DNA synthesis workflow and parts registration, ready to be used
 in most scenarios, such as molecular biology laboratories or iGem teams.
 
 License
